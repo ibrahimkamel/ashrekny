@@ -1,13 +1,5 @@
-angular.module('myApp.auth', [])
-.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-  .state('auth', {
-    url: '/auth',
-    templateUrl: "templates/auth.html",
-      controller: 'AuthCtrl'
-    }
-  )
-}])
+'use strict';
+angular.module('myApp')
 .controller('AuthCtrl',function($auth, $state, $http, $rootScope,$scope) {
  		
 		$scope.loginError = false;
@@ -24,7 +16,7 @@ angular.module('myApp.auth', [])
                     var user = JSON.stringify(response.user);
                     localStorage.setItem('user', user);
                     $rootScope.currentUser = response.user;                   
-                    $state.go('view2');
+                    $state.go('profile');
                 })
                 .error(function(){
                     $scope.loginError = true;
@@ -34,4 +26,10 @@ angular.module('myApp.auth', [])
             });
         }
  
-});
+})
+.controller('HomeCtrl',function($rootScope){
+ 
+})
+.controller('ProfileCtrl',function($rootScope){
+ 
+})

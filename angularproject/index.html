@@ -6,23 +6,61 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Volunteer App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
   <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
 
   <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="css/app.css">
+
+
   <base href="/team/angularproject/">
 </head>
+
+
 <body>
-  <ul class="menu">
-    <li><a ui-sref="view1">view1</a></li>
-    <li><a ui-sref="view2">view2</a></li>
-  </ul>
+
+<div class="container">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="">Volunteer App</a>
+            </div>
+ 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <!-- <li><a ui-sref="auth">Auth</a></li> -->
+                <li><a ui-sref="home">home</a></li>
+                <li><a ui-sref="profile">profile</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right" ng-show="currentUser != null">
+              <li><a href="">Welcome, {{currentUser.email}}</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Profile <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a ng-click="logout()" style="cursor: pointer;">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+ 
+ 
+    </div>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -30,23 +68,22 @@
 
   <div ui-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="app/bower_components/angular/angular.js"></script>
-  <!-- <script src="app/bower_components/angular-route/angular-route.js"></script> -->
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
   <script src="app/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="app/bower_components/satellizer/dist/satellizer.js"></script>
+  <script src="app/bower_components/angular-permission/dist/angular-permission.js"></script>
+  <script src="app/bower_components/angular-permission/dist/angular-permission-ui.js"></script>
+  <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="app/bower_components/jquery/dist/jquery.min.js"></script>
   <script src="app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="app.js"></script>
-  <script src="templates/view1.js"></script>
-  <script src="templates/view2.js"></script>
-  <script src="templates/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/factories.js"></script>
+  <script src="js/directives.js"></script>
 </body>
 </html>
