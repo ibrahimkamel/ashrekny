@@ -113,15 +113,6 @@ class EventController extends Controller
     }
 
     /**
-     * add reviews on event.
-     *  TODO IN NEXT SPRINT
-     * @return \Illuminate\Http\Response
-     */
-    public function addReview($id)
-    {
-    }
-
-    /**
      * add new event.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -189,6 +180,14 @@ class EventController extends Controller
         return response()->json("success",200);
     }
 
+    /**
+     * add reviews on event.
+     *  TODO IN NEXT SPRINT
+     * @return \Illuminate\Http\Response
+     */
+    public function addReview($id)
+    {
+    }
     /**
      * Update the specified event.
      *
