@@ -11,14 +11,14 @@ angular.module('myApp')
                 password: $scope.password
             }
             
-            $auth.login(credentials).then(function() {
-                $http.get('http://localhost/team/laravelproject/api/authenticate/user').success(function(response){
+            $auth.login(credentials).then(function successCallback() {
+                $http.get('http://localhost/team/laravelproject/api/authenticate/user').success(function successCallback(response){
                     var user = JSON.stringify(response.user);
                     localStorage.setItem('user', user);
                     $rootScope.currentUser = response.user;                   
                     $state.go('profile');
                 })
-                .error(function(){
+                .error(function errorCallback(){
                     $scope.loginError = true;
                     $scope.loginErrorText = error.data.error;
                     console.log($scope.loginErrorText);

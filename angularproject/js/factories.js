@@ -11,7 +11,7 @@ angular.module("myApp").factory("modelFactory",function($http,$q){
                  }).then(function successCallback(res){
                         defer.resolve(res.data);
                       },function errorCallback(err){
-                        defer.reject(error.data);
+                        defer.reject(err.data);
                     });
                  return defer.promise;
               }
