@@ -26,17 +26,14 @@ Route::group(['middleware' => 'cors'], function(){
 
 
     //authenticated users routes here
-    Route::group(['middleware' => 'jwt.auth'], function(){
+        Route::group(['middleware' => 'jwt.auth'], function(){
 		
 		Route::group(['prefix' => 'user'], function(){
-		
-
+			Route::post('/update','Api\UserController@update');
 		});
 		Route::group(['prefix' => 'organization'], function(){
 			
-			Route::delete('/delete/{id}','Api\OrganizationController@delete');
-			Route::post('/update/{id}','Api\OrganizationController@update');
-			Route::post('/create','Api\OrganizationController@store');
+			
 
 		});
 		Route::group(['prefix' => 'volunteer'], function(){
@@ -48,8 +45,13 @@ Route::group(['middleware' => 'cors'], function(){
 
 		});
 		Route::group(['prefix' => 'event'], function(){
-		
 
+
+			Route::post('/{id}/add','Api\EventController@add');
+			Route::post('/{id}/addReview','Api\EventController@addReview');
+			Route::post('/{id}/update','Api\EventController@update');
+			Route::post('/{id}/delete','Api\EventController@delete');
+			
 		});
 		Route::group(['prefix' => 'eventalbum'], function(){
 		
@@ -84,8 +86,9 @@ Route::group(['middleware' => 'cors'], function(){
 
 	//public routes here
     Route::group(['prefix' => 'user'], function(){
-		
-
+		Route::get('/get/{id}','Api\UserController@get');
+		Route::get('/{id}/getdetails','Api\UserController@getDetails');
+		Route::post('/add','Api\UserController@add');
 	});
 	Route::group(['prefix' => 'organization'], function(){
 
@@ -99,12 +102,16 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/{id}/getevents','Api\OrganizationController@getEvents');
 		Route::get('/{id}/getcategories','Api\OrganizationController@getCategories');
 		Route::get('/{id}/getuser','Api\OrganizationController@getUser');
-		Route::get('/gettop','Api\OrganizationController@getTop');
 
 
 	});
 	Route::group(['prefix' => 'volunteer'], function(){
 		
+		Route::get('/get/{id}','Api\VolunteerController@get');
+		Route::get('/{id}/getstories','Api\VolunteerController@getStories');
+		Route::get('/{id}/gettasks','Api\VolunteerController@getTasks');
+		Route::get('/{id}/getevents','Api\VolunteerController@getEvents');
+		Route::get('/{id}/getuser','Api\VolunteerController@getUser');
 
 	});
 	Route::group(['prefix' => 'category'], function(){
@@ -112,7 +119,16 @@ Route::group(['middleware' => 'cors'], function(){
 
 	});
 	Route::group(['prefix' => 'event'], function(){
-		
+			Route::get('/getAll','Api\EventController@getAll');
+			Route::get('/getAllPaginate','Api\EventController@getAllPaginate');
+			Route::get('/gettop','Api\EventController@getTop');
+			Route::get('/{id}/get','Api\EventController@get');
+			Route::get('/{id}/getOrganization','Api\EventController@getOrganization');
+			Route::get('/{id}/getTasks','Api\EventController@getTasks');
+			Route::get('/{id}/getCategories','Api\EventController@getCategories');
+			Route::get('/{id}/getAlbum','Api\EventController@getAlbum');
+			Route::get('/{id}/getReview','Api\EventController@getReview');
+			Route::get('/{id}/getCategories','Api\EventController@getCategories');
 
 	});
 	Route::group(['prefix' => 'eventalbum'], function(){
