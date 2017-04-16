@@ -38,7 +38,7 @@ class EventController extends Controller
      */
     public function getTop()
     {
-        $events = Event::all()->sortByDesc('avg_rate')->take(3);
+        $events = Event::orderBy('avg_rate', 'DESC')->limit(3)->get();
         return response()->json(compact('events'),200);
     }
 
