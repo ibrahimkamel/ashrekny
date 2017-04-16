@@ -29,8 +29,7 @@ Route::group(['middleware' => 'cors'], function(){
     Route::group(['middleware' => 'jwt.auth'], function(){
 		
 		Route::group(['prefix' => 'user'], function(){
-		
-
+			Route::post('/update','Api\UserController@update');
 		});
 		Route::group(['prefix' => 'organization'], function(){
 			
@@ -84,8 +83,9 @@ Route::group(['middleware' => 'cors'], function(){
 
 	//public routes here
     Route::group(['prefix' => 'user'], function(){
-		
-
+		Route::get('/get/{id}','Api\UserController@get');
+		Route::get('/{id}/getdetails','Api\UserController@getDetails');
+		Route::post('/add','Api\UserController@add');
 	});
 	Route::group(['prefix' => 'organization'], function(){
 
