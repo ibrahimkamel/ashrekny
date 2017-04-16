@@ -27,8 +27,15 @@ angular.module('myApp')
         }
  
 })
-.controller('HomeCtrl',function($rootScope){
- 
+.controller('HomeCtrl',function($rootScope,modelFactory){
+    modelFactory.getData('get',
+        'http://localhost/team/laravelproject/api/organization/getall'
+        ).then(function successCallback(data){
+                        console.log(data);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+
 })
 .controller('ProfileCtrl',function($rootScope){
  
