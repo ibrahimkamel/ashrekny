@@ -49,16 +49,7 @@ Route::group(['middleware' => 'cors'], function(){
 		});
 		Route::group(['prefix' => 'event'], function(){
 
-			Route::get('/getAll','Api\EventController@getAll');
-			Route::get('/getAllPaginate','Api\EventController@getAllPaginate');
-			Route::get('/gettop','Api\EventController@getTop');
-			Route::get('/{id}/get','Api\EventController@get');
-			Route::get('/{id}/getOrganization','Api\EventController@getOrganization');
-			Route::get('/{id}/getTasks','Api\EventController@getTasks');
-			Route::get('/{id}/getCategories','Api\EventController@getCategories');
-			Route::get('/{id}/getAlbum','Api\EventController@getAlbum');
-			Route::get('/{id}/getReview','Api\EventController@getReview');
-			Route::get('/{id}/getCategories','Api\EventController@getCategories');
+
 			Route::post('/{id}/add','Api\EventController@add');
 			Route::post('/{id}/addReview','Api\EventController@addReview');
 			Route::post('/{id}/update','Api\EventController@update');
@@ -126,7 +117,16 @@ Route::group(['middleware' => 'cors'], function(){
 
 	});
 	Route::group(['prefix' => 'event'], function(){
-		
+			Route::get('/getAll','Api\EventController@getAll');
+			Route::get('/getAllPaginate','Api\EventController@getAllPaginate');
+			Route::get('/gettop','Api\EventController@getTop');
+			Route::get('/{id}/get','Api\EventController@get');
+			Route::get('/{id}/getOrganization','Api\EventController@getOrganization');
+			Route::get('/{id}/getTasks','Api\EventController@getTasks');
+			Route::get('/{id}/getCategories','Api\EventController@getCategories');
+			Route::get('/{id}/getAlbum','Api\EventController@getAlbum');
+			Route::get('/{id}/getReview','Api\EventController@getReview');
+			Route::get('/{id}/getCategories','Api\EventController@getCategories');
 
 	});
 	Route::group(['prefix' => 'eventalbum'], function(){
