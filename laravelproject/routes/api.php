@@ -26,7 +26,7 @@ Route::group(['middleware' => 'cors'], function(){
 
 
     //authenticated users routes here
-    Route::group(['middleware' => 'jwt.auth'], function(){
+        Route::group(['middleware' => 'jwt.auth'], function(){
 		
 		Route::group(['prefix' => 'user'], function(){
 		
