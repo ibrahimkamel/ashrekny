@@ -110,6 +110,11 @@ Route::group(['middleware' => 'cors'], function(){
 	});
 	Route::group(['prefix' => 'volunteer'], function(){
 		
+		Route::get('/get/{id}','Api\VolunteerController@get');
+		Route::get('/{id}/getstories','Api\VolunteerController@getStories');
+		Route::get('/{id}/gettasks','Api\VolunteerController@getTasks');
+		Route::get('/{id}/getevents','Api\VolunteerController@getEvents');
+		Route::get('/{id}/getuser','Api\VolunteerController@getUser');
 
 	});
 	Route::group(['prefix' => 'category'], function(){
