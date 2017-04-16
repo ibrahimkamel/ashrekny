@@ -35,7 +35,14 @@ angular.module('myApp')
                       },function errorCallback(err){
                         console.log(err);
                     });
-
+        
+    // modelFactory.getData('delete',
+    //     'http://localhost/team/laravelproject/api/organization/delete/18'
+    //     ).then(function successCallback(data){
+    //                     console.log(data);
+    //                   },function errorCallback(err){
+    //                     console.log(err);
+    //                 });
 })
 .controller('ProfileCtrl',function($rootScope){
  

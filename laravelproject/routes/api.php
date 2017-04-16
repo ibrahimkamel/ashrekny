@@ -34,9 +34,7 @@ Route::group(['middleware' => 'cors'], function(){
 		});
 		Route::group(['prefix' => 'organization'], function(){
 			
-			Route::delete('/delete/{id}','Api\OrganizationController@delete');
-			Route::post('/update/{id}','Api\OrganizationController@update');
-			Route::post('/create','Api\OrganizationController@store');
+			
 
 		});
 		Route::group(['prefix' => 'volunteer'], function(){
@@ -104,7 +102,6 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/{id}/getevents','Api\OrganizationController@getEvents');
 		Route::get('/{id}/getcategories','Api\OrganizationController@getCategories');
 		Route::get('/{id}/getuser','Api\OrganizationController@getUser');
-		Route::get('/gettop','Api\OrganizationController@getTop');
 
 
 	});

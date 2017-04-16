@@ -19,7 +19,7 @@ class OrganizationController extends Controller
     }
 
     /**
-     * Display All Organizations.
+     * Display All Organizations Paginated.
      *
      * @return \Illuminate\Http\Response
      */
@@ -37,7 +37,6 @@ class OrganizationController extends Controller
     public function getTop()
     {
         $organization = Organization::limit(3)->get();
-
         return response()->json(compact('organization'),200);
     }
 
@@ -50,70 +49,6 @@ class OrganizationController extends Controller
     {
         $organization = Organization::find($id);
         return response()->json(compact('organization'),200);
-    }
-
-    /**
-     * Delete Specific Organization.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function delete($id)
-    {
-        $organization = Organization::find($id);
-        $organization->delete();
-
-        return response()->json('Deleted Successfully',200);
-    }
-
-    /**
-     * Store a newly Organization.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // TODO request validation
-        //$organization->user_id=>Auth::user()->id;
-
-        $organization = new Organization;
-        $organization->name=$request->name;
-        $organization->logo=$request->logo;
-        $organization->description=$request->description;
-        $organization->full_address=$request->full_address;
-        $organization->license_number=$request->license_number;
-        $organization->license_scan=$request->license_scan;
-        $organization->openning_hours=$request->openning_hours;
-        $organization->save();
-        return response()->json('Saved Successfully',200);
-    }
-
-    /**
-     * Update the specified Organization.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $organization = Organization::find($id);
-        if(!$organization)
-        {
-            return response()->json("Failed to Update",406);
-        }
-
-        // TODO request validation
-
-        $organization->name=$request->name;
-        $organization->logo=$request->logo;
-        $organization->description=$request->description;
-        $organization->full_address=$request->full_address;
-        $organization->license_number=$request->license_number;
-        $organization->license_scan=$request->license_scan;
-        $organization->openning_hours=$request->openning_hours;
-        $organization->save();
-        return response()->json('Updated Successfully',200);
     }
 
     /**
