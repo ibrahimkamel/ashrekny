@@ -35,17 +35,5 @@ angular.module('myApp')
       controller: 'HomeCtrl'
     }
   )
-  .state('events', {
-      url: '/events',
-      templateUrl: "templates/allevents.html",
-      controller: 'EventCtrl'
-    }
-  )
-  .state('eventdetails', {
-      url: '/:id/eventdetails',
-      templateUrl: "templates/eventdetails.html",
-      controller: 'EventDetailsCtrl'
-    }
-  )
   
 });

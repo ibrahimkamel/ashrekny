@@ -17,7 +17,7 @@ class EventController extends Controller
     public function getAll()
     {
         $events = Event::all();
-        return response()->json($events,200);
+        return response()->json(compact('events'),200);
     }
     /**
      * Get All events paginated.
@@ -27,7 +27,7 @@ class EventController extends Controller
     public function getAllPaginate()
     {
         $events = Event::paginate();    // default 15 per page
-        return response()->json($events,200);
+        return response()->json(compact('events'),200);
     }
 
     /**
@@ -39,7 +39,7 @@ class EventController extends Controller
     public function getTop()
     {
         $events = Event::orderBy('avg_rate', 'DESC')->limit(3)->get();
-        return response()->json($events,200);
+        return response()->json(compact('events'),200);
     }
 
     /**
@@ -50,7 +50,7 @@ class EventController extends Controller
     public function get($id)
     {
         $event= Event::find($id);
-        return response()->json($event,200);
+        return response()->json(compact('event'),200);
     }
 
     /**
@@ -61,10 +61,10 @@ class EventController extends Controller
     public function getOrganization($id)
     {
         $organization= Event::find($id)->organization;
-        return response()->json($organization,200);
+        return response()->json(compact('organization'),200);
     }
 
-    /**REMOVE FROM EVENT CONTROLLER ..........................................
+    /**
      * get event's tasks.
      *
      * @param  int  $id
@@ -73,7 +73,7 @@ class EventController extends Controller
     public function getTasks($id)
     {
         $tasks= Event::find($id)->tasks;
-        return response()->json($tasks,200);
+        return response()->json(compact('tasks'),200);
     }
 
     /**
@@ -86,7 +86,7 @@ class EventController extends Controller
     public function getCategories($id)
     {
         $categories = Event::find($id)->categories;
-        return response()->json($categories,200);
+        return response()->json(compact('categories'),200);
     }
 
     /**
@@ -98,7 +98,7 @@ class EventController extends Controller
     public function getAlbum($id)
     {
         $album = Event::find($id)->album;
-        return response()->json($album,200);
+        return response()->json(compact('album'),200);
     }
 
     /**
@@ -109,7 +109,7 @@ class EventController extends Controller
     public function getReview($id)
     {
         $Reviews = Event::find($id)->reviews;
-        return response()->json($Reviews,200);
+        return response()->json('Reviews',200);
     }
 
     /**
@@ -267,5 +267,4 @@ class EventController extends Controller
         $event->delete();
         return response()->json('Event Deleted Successfully',200);
     }
-    
 }
