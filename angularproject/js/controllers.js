@@ -60,7 +60,7 @@ angular.module('myApp')
                         console.log(err);
                     });
 })
-.controller('EventDetailsCtrl',function($scope,$rootscope,modelFactory,$stateParams){
+.controller('EventDetailsCtrl',function($scope,modelFactory,$stateParams){
         var id = $stateParams.id;
         //ajax to let volunteer participate in an event's task
         $scope.participate=function(task){//edit volunteer id
