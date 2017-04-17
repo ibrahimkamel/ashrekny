@@ -12,7 +12,7 @@ angular.module('myApp')
             }
             
             $auth.login(credentials).then(function successCallback() {
-                $http.get('http://localhost/team/laravelproject/api/authenticate/user').success(function successCallback(response){
+                $http.get('http://localhost/GP/laravelproject/api/authenticate/user').success(function successCallback(response){
                     var user = JSON.stringify(response.user);
                     localStorage.setItem('user', user);
                     $rootScope.currentUser = response.user;                   
@@ -29,7 +29,7 @@ angular.module('myApp')
 })
 .controller('HomeCtrl',function($rootScope,modelFactory){
     modelFactory.getData('get',
-        'http://localhost/team/laravelproject/api/organization/getall'
+        'http://localhost/GP/laravelproject/api/organization/getall'
         ).then(function successCallback(data){
                         console.log(data);
                       },function errorCallback(err){
@@ -46,4 +46,31 @@ angular.module('myApp')
 })
 .controller('ProfileCtrl',function($rootScope){
  
+})
+.controller('EventCtrl',function($scope,modelFactory){
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/getAll'
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.events = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+})
+.controller('EventDetailsCtrl',function($scope,modelFactory,$stateParams){
+    var id = $stateParams.id;
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/'+id+'/get'
+        ).then(function successCallback(data){
+                        $scope.eventDetails = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+         modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/'+id+'/getTasks'
+        ).then(function successCallback(data){
+                        $scope.eventDetails.tasks = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
 })

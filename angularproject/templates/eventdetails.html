@@ -1,0 +1,54 @@
+<div class="container">
+HIIIII
+    <p style="padding: 40px;"></p>
+    <h1><span class="label label-info"> event details </span></h1>
+          
+    <h1>{{eventDetails.title}}</h1> 
+    <!-- {{eventDetails}} -->
+    <div class="row">
+        <div class="col-xs-6">
+              <h4>التقييم:</h4>
+              {{eventDetails.avg_rate}}
+                <div star-Rating class="myRating" ng-model='eventDetails.avg_rate'></div>
+              <h4>نشر بواسطة:</h4>
+              <p>
+                  {{eventDetails.organization.name}}
+              </p>
+              <h4>العنوان:</h4>
+              <p>
+                  {{eventDetails.full_address}}<br>
+                  {{eventDetails.region}},{{eventDetails.city}},{{eventDetails.country}}
+              </p>
+        </div>
+
+        <div class="col-xs-6">
+              <p>{{eventDetails.description}}</p>
+              <h4>الفترة: <i class="fa fa-calendar fa-2x"></i></h4>
+              <p>{{eventDetails.start_date}} - {{eventDetails.end_date}}</p>
+               <h4>المطلوب:</h4>
+
+          <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>taskname</th>
+                          <th>task required volunteers</th>
+                          <th>task going volunteers</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="task in eventDetails.tasks">
+                        <td>{{task.name}}</td>
+                        <td>{{task.required_volunteers}}</td>
+                        <td>{{task.going_volunteers}}</td>
+                        <td> <a class="btn btn-info " href="#" ng-confirm-click="" confirmed-click="participate(task,eventDetails.id)"> اشترك
+                             <span class="glyphicon glyphicon-plus-sign"></span> 
+                          </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr>
+</div>
+       	   
