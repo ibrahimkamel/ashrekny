@@ -1,13 +1,14 @@
 <p>hiii</p>
 	
 <div class="container">
-    <p style="padding: 40px;"></p>
+    <p style="padding:10px;"></p>
      <h1><span class="label label-info"> events </span></h1>
      <div ng-repeat="event in events">
     <div class="row" >
          <div ng-repeat="event in events | filter:searchText" >    
          <h3>{{event.title}}</h3> 
          <h4>التقييم:</h4>
+         <p>{{event.avg_rate}}</p>
          <div star-Rating class="myRating" ng-model='event.avg_rate'></div>
          <a class="btn btn-primary btn-lg" href="./eventdetails/{{event.id}}"> التفاصيل
          <span class="glyphicon glyphicon-chevron-left"></span> 

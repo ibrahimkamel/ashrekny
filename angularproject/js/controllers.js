@@ -57,10 +57,10 @@ angular.module('myApp')
                         console.log(err);
                     });
 })
-.controller('EventDetailsCtrl',function($scope,modelFactory,$stateParams){
+.controller('EventDetailsCtrl',function($scope,$rootscope,modelFactory,$stateParams){
         var id = $stateParams.id;
         //ajax to let volunteer participate in an event's task
-        $scope.participate=function(task){
+        $scope.participate=function(task){//edit volunteer id
             var data = {volunteer_id : 1 , task_id : task.id}
             console.log(data);
             modelFactory.getData('post',
