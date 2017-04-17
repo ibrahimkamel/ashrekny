@@ -85,11 +85,11 @@ angular.module('myApp')
     form.append('city', $scope.newEvent.city);
     form.append('region', $scope.newEvent.region);
     form.append('full_address', $scope.newEvent.region);
-    if($scope.newEvent.tasks.length != 0){
+    if($scope.newEvent.tasks){
         form.append('tasks', JSON.stringify($scope.newEvent.tasks));
     }
     form.append('logo', $scope.newEvent.logo);
-    form.append('organization_id', $rootScope.role_id);
+    form.append('organization_id', $rootScope.currentUser.role_id);
     console.log( $scope.newEvent.tasks);
     var tasks = $scope.newEvent.tasks;
 
