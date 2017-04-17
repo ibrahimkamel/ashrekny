@@ -1,13 +1,15 @@
 'use strict';
 angular.module("myApp").factory("modelFactory",function($http,$q){
     return{ 
-             getData: function(ajaxMethod,ajaxUrl,ajaxData,ajaxContentType){
+             getData: function(ajaxMethod,ajaxUrl,ajaxData,ajaxProcessData,ajaxTransformRequest,ajaxHeaders){
                  var defer=$q.defer();
                  $http({
                       method: ajaxMethod,
                       url: ajaxUrl,
                       data: ajaxData,
-                      contentType: ajaxContentType,
+                      processData: ajaxProcessData,
+                      transformRequest: ajaxTransformRequest, 
+                      headers: ajaxHeaders
                  }).then(function successCallback(res){
                         defer.resolve(res.data);
                       },function errorCallback(err){

@@ -1,0 +1,146 @@
+
+ <!--=========== BEGIN CONTACT SECTION ================
+    <section id="contact">
+      <div class="container">
+       <div class="row">
+         <div class="col-lg-9 col-md-9 col-sm-9">
+           <div class="contact_form wow fadeInLeft">
+              </form> -->
+
+                <form name="eventForm" novalidate ng-submit="add(eventForm.$valid)" class="submitphoto_form eventForms"  method="POST"  id="addEventForm" enctype="multipart/form-data">
+<fieldset>
+<!-- Form Name -->
+<legend>إنشر فرصة</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-3 control-label">العنوان</label>
+  <div class="col-md-7">
+  <input required ng-model="newEvent.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
+ </div>
+  </div>
+
+<!-- Text area -->
+  
+<div class="form-group">
+  <label class="col-md-3 control-label">وصف الإيفنت</label>
+    <div class="col-md-7">
+
+          <textarea required ng-model="newEvent.description" class="wp-form-control wpcf7-textarea" name="description" placeholder="الوصف"></textarea>
+
+  </div>
+
+</div>
+
+<!-- Text input-->
+  <div class="form-group">
+  <label class="col-md-3 control-label">تاريخ البدء</label> 
+    <div class="col-md-7">
+    
+  <input required ng-model="start_date" name="start_date" class="wp-form-control  wpcf7-text" type="date">
+   
+  </div>
+  
+</div>
+
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-3 control-label">تاريخ الانتهاء</label>  
+    <div class="col-md-7">
+   
+  <input ng-model="end_date" name="end_date" class="wp-form-control  wpcf7-text" type="date">
+  
+  </div>
+</div>
+
+<!-- Select Basic -->
+   
+<div class="form-group"> 
+  <label class="col-md-3 control-label">البلد</label>
+    <div class="col-md-7">
+    <select required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
+      <option>Country</option>
+      <option>Egypt</option>
+      <option>Kuwait</option>
+      <option>Saudi</option>
+    </select>
+
+</div>
+</div>
+
+<!-- Text input-->
+ 
+<div class="form-group">
+  <label class="col-md-3 control-label">المحافظة</label>  
+    <div class="col-md-7">
+  <input required ng-model="newEvent.city" name="city" placeholder="المحافظة" class="wp-form-control  wpcf7-text"  type="text">
+  </div>
+</div>
+
+<!-- Text input-->
+ 
+<div class="form-group">
+  <label class="col-md-3 control-label">المنطقة</label>  
+    <div class="col-md-7">    
+  <input required ng-model="newEvent.region" name="region" placeholder="المنطقة" class="wp-form-control  wpcf7-text"  type="text">
+  </div>
+</div>
+
+<!-- Text input-->
+      
+<div class="form-group">
+  <label class="col-md-3 control-label">العنوان</label>  
+    <div class="col-md-7">
+  <input ng-model="newEvent.full_address" name="full_address" placeholder="العنوان" class="wp-form-control  wpcf7-text" type="text">
+  </div>
+</div>
+
+<!-- Text input-->
+      
+<div class="form-group">
+  <label class="col-md-3 control-label">صورة الإيفنت</label>  
+    <div class="col-md-7">
+  <input name="logo" onchange="angular.element(this).scope().uploadLogo(this.files)" placeholder="صورة الإيفنت" class="wp-form-control  wpcf7-text" type="file">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-3 control-label">الاحتياج</label> 
+
+    <div id="needs">
+      <div class="col-md-7">
+      
+        <div class="col-md-9">
+          
+              <input ng-model='newEvent.tasks[0].name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>
+        </div>
+        
+        <div class='col-md-3'>
+          <input ng-model='newEvent.tasks[0].required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='text'>
+        </div>
+      
+      </div>
+    </div>
+  <div class="col-md-2">
+    <button class="btn btn-success wpcf7-submit" type="button" ng-click="add_need()">
+    <span class="glyphicon glyphicon-plus">add</span></button>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <div class="col-md-4 col-md-offset-6">
+    <button class="wpcf7-submit" >إنشر  <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+           </div>
+         </div>
+       </div>
+      </div>
+    </section>
+    <!--=========== END CONTACT SECTION ================-->

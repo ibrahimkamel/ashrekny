@@ -47,7 +47,7 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::group(['prefix' => 'event'], function(){
 
 
-			Route::post('/{id}/add','Api\EventController@add');
+			Route::post('/add','Api\EventController@add');
 			Route::post('/{id}/addReview','Api\EventController@addReview');
 			Route::post('/{id}/update','Api\EventController@update');
 			Route::post('/{id}/delete','Api\EventController@delete');
