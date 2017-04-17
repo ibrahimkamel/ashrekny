@@ -8,7 +8,7 @@ angular.module('myApp', [
   'permission.ui'
 ])
 .config(function($authProvider, $urlRouterProvider) {
-  $authProvider.loginUrl = 'http://localhost/team/laravelproject/api/authenticate';
+  $authProvider.loginUrl = 'http://localhost/GP/laravelproject/api/authenticate';
   $urlRouterProvider.otherwise( function($injector) {
   		var $state = $injector.get("$state");
   		$state.go('home');

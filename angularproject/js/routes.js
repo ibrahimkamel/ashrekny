@@ -35,5 +35,17 @@ angular.module('myApp')
       controller: 'HomeCtrl'
     }
   )
+  .state('addevent', {
+      url: '/addevent',
+      templateUrl: "templates/addevent.html",
+      controller: 'addEventCtrl',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
+    }
+  )
   
 });
