@@ -58,19 +58,65 @@ angular.module('myApp')
                     });
 })
 .controller('EventDetailsCtrl',function($scope,modelFactory,$stateParams){
-    var id = $stateParams.id;
+        var id = $stateParams.id;
+        //ajax to let volunteer participate in an event's task
+        $scope.participate=function(task){
+            var data = {volunteer_id : 1 , task_id : task.id}
+            console.log(data);
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/task/participate',data
+            ).then(function successCallback(data){
+                task.required_volunteers= data.required_volunteers;
+                task.going_volunteers = data.going_volunteers;
+                },function errorCallback(err){
+                    console.log(err);
+                 });
+        }; 
+        //ajax to let volunteer cancel his participation in an event's task
+        $scope.cancelparticipate=function(task){
+            var data = {volunteer_id : 1 , task_id : task.id}
+            console.log(data);
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/task/cancelparticipate',data
+            ).then(function successCallback(data){
+                task.required_volunteers= data.required_volunteers;
+                task.going_volunteers = data.going_volunteers;
+                },function errorCallback(err){
+                    console.log(err);
+                 });
+        }; 
+        //ajax request to get event's details      
         modelFactory.getData('get',
-        'http://localhost/GP/laravelproject/api/event/'+id+'/get'
-        ).then(function successCallback(data){
-                        $scope.eventDetails = data;
-                      },function errorCallback(err){
-                        console.log(err);
-                    });
-         modelFactory.getData('get',
-        'http://localhost/GP/laravelproject/api/event/'+id+'/getTasks'
-        ).then(function successCallback(data){
-                        $scope.eventDetails.tasks = data;
-                      },function errorCallback(err){
-                        console.log(err);
-                    });
+            'http://localhost/GP/laravelproject/api/event/'+id+'/get'
+            ).then(function successCallback(data){
+                            $scope.eventDetails = data;
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+        //ajax request to get the organization that created the event
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/event/'+id+'/getOrganization'
+            ).then(function successCallback(data){
+                            $scope.eventDetails.organization = data;
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+        //ajax request to get event's tasks
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/task/'+id+'/get'
+            ).then(function successCallback(data){
+                            $scope.eventDetails.tasks = data;
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+        //ajax request to get event's categories
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/event/'+id+'/getCategories'
+            ).then(function successCallback(data){
+                            $scope.eventDetails.categories = data;
+                            console.log(data);
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
 })
+

@@ -1,8 +1,6 @@
 <div class="container">
-HIIIII
-    <p style="padding: 40px;"></p>
-    <h1><span class="label label-info"> event details </span></h1>
-          
+    <p style="padding:10px;"></p>
+    <h1><span class="label label-info"> event details </span></h1>      
     <h1>{{eventDetails.title}}</h1> 
     <!-- {{eventDetails}} -->
     <div class="row">
@@ -11,22 +9,30 @@ HIIIII
               {{eventDetails.avg_rate}}
                 <div star-Rating class="myRating" ng-model='eventDetails.avg_rate'></div>
               <h4>نشر بواسطة:</h4>
-              <p>
-                  {{eventDetails.organization.name}}
-              </p>
+              <p>{{eventDetails.organization.name}}</p>
               <h4>العنوان:</h4>
               <p>
                   {{eventDetails.full_address}}<br>
                   {{eventDetails.region}},{{eventDetails.city}},{{eventDetails.country}}
               </p>
+              <h4>categories</h4>
+              <!-- <p>{{eventDetails.categories.name}} </p> -->
+               <ul ng-repeat="category in eventDetails.categories">
+                        <li>{{category.name}}</li>
+               </ul>
+              <h4>logo</h4>
+              <img src="../laravelproject/{{eventDetails.logo}}" alt="images">
+              <!-- {{eventDetails.albums.photolink}} -->
+
+              
         </div>
 
         <div class="col-xs-6">
               <p>{{eventDetails.description}}</p>
               <h4>الفترة: <i class="fa fa-calendar fa-2x"></i></h4>
               <p>{{eventDetails.start_date}} - {{eventDetails.end_date}}</p>
-               <h4>المطلوب:</h4>
-
+              <h4>المطلوب:</h4>
+              <h4>for more details call :organization phone here</h4>  
           <table class="table table-striped">
                       <thead>
                         <tr>
@@ -40,10 +46,15 @@ HIIIII
                         <td>{{task.name}}</td>
                         <td>{{task.required_volunteers}}</td>
                         <td>{{task.going_volunteers}}</td>
-                        <td> <a class="btn btn-info " href="#" ng-confirm-click="" confirmed-click="participate(task,eventDetails.id)"> اشترك
+                        <td> <a class="btn btn-info " href="#" ng-click="participate(task)"> اشترك
                              <span class="glyphicon glyphicon-plus-sign"></span> 
                           </a>
                         </td>
+                        <td> <a class="btn btn-info " href="#" ng-click="cancelparticipate(task)"> الغاء الاشتراك
+                             <span class="glyphicon glyphicon-plus-sign"></span> 
+                          </a>
+                        </td>
+
                     </tr>
                 </tbody>
             </table>

@@ -42,7 +42,7 @@ angular.module('myApp')
     }
   )
   .state('eventdetails', {
-      url: '/eventdetails/:id',
+      url: '/:id/eventdetails',
       templateUrl: "templates/eventdetails.html",
       controller: 'EventDetailsCtrl'
     }

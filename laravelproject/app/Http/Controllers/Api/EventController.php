@@ -64,7 +64,7 @@ class EventController extends Controller
         return response()->json($organization,200);
     }
 
-    /**
+    /**REMOVE FROM EVENT CONTROLLER ..........................................
      * get event's tasks.
      *
      * @param  int  $id
