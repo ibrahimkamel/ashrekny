@@ -74,7 +74,8 @@ Route::group(['middleware' => 'cors'], function(){
 
 		});
 		Route::group(['prefix' => 'story'], function(){
-		
+			Route::post('/add','Api\StoryController@add');
+			Route::post('/{id}/update','Api\StoryController@update');		
 
 		});
 		Route::group(['prefix' => 'task'], function(){
@@ -155,7 +156,10 @@ Route::group(['middleware' => 'cors'], function(){
 
 	});
 	Route::group(['prefix' => 'story'], function(){
-		
+		Route::get('/getall','Api\StoryController@getAll');
+		Route::get('/getpaginate','Api\StoryController@getAllPaginate');
+		Route::get('/get/{id}','Api\StoryController@get');
+		Route::get('/mostrecent', 'Api\StoryController@getMostRecent');
 
 	});
 	Route::group(['prefix' => 'task'], function(){

@@ -221,17 +221,6 @@ angular.module('myApp')
      $scope.uploadedFile = file[0];
   }
 })
-function dateFormate(myDate){
-  var date = myDate.toString().substr(4,11);
-  var year = date.slice(-4),
-      month = ['Jan','Feb','Mar','Apr','May','Jun',
-                 'Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(date.substr(0,3))+1,
-        day = date.substr(4,2);
-    var formated_date = year + '-' + (month<10?'0':'') + month + '-' + day;   
-  return formated_date;
-}
-
-angular.module('myApp')
 .controller('orgProfileCtrl',function($scope,modelFactory,$stateParams){
         var id=$stateParams.id;
         modelFactory.getData('get',
@@ -290,4 +279,22 @@ angular.module('myApp')
                       },function errorCallback(err){
                         console.log(err);
                     });
+})
+.controller('addStoryCtrl',function($rootScope,$scope,modelFactory){
+    $scope.add = function(valid){
+        if(valid){
+            $scope.newStory.volunteer_id = $rootScope.currentUser.role_id;
+            var data = $scope.newStory;
+            data = JSON.stringify(data);
+            console.log(data);
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/story/add',
+            data
+            ).then(function successCallback(data){
+                //console.log(data);
+             },function errorCallback(err){
+               console.log(err);
+          });
+        }   
+    }
 })

@@ -1,0 +1,54 @@
+<form name="storyForm" novalidate ng-submit="add(storyForm.$valid)" class="well storyForms"  method="POST"  id="addStoryForm">
+<fieldset>
+<!-- Form Name -->
+<legend>إحكِ قصة</legend>
+
+<!-- Text input-->
+
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">عنوان القصة</label>
+  <div class="col-md-7">
+  <input required ng-model="newStory.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
+ </div>
+  </div>
+
+<!-- Text area -->
+  
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">المحتوى</label>
+    <div class="col-md-7">
+
+          <textarea required ng-model="newStory.content" class="wp-form-control wpcf7-textarea" name="content" placeholder="الوصف"></textarea>
+
+  </div>
+
+</div>
+
+<!-- Button -->
+<div class="form-group col-md-12">
+  <div class="col-md-4 col-md-offset-6">
+    <button class="wpcf7-submit" >إنشر  <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+           </div>
+         </div>
+       </div>
+      </div>
+    </section>
+    <!--=========== END CONTACT SECTION ================-->
+<script src="app/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="js/add-event.js"></script>
+<script>
+   $('#addStoryForm').validate();
+</script>
+ 
+<style>
+  .error{
+    color: red;
+  }
+</style>
