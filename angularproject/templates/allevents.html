@@ -1,32 +1,36 @@
-<p>hiii</p>
-	
-<div class="container">
-    <p style="padding:10px;"></p>
-     <h1><span class="label label-info"> events </span></h1>
-     <div ng-repeat="event in events">
-    <div class="row" >
-         <div ng-repeat="event in events | filter:searchText" >    
-         <h3>{{event.title}}</h3> 
-         <h4>التقييم:</h4>
-         <p>{{event.avg_rate}}</p>
-         <div star-Rating class="myRating" ng-model='event.avg_rate'></div>
-         <a class="btn btn-primary btn-lg" href="./{{event.id}}/eventdetails"> التفاصيل
-         <span class="glyphicon glyphicon-chevron-left"></span> 
-         </a>
-         <h4>التاريخ:</h4>
-         <p>{{event.start_date}}</p>
-         <h4>الوصف:</h4>
-         <p>{{event.description}}</p>               
-         <h4>نشر بواسطة:</h4>
-         <p>{{event.organization.name}}</p>
-         <h4>العنوان:</h4>
-         <p>{{event.full_address}}</p>
-         
+<section id="courseArchive">
+    <div class="container">
+        <div class="row">
+            <div ng-repeat="event in events | filter:searchText">                
+                    <!-- start single blog archive -->
+                    <div class="col-lg-9 col-9 col-sm-9">
+                        <div class="single_blog_archive wow fadeInUp ">
+                            <div class=" col-lg-3 blogimg_container event" >
+                              <a href="#" class="blog_img">
+                                <img alt="img" src="../laravelproject/{{event.logo}}">
+                              </a>
+                            </div>
+                            <div class=" col-lg-6" >
+                                <h2 class="blog_title"><a href="./{{event.id}}/eventdetails"></a>{{event.title}}</h2> </tt>
+                                <div star-Rating class="myRating" ng-model='event.avg_rate'></div><br>
+                                <br>
+                                <div class="blog_commentbox">
+                                  <p><i class="fa fa-clock-o"></i> الميعاد:{{event.start_date}} </p><br>
+                                  <p><i class="fa fa-map-marker"></i>المكان: {{event.full_address}}</p>                    
+                                </div>
+                                <p class="blog_summary"> {{event.description}} </p>
+                                <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End single blog archive -->                
+            </div>    
+            <!-- start previous & next button -->
+            <div class="col-lg-9 single_blog_prevnext">
+                <a href="#" class="prev_post wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"><i class="fa fa-angle-left"></i>Previous</a>
+                <a href="#" class="next_post wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">Next<i class="fa fa-angle-right"></i></a>
+            </div>
 
-       
-       
+        </div>
     </div>
-    <hr>
-    </div>
-    </div>
-</div>       
+</section>

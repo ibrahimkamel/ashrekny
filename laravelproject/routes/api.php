@@ -131,6 +131,7 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::get('/{id}/getAlbum','Api\EventController@getAlbum');
 			Route::get('/{id}/getReview','Api\EventController@getReview');
 			Route::get('/{id}/getCategories','Api\EventController@getCategories');
+			Route::get('/{id}/getReviews','Api\EventController@getReviews');
 
 	});
 	Route::group(['prefix' => 'eventalbum'], function(){
