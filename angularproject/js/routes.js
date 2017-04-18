@@ -35,5 +35,29 @@ angular.module('myApp')
       controller: 'HomeCtrl'
     }
   )
+  .state('events', {
+      url: '/events',
+      templateUrl: "templates/allevents.html",
+      controller: 'EventCtrl'
+    }
+  )
+  .state('eventdetails', {
+      url: '/:id/eventdetails',
+      templateUrl: "templates/eventdetails.html",
+      controller: 'EventDetailsCtrl'
+    }
+  )
+  .state('addevent', {
+      url: '/addevent',
+      templateUrl: "templates/addevent.html",
+      controller: 'addEventCtrl',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
+    }
+  )
   
 });

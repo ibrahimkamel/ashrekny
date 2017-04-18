@@ -67,7 +67,19 @@ class AuthenticateController extends Controller
  
         }
  
+         
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+        $volunteer=$user->volunteer;
+        if($volunteer)
+        {
+            $isVolunteer = true;
+            $role_id     = $volunteer->id;
+        }
+        else
+        {
+            $role_id     = $user->organization->id;
+            $isVolunteer = false;
+        }
+        return response()->json(compact('user', 'isVolunteer', 'role_id'));
     }
 }
