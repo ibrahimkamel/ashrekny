@@ -226,7 +226,7 @@ angular.module('myApp')
         'http://localhost/GP/laravelproject/api/organization/get/'+id
         ).then(function successCallback(data){
                         $scope.organization = data.organization;
-                        console.log($scope.organization);
+                        // console.log($scope.organization);
                       },function errorCallback(err){
                         console.log(err);
                     });
@@ -258,7 +258,7 @@ angular.module('myApp')
         'http://localhost/GP/laravelproject/api/organization/'+id+'/getevents'
         ).then(function successCallback(data){
                         $scope.events = data.events;
-                         console.log($scope.events);
+                         // console.log($scope.events);
                       },function errorCallback(err){
                         console.log(err);
                     });
@@ -267,6 +267,14 @@ angular.module('myApp')
         ).then(function successCallback(data){
                         $scope.links = data.links;
                          // console.log($scope.links);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/'+id+'/getalbum'
+        ).then(function successCallback(data){
+                        $scope.albums = data.album;
+                         console.log($scope.albums);
                       },function errorCallback(err){
                         console.log(err);
                     });

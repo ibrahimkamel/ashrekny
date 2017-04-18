@@ -1,155 +1,213 @@
-
-    <!--=========== BEGIN COURSE BANNER SECTION ================-->
-    <section id="imgBanner" style="background-image: url('../laravelproject/{{organization.logo}}')">
-      <h2> {{organization.name}}</h2>
-    </section>
-    <!--=========== END COURSE BANNER SECTION ================-->
-    
-    <!--=========== BEGIN COURSE BANNER SECTION ================-->
-    <section id="courseArchive">
-      <div class="container">
-        <div class="row">
-          <!-- start course content -->
-          <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="courseArchive_content">
-              <!-- start blog archive  -->
-              <div class="row">
-                <!-- start single blog -->
-                <div class="col-lg-12 col-12 col-sm-12">
-                  <div class="single_blog">
-                    <!-- start events slider -->
-                    <div class="events_slider_area">
-                      <div class="events_slider">
-                        <div><img src="../laravelproject/{{organization.license_scan}}" alt="img"></div>
-                        <!-- <div><img src="../laravelproject/{{organization.license_scan}}" alt="img"></div>
-                        <div><img src="../laravelproject/{{organization.license_scan}}" alt="img"></div> -->
-                      </div>
-                    </div>
-                    <!-- End events slider -->
-                    <h2 class="blog_title"><a href="#"> {{organization.name}}</a></h2>
-                    <div class="blog_commentbox">
-                      <p><i class="fa fa-clock-o"></i> تاريخ التسجيل: {{organization.created_at}}</p>
-                      <p><i class="fa fa-map-marker"></i> العنوان: {{user.country}} {{user.city}} {{user.region}} {{organization.full_address}}</p>
-                    </div>
-                    <p style="color: white">.</p>
-                    <blockquote><h2> عن الجمعيه</h2></blockquote>
-                    <ul>
-                      
-                    <li><span class="fa fa-angle-double-left"></span> {{organization.description}}</li>
-                    </ul>
-
-                   
-                    <blockquote><h2> الترخيص</h2></blockquote>
-                     <ul>
-                     <li><span class="fa fa-angle-double-left"></span> رقم الترخيص: {{organization.license_number}}</li>
-                      
-                    <li><span class="fa fa-angle-double-left"></span><a href="../laravelproject/{{organization.license_scan}}"> صوره الترخيص
-                    </a></li>
-                    </ul>
-
-                    <blockquote><h2> للتواصل معنا</h2></blockquote>
-                    <ul>
-                      <h3> ارقام التليفونات</h3>
-                      <li ng-repeat="phone in phones"><span class="fa fa-angle-double-left"></span> {{phone.phone_number}}</li>
-
-                      <h3> البريد الالكترونى</h3>
-                      <li><span class="fa fa-angle-double-left"></span> {{user.email}}</li>
-                      <h3> مواعيد العمل</h3>
-                      <li><span class="fa fa-angle-double-left"></span> {{organization.openning_hours}}</li>
-                      <h3> اللينكات</h3>
-                      <li ng-repeat="link in links"><span class="fa fa-angle-double-left"></span> {{link.description}} <a href="//{{link.link}}">{{link.link}}</a></li>
-                    </ul>
-                    
-                  </div>
-                  
-                </div>
-                <!-- End single blog -->                
-              </div>
-              <!-- end blog archive  -->
-              <!-- start related post -->
-              <div class="related_post">
-                <h2>الايفنتات</h2>
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="single_blog_archive wow fadeInUp">
-                      <div class="blogimg_container">
-                        <a class="blog_img" href="#">
-                          <img src="img/blog.jpg" alt="img">
-                        </a>
-                      </div>
-                      <h2 class="blog_title"><a href="blog-single.html"> Curabitur ac dictum nisl eu hendrerit ante</a></h2>
-                      <div class="blog_commentbox">
-                        <p><i class="fa fa-clock-o"></i>Time: 7pm,15 March 2015</p>
-                        <p><i class="fa fa-map-marker"></i>Location: London,UK</p>                      
-                      </div>
-                      <p class="blog_summary">Duis erat purus, tincidunt vel ullamcorper ut, consequat tempus nibh. Proin condimentum risus ligula, dignissim mollis tortor hendrerit vel. Aliquam...</p>
-                      <a href="#" class="blog_readmore">Read More</a>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="single_blog_archive wow fadeInUp">
-                      <div class="blogimg_container">
-                        <a class="blog_img" href="#">
-                          <img src="img/blog.jpg" alt="img">
-                        </a>
-                      </div>
-                      <h2 class="blog_title"><a href="blog-single.html"> Curabitur ac dictum nisl eu hendrerit ante</a></h2>
-                      <div class="blog_commentbox">
-                        <p><i class="fa fa-clock-o"></i>Time: 7pm,15 March 2015</p>
-                        <p><i class="fa fa-map-marker"></i>Location: London,UK</p>                      
-                      </div>
-                      <p class="blog_summary">Duis erat purus, tincidunt vel ullamcorper ut, consequat tempus nibh. Proin condimentum risus ligula, dignissim mollis tortor hendrerit vel. Aliquam...</p>
-                      <a href="#" class="blog_readmore">Read More</a>
-                    </div>
-                  </div>
-                </div> 
-              </div> 
-              <!-- start related post -->           
-            </div>
-          </div>
-          <!-- End course content -->
-
-          <!-- start course archive sidebar -->
-          <div class="col-lg-4 col-md-4 col-sm-4">
-            <div class="courseArchive_sidebar">
-              <!-- start single sidebar -->
-              <div class="single_sidebar">
-                <h2>اشهر الايفنتات <span class="fa fa-angle-double-left"></span></h2>
-                <ul class="news_tab">
-                  <li ng-repeat="event in events | limitTo: 3">
-                    <div class="media">
-                      <div class="media-left">
-                        <a href="./{{event.id}}/eventdetails" class="news_img">
-                          <img alt="img" src="../laravelproject/{{event.logo}}" class="media-object">
-                        </a>
-                      </div>
-                      <div class="media-body">
-                       <a href="./{{event.id}}/eventdetails">{{event.title}}</a>
-                       <span class="feed_date">{{event.start_date}}</span>
-
-                       <a href="./{{event.id}}/eventdetails">{{event.city}}</a>
-                      </div>
-                    </div>
-                  </li>         
-                </ul>
-              </div>
-              <!-- End single sidebar -->
-              <!-- start single sidebar -->
-              <div class="single_sidebar">
-                <h2>الاهتمامات <span class="fa fa-angle-double-left"></span></h2>
-                <ul>
-                    <li ng-repeat="category in categories  | limitTo: 6"> {{category.name}}</li>
-                </ul>
-              </div>
-              <!-- End single sidebar -->
+<!-- <section id="courseArchive"> -->
+    <div class="container-fluid">
               
+            <div class="row">
+                  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                      <div class="item active">
+                        <img src="../laravelproject/{{albums.photo_link}}" alt="img">
+                        <div class="carousel-caption">
+                          ...
+                        </div>
+                      </div>
+                      <!-- ng-repeat="album in albums " -->
+                      <div  class="item">
+                        <img src="../laravelproject/{{albums.photo_link}}" alt="img">
+                        <div class="carousel-caption">
+                          ...
+                        </div>
+                      </div>
+                      ...
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </a>
+                  </div>
             </div>
-          </div>
-          <!-- start course archive sidebar -->
+
+
+
+
+            <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                  <div class="single_blog_archive wow fadeInUp ">
+                                <div class="row">
+                                    <div class=" col-sm-6 blogimg_container event inheret" style="width:50% !important;">
+                                      <a href="#" class="blog_img" >
+                                        <img alt="img" src="../laravelproject/{{organization.logo}}">
+                                      </a>
+                                    </div>
+                                    <div class=" col-sm-6" >
+                                          <h3 class="blog_title"><a href="#">{{organization.name}}</a></h3> 
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-4" >
+                                          <p><i class="fa fa-clock-o"></i> تاريخ التسجيل:</p>
+                                    </div>
+                                    <div class="col-sm-8" >
+                                          <p>{{organization.created_at}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-4" >
+                                          <p><i class="fa fa-clock-o"></i> العنوان:</p>
+                                    </div>
+                                    <div class="col-sm-8" >
+                                          <p>{{user.country}} {{user.city}} {{user.region}} {{organization.full_address}}</p>
+                                    </div>
+                                </div>
+                               <div class="row">
+
+                                    <div class="col-sm-4" >
+                                          
+                                        <blockquote> عن الجمعيه</blockquote>
+                                    </div>
+                                    <div class="col-sm-8" >
+                                          <p>{{organization.description}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-4" >
+                                          
+                                        <blockquote> الترخيص</blockquote>
+                                    </div>
+                                    <div class="col-sm-8">
+                                    <ul>
+                                      <li>
+                                        <p> رقم الترخيص: {{organization.license_number}}</p>
+                                      </li>
+                                      <li>
+                                         <a href="../laravelproject/{{organization.license_scan}}"> صوره الترخيص
+                                          </a>
+                                      </li>
+                                          
+                                         
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-4" >
+                                        <blockquote> للتواصل معنا</blockquote>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                          <ul>
+                                            <li ng-repeat="phone in phones">
+                                            <p>{{phone.phone_number}}</p>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                        <div class="row">
+                                          
+                                            <p><a href="mailto:{{user.email}}">{{user.email}}</a></p>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-4" >
+                                          
+                                        <blockquote> مواعيد العمل</blockquote>
+                                    </div>
+                                    <div class="col-sm-8" >
+                                          <p>{{organization.openning_hours}}</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-sm-4" >
+                                        <blockquote> اللينكات</blockquote>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="row">
+                                          <ul>
+                                            <li ng-repeat="link in links">
+                                            <p> {{link.description}} <a href="//{{link.link}}">{{link.link}}</a></p>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                  </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+              <div class="col-sm-8">
+                 <div class="row">
+                    <div ng-repeat="event in events | filter:searchText">                
+                            <!-- start single blog archive -->
+                            <div class="col-sm-12">
+                                <div class="single_blog_archive wow fadeInUp ">
+                                <div class="row">
+                                    <div class=" col-sm-3 blogimg_container event inheret" style="width:25% !important;">
+                                      <a href="#" class="blog_img" >
+                                        <img alt="img" src="../laravelproject/{{event.logo}}">
+                                      </a>
+                                    </div>
+                                    <div class=" col-sm-9" >
+                                          <h2 class="blog_title"><a href="./{{event.id}}/eventdetails">{{event.title}}</a></h2> 
+                                          <div star-Rating class="myRating" ng-model='event.avg_rate'></div><br>
+                                          <br>
+                                          <div class="blog_commentbox">
+                                            <p><i class="fa fa-clock-o"></i> الميعاد:{{event.start_date}} </p><br>
+                                            <p><i class="fa fa-map-marker"></i>المكان: {{event.full_address}}</p>                    
+                                          </div>
+                                          <p class="blog_summary"> {{event.description}} </p>
+                                          <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
+                                      </div>
+                                      </div>
+                                </div>
+                            </div>
+                            <!-- End single blog archive -->                
+                    </div>
+
+            </div>
+
+                    <div class="row">
+                          <!-- start previous & next button -->
+                        <div class="col-lg-9 single_blog_prevnext">
+                            <a href="#" class="prev_post wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"><i class="fa fa-angle-left"></i>Previous</a>
+                            <a href="#" class="next_post wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">Next<i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                
+
         </div>
-      </div>
-    </section>
-    <!--=========== END COURSE BANNER SECTION ================-->
-    
-  
+              </div>
+                    </div>
+
+          
+           
+          
+        
+        
+    </div>
+<!-- </section> -->
