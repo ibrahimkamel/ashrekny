@@ -135,7 +135,7 @@
     </div>
   <div class="col-md-2">
     <button class="btn btn-success wpcf7-submit" type="button" ng-click="add_need()">
-    <span class="glyphicon glyphicon-plus">add</span></button>
+    <span class="glyphicon glyphicon-plus"></span></button>
   </div>
 </div>
 
@@ -154,5 +154,14 @@
       </div>
     </section>
     <!--=========== END CONTACT SECTION ================-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+<script src="app/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="js/add-event.js"></script>
+<script>
+   $('#addEventForm').validate();
+</script>
+ 
+<style>
+  .error{
+    color: red;
+  }
+</style>
