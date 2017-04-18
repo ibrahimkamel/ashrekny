@@ -59,5 +59,11 @@ angular.module('myApp')
         }
     }
   )
+  .state('orgprofile', {
+      url: '/orgprofile/:id',
+      templateUrl: "templates/orgprofile.html",
+      controller: 'orgProfileCtrl'
+    }
+  )
   
 });
