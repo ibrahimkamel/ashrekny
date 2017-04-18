@@ -59,6 +59,7 @@ angular.module('myApp')
                       },function errorCallback(err){
                         console.log(err);
                     });
+        
 })
 .controller('EventDetailsCtrl',function($scope,modelFactory,$stateParams){
         var id = $stateParams.id;
@@ -117,6 +118,17 @@ angular.module('myApp')
             'http://localhost/GP/laravelproject/api/event/'+id+'/getCategories'
             ).then(function successCallback(data){
                             $scope.eventDetails.categories = data;
+                            console.log(data);
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+        //ajax to get event's reviews
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/event/'+id+'/getReviews'
+            ).then(function successCallback(data){
+                            $scope.eventDetails.reviewsvolunteers = data;
+                            // var oneDay = 24*60*60*1000; 
+                            // $scope.eventDetails.reviews.diffdate=Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
                             console.log(data);
                           },function errorCallback(err){
                             console.log(err);
