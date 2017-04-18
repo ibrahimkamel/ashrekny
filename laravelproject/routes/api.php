@@ -74,7 +74,7 @@ Route::group(['middleware' => 'cors'], function(){
 
 		});
 		Route::group(['prefix' => 'story'], function(){
-		
+			Route::post('/add','Api\StoryController@add');		
 
 		});
 		Route::group(['prefix' => 'task'], function(){
