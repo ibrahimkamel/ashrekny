@@ -35,68 +35,24 @@ class StoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get All events.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getAll()
     {
-        //
+        $stories = Story::all();
+        return response()->json($stories,200);
     }
-
+    
     /**
-     * Store a newly created resource in storage.
+     * Get All events paginated.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function getAllPaginate()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $stories = Story::paginate();    // default 15 per page
+        return response()->json($stories,200);
     }
 }
