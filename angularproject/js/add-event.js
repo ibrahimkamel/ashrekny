@@ -5,3 +5,13 @@ jQuery.extend(jQuery.validator.messages, {
     minlength: jQuery.validator.format("أدخل عنوان مكون من 5 حروف على الأقل"),
     rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
 });
+
+function dateFormate(myDate){
+  var date = myDate.toString().substr(4,11);
+  var year = date.slice(-4),
+      month = ['Jan','Feb','Mar','Apr','May','Jun',
+                 'Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(date.substr(0,3))+1,
+        day = date.substr(4,2);
+    var formated_date = year + '-' + (month<10?'0':'') + month + '-' + day;   
+  return formated_date;
+}

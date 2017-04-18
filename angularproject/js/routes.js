@@ -59,5 +59,17 @@ angular.module('myApp')
         }
     }
   )
+  .state('addstory', {
+      url: '/addstory',
+      templateUrl: "templates/addstory.html",
+      controller: 'addStoryCtrl',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
+    }
+  )
   
 });
