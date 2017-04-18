@@ -9,7 +9,7 @@ use App\Story;
 class StoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * add new story.
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +35,7 @@ class StoryController extends Controller
     }
 
     /**
-     * Get All events.
+     * Get All stories.
      *
      * @return \Illuminate\Http\Response
      */
@@ -46,7 +46,7 @@ class StoryController extends Controller
     }
     
     /**
-     * Get All events paginated.
+     * Get All stories paginated.
      *
      * @return \Illuminate\Http\Response
      */
@@ -54,5 +54,17 @@ class StoryController extends Controller
     {
         $stories = Story::paginate();    // default 15 per page
         return response()->json($stories,200);
+    }
+
+    /**
+     * Get specific event.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function get($id)
+    {
+        $story= Story::find($id);
+        return response()->json($story,200);
     }
 }

@@ -154,8 +154,9 @@ Route::group(['middleware' => 'cors'], function(){
 
 	});
 	Route::group(['prefix' => 'story'], function(){
-		Route::get('/get','Api\StoryController@getAll');
+		Route::get('/getall','Api\StoryController@getAll');
 		Route::get('/getpaginate','Api\StoryController@getAllPaginate');
+		Route::get('/get/{id}','Api\StoryController@get');
 
 	});
 	Route::group(['prefix' => 'task'], function(){
