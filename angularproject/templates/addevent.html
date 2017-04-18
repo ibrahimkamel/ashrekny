@@ -6,8 +6,7 @@
          <div class="col-lg-9 col-md-9 col-sm-9">
            <div class="contact_form wow fadeInLeft">
               </form> -->
-              
-                <form name="eventForm" novalidate ng-submit="add(eventForm.$valid)" class="well eventForms"  method="POST"  id="addEventForm" enctype="multipart/form-data">
+<form name="eventForm" novalidate ng-submit="add(eventForm.$valid)" class="well eventForms"  method="POST"  id="addEventForm" enctype="multipart/form-data">
 <fieldset>
 <!-- Form Name -->
 <legend>إنشر فرصة</legend>
@@ -64,12 +63,13 @@
 <div class="col-md-2"></div>
   <label class="col-md-1 control-label">البلد</label>
     <div class="col-md-7">
-    <select required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
+    <!-- <select id="country" required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
       <option>Country</option>
       <option>Egypt</option>
       <option>Kuwait</option>
       <option>Saudi</option>
-    </select>
+    </select> -->
+    <input id="country" required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
 
 </div>
 </div>
@@ -156,8 +156,12 @@
     <!--=========== END CONTACT SECTION ================-->
 <script src="app/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="js/add-event.js"></script>
+<link rel="stylesheet" href="app/bower_components/country-select-js-master/build/css/countrySelect.css">
+<script src="app/bower_components/country-select-js-master/build/js/countrySelect.min.js"></script>
+
 <script>
    $('#addEventForm').validate();
+    $('#country').countrySelect();
 </script>
  
 <style>

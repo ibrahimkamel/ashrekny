@@ -223,12 +223,13 @@ angular.module('myApp')
         if(valid){
             $scope.newStory.volunteer_id = $rootScope.currentUser.role_id;
             var data = $scope.newStory;
+            data = JSON.stringify(data);
             console.log(data);
             modelFactory.getData('post',
             'http://localhost/GP/laravelproject/api/story/add',
             data
             ).then(function successCallback(data){
-                console.log(data);
+                //console.log(data);
              },function errorCallback(err){
                console.log(err);
           });

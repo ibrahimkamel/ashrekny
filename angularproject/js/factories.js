@@ -6,7 +6,7 @@ angular.module("myApp").factory("modelFactory",function($http,$q){
                  $http({
                       method: ajaxMethod,
                       url: ajaxUrl,
-                      params: ajaxData,
+                      data: ajaxData,
                       processData: ajaxProcessData,
                       transformRequest: ajaxTransformRequest, 
                       headers: ajaxHeaders
