@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="app/bower_components/country-select-js-master/build/css/countrySelect.css">
 
  <!--=========== BEGIN CONTACT SECTION ================
     <section id="contact">
@@ -60,18 +61,20 @@
 <!-- Select Basic -->
    
 <div class="form-group col-md-12"> 
-<div class="col-md-2"></div>
+  <div class="col-md-2"></div>
   <label class="col-md-1 control-label">البلد</label>
-    <div class="col-md-7">
+    
     <!-- <select id="country" required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
       <option>Country</option>
       <option>Egypt</option>
       <option>Kuwait</option>
       <option>Saudi</option>
     </select> -->
-    <input id="country" required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
+    <div class="col-md-7">
+    <input id="country" required ng-model="newEvent.country" name="country" class="wp-form-control wpcf7-text" >
+      
 
-</div>
+    </div>
 </div>
 
 <!-- Text input-->
@@ -89,7 +92,7 @@
 <div class="form-group col-md-12">
 <div class="col-md-2"></div>
   <label class="col-md-1 control-label">المنطقة</label>  
-    <div class="col-md-7">    
+  <div class="col-md-7">     
   <input required ng-model="newEvent.region" name="region" placeholder="المنطقة" class="wp-form-control  wpcf7-text"  type="text">
   </div>
 </div>
@@ -156,7 +159,7 @@
     <!--=========== END CONTACT SECTION ================-->
 <script src="app/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="js/add-event.js"></script>
-<link rel="stylesheet" href="app/bower_components/country-select-js-master/build/css/countrySelect.css">
+
 <script src="app/bower_components/country-select-js-master/build/js/countrySelect.min.js"></script>
 
 <script>
