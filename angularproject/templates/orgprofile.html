@@ -8,19 +8,12 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                       <div class="item active">
-                        <img src="../laravelproject/{{albums.photo_link}}" alt="img">
-                        <div class="carousel-caption">
-                          ...
-                        </div>
+                        <img src="../laravelproject/{{albums.photo_link}}" alt="img"> 
                       </div>
                       <!-- ng-repeat="album in albums " -->
                       <div  class="item">
                         <img src="../laravelproject/{{albums.photo_link}}" alt="img">
-                        <div class="carousel-caption">
-                          ...
-                        </div>
                       </div>
-                      ...
                     </div>
 
                     <!-- Controls -->
@@ -38,7 +31,7 @@
 
             <div class="container">
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-5">
                   <div class="single_blog_archive wow fadeInUp ">
                                 <div class="row">
                                     <div class=" col-sm-6 blogimg_container event inheret" style="width:50% !important;">
@@ -160,9 +153,9 @@
 
 
 
-              <div class="col-sm-8">
+              <div class="col-sm-7">
                  <div class="row">
-                    <div ng-repeat="event in events | filter:searchText">                
+                    <div ng-repeat="event in events | filter:searchText | limitTo: 4">                
                             <!-- start single blog archive -->
                             <div class="col-sm-12">
                                 <div class="single_blog_archive wow fadeInUp ">
