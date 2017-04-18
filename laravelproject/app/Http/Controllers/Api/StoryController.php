@@ -94,4 +94,15 @@ class StoryController extends Controller
 
         return response()->json("successfully edited",200);
     }
+
+    /**
+     * Get most recent stories.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getMostRecent()
+    {
+        $stories = Story::orderBy('id', 'desc')->take(3)->get();
+        return response()->json($stories,200);
+    }
 }

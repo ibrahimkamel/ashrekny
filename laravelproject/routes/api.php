@@ -158,6 +158,7 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/getall','Api\StoryController@getAll');
 		Route::get('/getpaginate','Api\StoryController@getAllPaginate');
 		Route::get('/get/{id}','Api\StoryController@get');
+		Route::get('/mostrecent', 'Api\StoryController@getMostRecent');
 
 	});
 	Route::group(['prefix' => 'task'], function(){
