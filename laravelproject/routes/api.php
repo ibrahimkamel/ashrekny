@@ -20,13 +20,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //middleware for fixing cross domain restrictions
 Route::group(['middleware' => 'cors'], function(){
 	//authentication methods don`t touch
-	Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
-    Route::post('authenticate', 'AuthenticateController@authenticate');
-    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
+		Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+	    Route::post('authenticate', 'AuthenticateController@authenticate');
+	    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
 
 
     //authenticated users routes here
-        Route::group(['middleware' => 'jwt.auth'], function(){
+    Route::group(['middleware' => 'jwt.auth'], function(){
 		
 		Route::group(['prefix' => 'user'], function(){
 			Route::post('/update','Api\UserController@update');
@@ -47,7 +47,7 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::group(['prefix' => 'event'], function(){
 
 
-			Route::post('/{id}/add','Api\EventController@add');
+			Route::post('/add','Api\EventController@add');
 			Route::post('/{id}/addReview','Api\EventController@addReview');
 			Route::post('/{id}/update','Api\EventController@update');
 			Route::post('/{id}/delete','Api\EventController@delete');
@@ -78,8 +78,10 @@ Route::group(['middleware' => 'cors'], function(){
 
 		});
 		Route::group(['prefix' => 'task'], function(){
-		
-
+		 Route::post('/participate','Api\TaskController@participate');
+		 Route::post('/cancelparticipate','Api\TaskController@cancelparticipate');
+		 Route::post('/edit','Api\TaskController@edit');
+		 Route::post('/delete','Api\TaskController@delete');
 		});
 	});
 
@@ -124,7 +126,7 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::get('/gettop','Api\EventController@getTop');
 			Route::get('/{id}/get','Api\EventController@get');
 			Route::get('/{id}/getOrganization','Api\EventController@getOrganization');
-			Route::get('/{id}/getTasks','Api\EventController@getTasks');
+			//Route::get('/{id}/getTasks','Api\EventController@getTasks');
 			Route::get('/{id}/getCategories','Api\EventController@getCategories');
 			Route::get('/{id}/getAlbum','Api\EventController@getAlbum');
 			Route::get('/{id}/getReview','Api\EventController@getReview');
@@ -156,7 +158,7 @@ Route::group(['middleware' => 'cors'], function(){
 
 	});
 	Route::group(['prefix' => 'task'], function(){
-		
+		Route::get('/{id}/get','Api\TaskController@get');
 
 	});
 });
