@@ -67,4 +67,31 @@ class StoryController extends Controller
         $story= Story::find($id);
         return response()->json($story,200);
     }
+
+    /**
+     * add new story.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title'       => 'required|max:255',
+            'content' => 'required'
+            ]);
+
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $volunteer = $request->get('volunteer_id');
+
+        $story = Story::find($id);
+        $story->title = $title;
+        $story->content = $content;
+        $story->volunteer_id = $volunteer;
+
+        $story->save();
+
+        return response()->json("successfully edited",200);
+    }
 }
