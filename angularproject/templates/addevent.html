@@ -6,16 +6,17 @@
          <div class="col-lg-9 col-md-9 col-sm-9">
            <div class="contact_form wow fadeInLeft">
               </form> -->
-
-                <form name="eventForm" novalidate ng-submit="add(eventForm.$valid)" class="submitphoto_form eventForms"  method="POST"  id="addEventForm" enctype="multipart/form-data">
+              
+                <form name="eventForm" novalidate ng-submit="add(eventForm.$valid)" class="well submitphoto_form eventForms"  method="POST"  id="addEventForm" enctype="multipart/form-data">
 <fieldset>
 <!-- Form Name -->
 <legend>إنشر فرصة</legend>
 
 <!-- Text input-->
 
-<div class="form-group">
-  <label class="col-md-3 control-label">العنوان</label>
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">العنوان</label>
   <div class="col-md-7">
   <input required ng-model="newEvent.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
  </div>
@@ -23,8 +24,9 @@
 
 <!-- Text area -->
   
-<div class="form-group">
-  <label class="col-md-3 control-label">وصف الإيفنت</label>
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">وصف الإيفنت</label>
     <div class="col-md-7">
 
           <textarea required ng-model="newEvent.description" class="wp-form-control wpcf7-textarea" name="description" placeholder="الوصف"></textarea>
@@ -34,8 +36,9 @@
 </div>
 
 <!-- Text input-->
-  <div class="form-group">
-  <label class="col-md-3 control-label">تاريخ البدء</label> 
+  <div class="form-group col-md-12">
+  <div class="col-md-2"></div>
+  <label class="col-md-1 control-label">تاريخ البدء</label> 
     <div class="col-md-7">
     
   <input required ng-model="start_date" name="start_date" class="wp-form-control  wpcf7-text" type="date">
@@ -45,8 +48,9 @@
 </div>
 
 <!-- Text input-->
-       <div class="form-group">
-  <label class="col-md-3 control-label">تاريخ الانتهاء</label>  
+       <div class="form-group col-md-12">
+       <div class="col-md-2"></div>
+  <label class="col-md-1 control-label">تاريخ الانتهاء</label>  
     <div class="col-md-7">
    
   <input ng-model="end_date" name="end_date" class="wp-form-control  wpcf7-text" type="date">
@@ -56,8 +60,9 @@
 
 <!-- Select Basic -->
    
-<div class="form-group"> 
-  <label class="col-md-3 control-label">البلد</label>
+<div class="form-group col-md-12"> 
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">البلد</label>
     <div class="col-md-7">
     <select required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
       <option>Country</option>
@@ -71,8 +76,9 @@
 
 <!-- Text input-->
  
-<div class="form-group">
-  <label class="col-md-3 control-label">المحافظة</label>  
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">المحافظة</label>  
     <div class="col-md-7">
   <input required ng-model="newEvent.city" name="city" placeholder="المحافظة" class="wp-form-control  wpcf7-text"  type="text">
   </div>
@@ -80,8 +86,9 @@
 
 <!-- Text input-->
  
-<div class="form-group">
-  <label class="col-md-3 control-label">المنطقة</label>  
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">المنطقة</label>  
     <div class="col-md-7">    
   <input required ng-model="newEvent.region" name="region" placeholder="المنطقة" class="wp-form-control  wpcf7-text"  type="text">
   </div>
@@ -89,8 +96,9 @@
 
 <!-- Text input-->
       
-<div class="form-group">
-  <label class="col-md-3 control-label">العنوان</label>  
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">العنوان</label>  
     <div class="col-md-7">
   <input ng-model="newEvent.full_address" name="full_address" placeholder="العنوان" class="wp-form-control  wpcf7-text" type="text">
   </div>
@@ -98,16 +106,18 @@
 
 <!-- Text input-->
       
-<div class="form-group">
-  <label class="col-md-3 control-label">صورة الإيفنت</label>  
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">صورة الإيفنت</label>  
     <div class="col-md-7">
   <input name="logo" onchange="angular.element(this).scope().uploadLogo(this.files)" placeholder="صورة الإيفنت" class="wp-form-control  wpcf7-text" type="file">
   </div>
 </div>
 
 <!-- Text input-->
-<div class="form-group">
-  <label class="col-md-3 control-label">الاحتياج</label> 
+<div class="form-group col-md-12">
+<div class="col-md-2"></div>
+  <label class="col-md-1 control-label">الاحتياج</label> 
 
     <div id="needs">
       <div class="col-md-7">
@@ -130,7 +140,7 @@
 </div>
 
 <!-- Button -->
-<div class="form-group">
+<div class="form-group col-md-12">
   <div class="col-md-4 col-md-offset-6">
     <button class="wpcf7-submit" >إنشر  <span class="glyphicon glyphicon-send"></span></button>
   </div>
@@ -144,3 +154,5 @@
       </div>
     </section>
     <!--=========== END CONTACT SECTION ================-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+<script src="js/add-event.js"></script>
