@@ -1,65 +1,116 @@
-<div class="container">
-    <p style="padding:10px;"></p>
-    <h1><span class="label label-info"> event details </span></h1>      
-    <h1>{{eventDetails.title}}</h1> 
-    <!-- {{eventDetails}} -->
-    <div class="row">
-        <div class="col-xs-6">
-              <h4>التقييم:</h4>
-              {{eventDetails.avg_rate}}
-                <div star-Rating class="myRating" ng-model='eventDetails.avg_rate'></div>
-              <h4>نشر بواسطة:</h4>
-              <p>{{eventDetails.organization.name}}</p>
-              <h4>العنوان:</h4>
-              <p>
-                  {{eventDetails.full_address}}<br>
-                  {{eventDetails.region}},{{eventDetails.city}},{{eventDetails.country}}
-              </p>
-              <h4>categories</h4>
-              <!-- <p>{{eventDetails.categories.name}} </p> -->
-               <ul ng-repeat="category in eventDetails.categories">
-                        <li>{{category.name}}</li>
-               </ul>
-              <h4>logo</h4>
-              <img src="../laravelproject/{{eventDetails.logo}}" alt="images">
-              <!-- {{eventDetails.albums.photolink}} -->
-
-              
-        </div>
-
-        <div class="col-xs-6">
-              <p>{{eventDetails.description}}</p>
-              <h4>الفترة: <i class="fa fa-calendar fa-2x"></i></h4>
-              <p>{{eventDetails.start_date}} - {{eventDetails.end_date}}</p>
-              <h4>المطلوب:</h4>
-              <h4>for more details call :organization phone here</h4>  
-          <table class="table table-striped">
+<section id="imgBanner">
+  <h2>slider</h2>
+</section> 
+    <!--=========== BEGIN EVENT BANNER SECTION ================-->
+    <section id="courseArchive">
+      <div class="container">
+        <div class="row">
+          <!-- start course content -->
+          <div class="col-lg-12 col-md-12 col-sm-8">
+            <div class="courseArchive_content">
+              <!-- start blog archive  -->
+              <div class="row">
+                <!-- start single blog -->
+                <h2 class="blog_title text-center">{{eventDetails.title}}</h2>
+                <div star-Rating class="myRating text-center" ng-model='eventDetails.avg_rate'></div>
+                <hr>
+                <div class="col-lg-6 col-6 col-sm-6">
+                  <div class="single_blog">                    
+                    <h4>نشر بواسطة: {{eventDetails.organization.name}}</h4>
+                    <p>{{eventDetails.description}}</p> 
+                    <div class="blog_commentbox">
+                      <h3>تصنيفات:</h3>
+                      <div ng-repeat="category in eventDetails.categories">
+                        {{category.name}}
+                      </div>
+                      <p><i class="fa fa-clock-o"></i><strong>الميعاد من:</strong>{{eventDetails.start_date}} - الى: {{eventDetails.end_date}}</p><br>
+                      <p><i class="fa fa-map-marker"></i>
+                          <strong>المكان:</strong>{{eventDetails.full_address}} <br>
+                          {{eventDetails.region}},{{eventDetails.city}},{{eventDetails.country}}
+                      </p>                      
+                    </div>              
+                    </div>
+                </div>
+                <!--table-->
+                <div class="col-lg-6 col-6 col-sm-6">
+                  <!-- start table tasks -->
+                  <table class="table table-striped">
                       <thead>
                         <tr>
-                          <th>taskname</th>
-                          <th>task required volunteers</th>
-                          <th>task going volunteers</th>
+                          <th>المطلوب</th>
+                          <th>العدد المطلوب</th>
+                          <th>عدد المشاركات</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr ng-repeat="task in eventDetails.tasks">
-                        <td>{{task.name}}</td>
-                        <td>{{task.required_volunteers}}</td>
-                        <td>{{task.going_volunteers}}</td>
-                        <td> <a class="btn btn-info " href="#" ng-click="participate(task)"> اشترك
-                             <span class="glyphicon glyphicon-plus-sign"></span> 
-                          </a>
-                        </td>
-                        <td> <a class="btn btn-info " href="#" ng-click="cancelparticipate(task)"> الغاء الاشتراك
-                             <span class="glyphicon glyphicon-plus-sign"></span> 
-                          </a>
-                        </td>
+                            <td>{{task.name}}</td>
+                            <td>{{task.required_volunteers}}</td>
+                            <td>{{task.going_volunteers}}</td>
+                            <td> <a class="btn btn-info " href="#" ng-click="participate(task)"> اشترك
+                                     <span class="glyphicon glyphicon-plus-sign"></span> 
+                                 </a>
+                            </td>
+                            <td> <a class="btn btn-info " href="#" ng-click="cancelparticipate(task)"> الغاء الاشتراك
+                                   <span class="glyphicon glyphicon-plus-sign"></span> 
+                                 </a>
+                            </td>
 
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <!-- end table tasks-->
+
+                </div>
+                <!-- End single blog -->                
+              </div>
+              <!-- end blog archive  -->          
+            </div>
+          </div>
+          <!-- End course content -->
         </div>
-    </div>
-    <hr>
-</div>
-       	   
+      </div>
+    </section>
+    <!--=========== END EVENT BANNER SECTION ================--> 
+
+    <!--=========== START POST EVENT REVIEW BANNER SECTION ================--> 
+    <section>
+      <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
+            <div class="contact_form wow fadeInLeft">
+                    <form class="well submitphoto_form">         
+                      <input type="text" class="wp-form-control wpcf7-text" placeholder="اكتب تقييم">
+                      <input type="submit" value="ارسال" class="wpcf7-submit">
+                    </form>
+            </div>
+    </section>
+    <!--=========== END POST EVENT REVIEW BANNER SECTION ================-->
+
+    <!--=========== START SHOW EVENT REVIEW BANNER SECTION ================--> 
+    <section>
+      <div class="row">
+         <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
+                    <div class="comments-list">
+                      <div class="page-header">
+                        <h1>التعليقات <small class="pull-left">comments number</small></h1>
+                      </div>
+                       <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
+                           <p class="pull-left"><small ng->{{review.created_at | date : "dd/MM/y" }}</small></p>
+                            <a class="media-left" href="#">
+                              <img src="http://lorempixel.com/40/40/people/1/" alt="profile pic">
+                            </a>
+                            <div class="media-body">
+                                
+                              <h4 class="media-heading user_name">{{review.volunteer.first_name}}</h4>
+                              {{review.comment}}
+                              {{review.rate}}
+
+
+                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                            </div>
+                          </div>
+                   </div>
+         </div> 
+      </div>  
+    </section>
+    <!--=========== END SHOW EVENT REVIEW BANNER SECTION ================-->   

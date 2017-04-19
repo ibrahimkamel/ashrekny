@@ -59,6 +59,7 @@ angular.module('myApp')
                       },function errorCallback(err){
                         console.log(err);
                     });
+        
 })
 .controller('EventDetailsCtrl',function($scope,modelFactory,$stateParams){
         var id = $stateParams.id;
@@ -117,6 +118,17 @@ angular.module('myApp')
             'http://localhost/GP/laravelproject/api/event/'+id+'/getCategories'
             ).then(function successCallback(data){
                             $scope.eventDetails.categories = data;
+                            console.log(data);
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+        //ajax to get event's reviews
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/event/'+id+'/getReviews'
+            ).then(function successCallback(data){
+                            $scope.eventDetails.reviewsvolunteers = data;
+                            // var oneDay = 24*60*60*1000; 
+                            // $scope.eventDetails.reviews.diffdate=Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
                             console.log(data);
                           },function errorCallback(err){
                             console.log(err);
@@ -218,13 +230,80 @@ angular.module('myApp')
 // .controller('storydetailsCtrl',function($rootScope,modelFactory){
     
 // })
-
-function dateFormate(myDate){
-  var date = myDate.toString().substr(4,11);
-  var year = date.slice(-4),
-      month = ['Jan','Feb','Mar','Apr','May','Jun',
-                 'Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(date.substr(0,3))+1,
-        day = date.substr(4,2);
-    var formated_date = year + '-' + (month<10?'0':'') + month + '-' + day;   
-  return formated_date;
-}
+.controller('orgProfileCtrl',function($scope,modelFactory,$stateParams){
+        var id=$stateParams.id;
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/get/'+id
+        ).then(function successCallback(data){
+                        $scope.organization = data.organization;
+                        // console.log($scope.organization);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/'+id+'/getuser'
+        ).then(function successCallback(data){
+                        $scope.user = data.user;
+                        // console.log($scope.user);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/'+id+'/getcategories'
+        ).then(function successCallback(data){
+                        $scope.categories = data.categories;
+                        // console.log($scope.categories);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/'+id+'/getphones'
+        ).then(function successCallback(data){
+                        // $scope.phones = data.phones;
+                        // console.log($scope.phones);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/'+id+'/getevents'
+        ).then(function successCallback(data){
+                        $scope.events = data.events;
+                         // console.log($scope.events);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/'+id+'/getlinks'
+        ).then(function successCallback(data){
+                        $scope.links = data.links;
+                         // console.log($scope.links);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/'+id+'/getalbum'
+        ).then(function successCallback(data){
+                        $scope.albums = data.album;
+                         console.log($scope.albums);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+})
+.controller('addStoryCtrl',function($rootScope,$scope,modelFactory){
+    $scope.add = function(valid){
+        if(valid){
+            $scope.newStory.volunteer_id = $rootScope.currentUser.role_id;
+            var data = $scope.newStory;
+            data = JSON.stringify(data);
+            console.log(data);
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/story/add',
+            data
+            ).then(function successCallback(data){
+                //console.log(data);
+             },function errorCallback(err){
+               console.log(err);
+          });
+        }   
+    }
+})
