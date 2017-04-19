@@ -53,8 +53,8 @@ angular.module('myApp')
       controller: 'addEventCtrl',
       data: {
           permissions: {
-            except: ['anonymous'],
-            redirectTo: 'auth'
+            only: ['organization'],
+            redirectTo: 'home'
           }
         }
     }
@@ -72,8 +72,8 @@ angular.module('myApp')
       controller: 'addStoryCtrl',
       data: {
           permissions: {
-            except: ['anonymous'],
-            redirectTo: 'auth'
+            only: ['volunteer'],
+            redirectTo: 'home'
           }
         }
     }
