@@ -1,82 +1,17 @@
-  $(document).ready(function() {
-    $('#addEventForm').bootstrapValidator({
-        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            title: {
-                validators: {
-                        stringLength: {
-                        min: 1,
-                    },
-                        notEmpty: {
-                        message: 'أختر عنوان للإيفنت'
-                    }
-                }
-            },
-             description: {
-                validators: {
-                     stringLength: {
-                        min: 1,
-                    },
-                    notEmpty: {
-                        message: 'أدخل وصف للإيفنت'
-                    }
-                }
-            },
-            startDate: {
-                validators: {
-                    notEmpty: {
-                        message: 'أدخل تاريخ الإيفنت'
-                    },
-                    date: {
-                        format: 'YYYY-MM-DD'
-                    }
-                }
-            },
-            endDate: {
-                validators: {
-                    date: {
-                        format: 'YYYY-MM-DD'
-                    }
-                }
-            },
-            city: {
-                validators: {
-                    notEmpty: {
-                        message: 'اختر المحافظة'
-                    }
-                }
-            },
-            region: {
-                validators: {
-                    notEmpty: {
-                        message: 'اختر المنطقة'
-                    }
-                }
-            },
-            }
-        })
-        .on('success.form.bv', function(e) {
-            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                $('#addEventForm').data('bootstrapValidator').resetForm();
-
-            // Prevent form submission
-            e.preventDefault();
-
-            // Get the form instance
-            var $form = $(e.target);
-
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
-
-            // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
-        });
+jQuery.extend(jQuery.validator.messages, {
+    required: "أدخل البيانات من فضلك",
+    date: "التاريخ غير صحيح",
+    maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
+    minlength: jQuery.validator.format("أدخل عنوان مكون من 5 حروف على الأقل"),
+    rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
 });
 
+function dateFormate(myDate){
+  var date = myDate.toString().substr(4,11);
+  var year = date.slice(-4),
+      month = ['Jan','Feb','Mar','Apr','May','Jun',
+                 'Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(date.substr(0,3))+1,
+        day = date.substr(4,2);
+    var formated_date = year + '-' + (month<10?'0':'') + month + '-' + day;   
+  return formated_date;
+}

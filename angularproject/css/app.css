@@ -21,3 +21,16 @@ display:inline-block;
 .volunter-tble tr:first-child td{
 	border: none;
 }
+.event
+{
+	width: 30%;
+	height: 300px;
+}
+#imgBanner h2
+{
+	color: #000;
+}
+.contact_form
+{
+	margin-top:5px;
+}

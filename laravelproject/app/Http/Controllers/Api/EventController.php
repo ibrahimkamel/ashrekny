@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Event;
 use App\Task;
+use App\Review;
 
 class EventController extends Controller
 {
@@ -267,5 +268,19 @@ class EventController extends Controller
         $event->delete();
         return response()->json('Event Deleted Successfully',200);
     }
-    
+    /**
+     * get rates on certain event and get volunteers who rated
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getReviews($id)
+    {
+        $reviews = Event::find($id)->reviews;
+        $reviewsvolunteers=[];
+        foreach ($reviews as $review) {
+            $reviewsvolunteers[$review->id]=Review::with('volunteer')->find($review->id);
+        }
+        return response()->json($reviewsvolunteers,200);
+
+    }
 }

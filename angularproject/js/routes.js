@@ -71,4 +71,24 @@ angular.module('myApp')
         }
     }
   )
+
+  .state('orgprofile', {
+      url: '/orgprofile/:id',
+      templateUrl: "templates/orgprofile.html",
+      controller: 'orgProfileCtrl'
+    }
+  )
+
+  .state('addstory', {
+      url: '/addstory',
+      templateUrl: "templates/addstory.html",
+      controller: 'addStoryCtrl',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
+    }
+  )
 });
