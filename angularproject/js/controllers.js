@@ -90,13 +90,12 @@ angular.module('myApp')
                  });
         };
         //ajax to post review on an event
-        $scope.postreview=function(comment,eventID){
-            // var id = $scope.eventDetails.id;
-            // var reviewcomment=$scope.review.comment;
-            var commentform = comment;
+        $scope.postreview=function(review,eventID){
+            var commentform = review.comment;
+            var rateform = review.rate;
             var eventidform = eventID;
-            console.log(commentform,eventidform);
-            var postdata = { id : eventidform, volunteer_id : 1 , comment : commentform}
+            console.log(commentform,eventidform,rateform);
+            var postdata = { id : eventidform, volunteer_id : 1 , comment : commentform,rate : rateform}
             var data=JSON.stringify(postdata);
             console.log(postdata);
             modelFactory.getData('post',

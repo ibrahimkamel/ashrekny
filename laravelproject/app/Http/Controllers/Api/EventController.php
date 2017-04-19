@@ -192,11 +192,12 @@ class EventController extends Controller
         $event_id = $request->get('id');
         $volunteer_id=$request->get('volunteer_id');
         $comment=$request->get('comment');
+        $rate=$request->get('rate');
         $review = new Review;
         $review->event_id = $event_id;
         $review->volunteer_id = $volunteer_id;
         $review->comment = $comment;
-
+        $review->rate = $rate;
         $review->save();
         return response()->json("successfully created",200);
     }
