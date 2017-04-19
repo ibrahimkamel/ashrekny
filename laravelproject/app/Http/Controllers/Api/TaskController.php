@@ -72,6 +72,7 @@ class TaskController extends Controller
             $task->required_volunteers = $element['required_volunteers'];
             $task->save();
         }
+        return response()->json('successfully edited', 200);
     }
 
     /**

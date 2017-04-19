@@ -244,7 +244,7 @@ angular.module('myApp')
         <input ng-model='newEvent.tasks["+$scope.no_of_needs+"].name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>\
         </div>\
         <div class='col-md-3'>\
-        <input ng-model='newEvent.tasks["+$scope.no_of_needs+"].required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='text'>\
+        <input ng-model='newEvent.tasks["+$scope.no_of_needs+"].required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='number' min='0'>\
         </div></div>"
         ;
         $('#needs').append(need);
