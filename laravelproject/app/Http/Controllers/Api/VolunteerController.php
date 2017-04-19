@@ -72,4 +72,15 @@ class VolunteerController extends Controller
         $user = Volunteer::find($id)->user;
         return response()->json(compact('user'),200);
     }
+
+    /**
+     * get Volunteer categories.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategories($id){
+        $category = Volunteer::find($id)->categories;
+        return response()->json(compact('category'),200);
+    }
 }
