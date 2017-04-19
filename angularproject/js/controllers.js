@@ -489,3 +489,41 @@ $scope.setLicense=function(file)
 
 }}
 )
+
+/*Hossam Controllers*/
+
+ .controller('storiesCtrl',function($scope,modelFactory){
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/story/getall'
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.stories = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/story/mostrecent'
+            ).then(function successCallback(data){
+                            $scope.mostrecent = data;
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+ })
+
+  .controller('storydetailsCtrl',function($scope,modelFactory,$stateParams){
+    var id = $stateParams.id;
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/story/get/'+id
+            ).then(function successCallback(data){
+                $scope.storyDetails = data;
+                },function errorCallback(err){
+                    console.log(err);
+                });
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/story/mostrecent'
+            ).then(function successCallback(data){
+                            $scope.mostrecent = data;
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+ })

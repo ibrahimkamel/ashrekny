@@ -41,7 +41,7 @@ class StoryController extends Controller
      */
     public function getAll()
     {
-        $stories = Story::all();
+        $stories = Story::with('volunteer')->get();
         return response()->json($stories,200);
     }
     

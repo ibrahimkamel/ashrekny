@@ -71,7 +71,23 @@ angular.module('myApp')
         }
     }
   )
-
+  .state('stories', {
+      url: '/stories',
+      templateUrl: "templates/stories.html",
+      controller: 'storiesCtrl'
+    }
+  )
+  .state('storydetails', {
+      url: '/:id/storydetails',
+      templateUrl: "templates/storydetails.html",
+      controller: 'storydetailsCtrl'
+    }
+  )
+  .state('select', {
+      url: '/select',
+      templateUrl: "templates/select.html",
+      controller: 'selectCtrl'
+})
   .state('orgprofile', {
       url: '/orgprofile/:id',
       templateUrl: "templates/orgprofile.html",
