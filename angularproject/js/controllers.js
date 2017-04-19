@@ -164,7 +164,9 @@ angular.module('myApp')
     form.append('title', $scope.newEvent.title);
     form.append('description', $scope.newEvent.description);
     form.append('start_date', $scope.newEvent.start_date);
-    form.append('end_date', $scope.newEvent.end_date);
+    if($scope.newEvent.end_date){
+        form.append('end_date', $scope.newEvent.end_date);
+    }
     form.append('country', $scope.newEvent.country);
     form.append('city', $scope.newEvent.city);
     form.append('region', $scope.newEvent.region);
@@ -192,8 +194,8 @@ angular.module('myApp')
         console.log("fail");
         console.log(err);
     });
-    } 
     $state.go('events');
+    } 
   }
   
   $scope.no_of_needs = 0;
@@ -281,7 +283,7 @@ angular.module('myApp')
                         console.log(err);
                     });
 })
-.controller('addStoryCtrl',function($rootScope,$scope,modelFactory){
+.controller('addStoryCtrl',function($rootScope,$scope,modelFactory,$state){
     $scope.add = function(valid){
         if(valid){
             $scope.newStory.volunteer_id = $rootScope.currentUser.role_id;
@@ -296,6 +298,7 @@ angular.module('myApp')
              },function errorCallback(err){
                console.log(err);
           });
+            $state.go('stories');
         }   
     }
 })
