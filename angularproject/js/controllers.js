@@ -135,7 +135,7 @@ angular.module('myApp')
                         });
 })
 
-.controller('addEventCtrl',function($rootScope,$scope,modelFactory,$compile){
+.controller('addEventCtrl',function($rootScope,$scope,modelFactory,$compile,$state){
     // modelFactory.getData('get', 'http://localhost/GP/laravelproject/api/user/'+$rootScope.currentUser.id+'/getdetails').then(
     //   function(data){
     //     console.log(data.organization.id);
@@ -193,6 +193,7 @@ angular.module('myApp')
         console.log(err);
     });
     } 
+    $state.go('events');
   }
   
   $scope.no_of_needs = 0;
