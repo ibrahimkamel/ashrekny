@@ -208,7 +208,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'title'       => 'required|max:100',
@@ -233,7 +233,7 @@ class EventController extends Controller
         $tasks            = $request->get('tasks');
         $logo             = $request->file('logo');
 
-        $event               = new Event;
+        $event               = Event::find($id);
         $event->title        = $title;
         $event->description = $description;
         $event->start_date  = $start_date;
