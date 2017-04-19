@@ -20,7 +20,7 @@ angular.module('myApp')
                     localStorage.setItem('user', user);
                     $rootScope.currentUser = response.user;
                     console.log($rootScope.isVolunteer + " " +$rootScope.role_id);
-                    $state.go('profile');
+                    $state.go('home');
                 })
                 .error(function errorCallback(){
                     $scope.loginError = true;

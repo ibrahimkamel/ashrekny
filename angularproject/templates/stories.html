@@ -19,7 +19,7 @@
                     <h2 class="blog_title"><a href="events-single.html">{{story.title}}</a></h2>
                     <div class="blog_commentbox">
                       <p><i class="fa fa-clock-o"></i>Time: {{story.created_at}}</p>
-                      <p><i class=""></i>الكاتب : {{story.volunteer.first_name}} {{story.volunteer.last_name}}</p>                      
+                      <p><a href="./volunteerprofile/{{story.volunteer.id}}"><i class=""></i>الكاتب : {{story.volunteer.first_name}} {{story.volunteer.last_name}}</a></p>                      
                     </div>
                     <p class="blog_summary">{{story.content}}</p>
                     <a class="blog_readmore" href="./{{story.id}}/storydetails">Read More</a>

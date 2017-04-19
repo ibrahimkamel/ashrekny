@@ -80,13 +80,13 @@
                     <li>
                       <div ng-repeat="story in stories" class="media">
                         <div class="media-left">
-                          <a class="news_img" href="#">
+                          <a class="news_img" href="./{{story.id}}/storydetails">
                             <img class="media-object" src="img/news.jpg" alt="img">
                           </a>
                         </div>
                         <div class="media-body">
                             <h3>
-                              <a href="#">{{story.title}}</a>
+                              <a href="./{{story.id}}/storydetails">{{story.title}}</a>
                             </h3>
                             <span>{{story.content}}</span>
                         </div>

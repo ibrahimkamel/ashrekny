@@ -12,7 +12,7 @@ angular.module('myApp')
       data: {
           permissions: {
             except: ['isloggedin'],
-            redirectTo: 'profile'
+            redirectTo: 'home'
           }
         }
     }
@@ -62,13 +62,7 @@ angular.module('myApp')
   .state('volunteerprofile', {
       url: '/volunteerprofile/:id',
       templateUrl: "templates/volunteerprofile.html",
-      controller: 'VolunteerProfileCtrl',
-      data: {
-          permissions: {
-            except: ['anonymous'],
-            redirectTo: 'auth'
-          }
-        }
+      controller: 'VolunteerProfileCtrl'
     }
   )
   .state('stories', {
@@ -114,7 +108,7 @@ angular.module('myApp')
       data: {
           permissions: {
             except: ['isloggedin'],
-            redirectTo: 'profile'
+            redirectTo: 'home'
           }
         }
      

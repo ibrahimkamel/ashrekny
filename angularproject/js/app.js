@@ -49,16 +49,22 @@ angular.module('myApp', [
 	});
 	PermPermissionStore.definePermission('organization', function () {
 	        //check if logged user is organization
-	        if (!$rootScope.currentUser.isVolunteer) {
-	          return true; //returns true if organization
+	        if ($auth.isAuthenticated()) {
+		          if (!$rootScope.currentUser.isVolunteer) {
+		          return true; //returns true if organization
+		        }
 	        }
 	        return false;
+	        
 	});
 	PermPermissionStore.definePermission('volunteer', function () {
 	        //check if logged user is organization
-	        if ($rootScope.currentUser.isVolunteer) {
+	        if ($auth.isAuthenticated()) {
+	         if ($rootScope.currentUser.isVolunteer) {
 	          return true; //returns true if organization
 	        }
+	        }
 	        return false;
+	        
 	});
 });
