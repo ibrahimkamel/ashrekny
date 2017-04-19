@@ -4,8 +4,9 @@ angular.module('myApp')
  		
 		$scope.loginError = false;
         $scope.loginErrorText;
-        $scope.login = function() {
- 
+        $scope.login = function(isvalid) {
+            if(isvalid)
+        {
             var credentials = {
                 email: $scope.email,
                 password: $scope.password
@@ -26,7 +27,10 @@ angular.module('myApp')
                     $scope.loginErrorText = error.data.error;
                     console.log($scope.loginErrorText);
                 })
-            });
+            },function errorCallback(error){
+                    $scope.loginErrorText = error.data.error;
+                    console.log($scope.loginErrorText);
+                });}
         }
  
 })
@@ -208,14 +212,12 @@ angular.module('myApp')
      console.log(file[0]);
      $scope.uploadedFile = file[0];
   }
-}).controller('signup', function($scope, modelFactory) {
+}).controller('signup', function($scope, modelFactory,$state) {
 
    
 $scope.addUser = function(isvaild) {
  
    
-    
- 
   if (isvaild) {
 
 
@@ -243,19 +245,24 @@ $scope.addUser = function(isvaild) {
    modelFactory.getData('post',
     'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
    ).then(function(data) {
-     if (data.volErrors) {
-      $scope.volerror = data.volErrors;
-      
-
-     }
-     if (data.userErrors) {
-      $scope.userAsVolErros = data.userErrors;
-      console.log($scope.userAsVolErros);
      
-     }
+     $state.go('profile');
  
     },
     function(err) {
+
+ if (err.volErrors) {
+      $scope.volerror = err.volErrors;
+      
+
+     }
+     if (err.userErrors) {
+      $scope.userAsVolErros = err.userErrors;
+      console.log($scope.userAsVolErros);
+     
+     }
+
+
 
     }); }};
 
@@ -299,22 +306,25 @@ $scope.addOrg = function(isvaild) {
     'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
    ).then(function(data) {
     
-     if (data.userErrors) {
-      $scope.orgAsUserErrors = data.userErrors;
-      console.log(data.userErrors);
-     }
-
-
-     if (data.orgErrors) {
-      $scope.orgErrors = data.orgErrors;
-     }
-
-
+  $state.go('profile');
 
     },
-    function(err) {
+    function(err) {    
+        if (err.userErrors) {
+ 
+      $scope.orgAsUserErrors = err.userErrors;
+      console.log($scope.orgAsUserErrors);
+     }
 
-    }); }};/////
+
+     if (err.orgErrors) {
+      $scope.orgErrors = err.orgErrors;
+     }
+
+
+    }
+    
+    ); }};/////
 
 
 $scope.setProfilePic=function(file)

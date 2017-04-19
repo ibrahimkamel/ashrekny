@@ -59,12 +59,16 @@ angular.module('myApp')
         }
     }
     
-  )
-
-   .state('signup', {
+  ) .state('signup', {
       url: '/signup',
       templateUrl: "templates/signup.html",
       controller: 'signup',
+      data: {
+          permissions: {
+            except: ['isloggedin'],
+            redirectTo: 'profile'
+          }
+        }
      
      }
   )});

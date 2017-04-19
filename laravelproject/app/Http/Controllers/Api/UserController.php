@@ -72,11 +72,11 @@ class UserController extends Controller
         if ($validator->fails())
         {//\Response::json();
           return \Response::json(['userErrors' => $validator
-            ->getMessageBag()->toArray()], 200);
+            ->getMessageBag()->toArray()], 500);
         } 
         $newUser= new User ;
         $newUser->email= $request->email;
-        $newUser->password=$request->password;
+        $newUser->password=bcrypt($request->password);
         $newUser->region=$request->region;
         $newUser->city=$request->city;
 
@@ -90,7 +90,7 @@ class UserController extends Controller
         if ($validator->fails()&&$volunteerValidator)
         {//\Response::json();
             return \Response::json(['volErrors' => $validator->getMessageBag()->toArray(),
-            'userErrors' => $validator->getMessageBag()->toArray()], 200);
+            'userErrors' => $validator->getMessageBag()->toArray()], 500);
         }
          $newUser->save();
 
@@ -119,7 +119,7 @@ class UserController extends Controller
             if ($validator->fails())
             { 
                 return \Response::json(['orgErrors' => $validator
-                    ->getMessageBag()->toArray()], 200);
+                    ->getMessageBag()->toArray()], 500);
             }
               $newUser->save();
 
