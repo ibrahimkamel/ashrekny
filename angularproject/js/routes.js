@@ -53,12 +53,41 @@ angular.module('myApp')
       controller: 'addEventCtrl',
       data: {
           permissions: {
+            only: ['organization'],
+            redirectTo: 'home'
+          }
+        }
+    }
+  )
+  .state('volunteerprofile', {
+      url: '/volunteerprofile/:id',
+      templateUrl: "templates/volunteerprofile.html",
+      controller: 'VolunteerProfileCtrl',
+      data: {
+          permissions: {
             except: ['anonymous'],
             redirectTo: 'auth'
           }
         }
     }
   )
+  .state('stories', {
+      url: '/stories',
+      templateUrl: "templates/stories.html",
+      controller: 'storiesCtrl'
+    }
+  )
+  .state('storydetails', {
+      url: '/:id/storydetails',
+      templateUrl: "templates/storydetails.html",
+      controller: 'storydetailsCtrl'
+    }
+  )
+  .state('select', {
+      url: '/select',
+      templateUrl: "templates/select.html",
+      controller: 'selectCtrl'
+})
   .state('orgprofile', {
       url: '/orgprofile/:id',
       templateUrl: "templates/orgprofile.html",
@@ -72,11 +101,23 @@ angular.module('myApp')
       controller: 'addStoryCtrl',
       data: {
           permissions: {
-            except: ['anonymous'],
-            redirectTo: 'auth'
+            only: ['volunteer'],
+            redirectTo: 'home'
           }
         }
     }
   )
-  
+.state('signup', {
+      url: '/signup',
+      templateUrl: "templates/signup.html",
+      controller: 'signup',
+      data: {
+          permissions: {
+            except: ['isloggedin'],
+            redirectTo: 'profile'
+          }
+        }
+     
+     }
+  )
 });

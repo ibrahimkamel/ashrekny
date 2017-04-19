@@ -47,4 +47,18 @@ angular.module('myApp', [
 	        }
 	        return false;
 	});
+	PermPermissionStore.definePermission('organization', function () {
+	        //check if logged user is organization
+	        if (!$rootScope.currentUser.isVolunteer) {
+	          return true; //returns true if organization
+	        }
+	        return false;
+	});
+	PermPermissionStore.definePermission('volunteer', function () {
+	        //check if logged user is organization
+	        if ($rootScope.currentUser.isVolunteer) {
+	          return true; //returns true if organization
+	        }
+	        return false;
+	});
 });
