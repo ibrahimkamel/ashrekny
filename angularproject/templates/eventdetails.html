@@ -78,8 +78,9 @@
       <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
             <div class="contact_form wow fadeInLeft">
-                    <form class="well submitphoto_form">         
-                      <input type="text" class="wp-form-control wpcf7-text" placeholder="اكتب تقييم">
+                    <form class="well submitphoto_form" method = "POST" 
+                    ng-submit="postreview(review.comment,eventDetails.id)">         
+                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" placeholder="اكتب تقييم">
                       <input type="submit" value="ارسال" class="wpcf7-submit">
                     </form>
             </div>

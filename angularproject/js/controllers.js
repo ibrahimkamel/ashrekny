@@ -88,6 +88,36 @@ angular.module('myApp')
                 },function errorCallback(err){
                     console.log(err);
                  });
+        };
+        //ajax to post review on an event
+        $scope.postreview=function(comment,eventID){
+            // var id = $scope.eventDetails.id;
+            // var reviewcomment=$scope.review.comment;
+            var commentform = comment;
+            var eventidform = eventID;
+            console.log(commentform,eventidform);
+            var postdata = { id : eventidform, volunteer_id : 1 , comment : commentform}
+            var data=JSON.stringify(postdata);
+            console.log(postdata);
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/event/'+id+'/addReview',data
+            ).then(function successCallback(data){
+                    console.log(data);
+                    console.log("success");
+                },function errorCallback(err){
+                    console.log(err);
+                    console.log("error");
+                 });
+            modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/event/'+id+'/getReviews'
+            ).then(function successCallback(data){
+                            $scope.eventDetails.reviewsvolunteers = data;
+                            // var oneDay = 24*60*60*1000; 
+                            // $scope.eventDetails.reviews.diffdate=Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+                            console.log(data);
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
         }; 
         //ajax request to get event's details      
         modelFactory.getData('get',

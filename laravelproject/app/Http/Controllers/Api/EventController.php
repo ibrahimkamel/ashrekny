@@ -186,8 +186,19 @@ class EventController extends Controller
      *  TODO IN NEXT SPRINT
      * @return \Illuminate\Http\Response
      */
-    public function addReview($id)
+    public function addReview(Request $request)
     {
+        
+        $event_id = $request->get('id');
+        $volunteer_id=$request->get('volunteer_id');
+        $comment=$request->get('comment');
+        $review = new Review;
+        $review->event_id = $event_id;
+        $review->volunteer_id = $volunteer_id;
+        $review->comment = $comment;
+
+        $review->save();
+        return response()->json("successfully created",200);
     }
     /**
      * Update the specified event.
