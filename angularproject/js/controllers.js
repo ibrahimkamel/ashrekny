@@ -360,7 +360,7 @@ angular.module('myApp')
         'http://localhost/GP/laravelproject/api/organization/'+id+'/getalbum'
         ).then(function successCallback(data){
                         $scope.albums = data.album;
-                         console.log($scope.albums);
+                         // console.log($scope.albums);
                       },function errorCallback(err){
                         console.log(err);
                     });
@@ -556,3 +556,17 @@ $scope.setLicense=function(file)
                             console.log(err);
                         });
  })
+
+.controller('OrganizationsCtrl',function($scope,modelFactory){
+        $scope.descriptionLimit=100;
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/organization/getall'
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.organizations = data.organization;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        
+        
+})

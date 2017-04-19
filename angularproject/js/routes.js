@@ -114,4 +114,10 @@ angular.module('myApp')
      
      }
   )
+  .state('organizations', {
+        url: '/organizations',
+        templateUrl: "templates/organizations.html",
+        controller: 'OrganizationsCtrl'
+      }
+    )
 });
