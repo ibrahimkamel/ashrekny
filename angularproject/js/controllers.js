@@ -134,8 +134,8 @@ angular.module('myApp')
                             console.log(err);
                         });
 })
-
 .controller('addEventCtrl',function($rootScope,$scope,modelFactory,$compile,$state){
+
     // modelFactory.getData('get', 'http://localhost/GP/laravelproject/api/user/'+$rootScope.currentUser.id+'/getdetails').then(
     //   function(data){
     //     console.log(data.organization.id);
@@ -200,9 +200,9 @@ angular.module('myApp')
   
   $scope.no_of_needs = 0;
   
-        console.log($rootScope.currentUser);
+  console.log($rootScope.currentUser);
 
-        console.log($rootScope.currentUser.isVolunteer);
+  console.log($rootScope.currentUser.isVolunteer);
   $scope.add_need=function(){
         console.log($rootScope.isVolunteer);
         $scope.no_of_needs++;
@@ -223,6 +223,55 @@ angular.module('myApp')
      console.log(file[0]);
      $scope.uploadedFile = file[0];
   }
+})
+.controller('VolunteerProfileCtrl',function($scope,$rootScope,modelFactory){
+    var id = 1;
+    // get volunteer data
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/volunteer/get/'+id
+    ).then(function successCallback(data){
+        //console.log(data);
+        $scope.volunteer = data.volunteer;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;
+    });
+    //get user data
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/volunteer/'+id+'/getuser'
+    ).then(function successCallback(data){
+        //console.log(data);
+        $scope.user = data.user;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;
+    });
+    //get volunteer stories
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/volunteer/'+id+'/getstories')
+    .then(function successCallback(data){
+        //console.log(data);
+        $scope.stories = data.stories;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;    
+    });
+    // get volunteer events
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/volunteer/'+id+'/getevents')
+    .then(function successCallback(data){
+        //console.log(data);
+        $scope.events = data.events;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;    
+    });
+    // get volunteer categories
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/volunteer/'+id+'/getcategories')
+    .then(function successCallback(data){
+        //console.log(data);
+        $scope.categories = data.category;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;    
+    });
+
 })
 .controller('orgProfileCtrl',function($scope,modelFactory,$stateParams){
         var id=$stateParams.id;

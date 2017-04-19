@@ -1,3 +1,26 @@
+.tabvolunteer{
+	border-right: 2px solid #78ADC9;
+}
+.panel-title{
+	font-size: 20px;
+}
+
+.volunter-tble .table td span{
+display:inline-block;
+}
+
+.block-title{
+	width:30%;
+}
+.block-desc{
+	width:70%;
+}
+.volunter-tble .block-title{
+ font-weight:bold;
+}
+.volunter-tble tr:first-child td{
+	border: none;
+}
 .event
 {
 	width: 30%;
