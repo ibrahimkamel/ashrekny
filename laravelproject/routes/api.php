@@ -37,8 +37,7 @@ Route::group(['middleware' => 'cors'], function(){
 
 		});
 		Route::group(['prefix' => 'volunteer'], function(){
-		
-
+	
 		});
 		Route::group(['prefix' => 'category'], function(){
 		
@@ -113,6 +112,7 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/{id}/getstories','Api\VolunteerController@getStories');
 		Route::get('/{id}/gettasks','Api\VolunteerController@getTasks');
 		Route::get('/{id}/getevents','Api\VolunteerController@getEvents');
+		Route::get('/{id}/getcategories', 'Api\VolunteerController@getCategories');
 		Route::get('/{id}/getuser','Api\VolunteerController@getUser');
 
 	});
@@ -154,8 +154,7 @@ Route::group(['middleware' => 'cors'], function(){
 
 	});
 	Route::group(['prefix' => 'story'], function(){
-		
-
+	
 	});
 	Route::group(['prefix' => 'task'], function(){
 		Route::get('/{id}/get','Api\TaskController@get');

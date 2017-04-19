@@ -59,5 +59,16 @@ angular.module('myApp')
         }
     }
   )
-  
+  .state('volunteerprofile', {
+      url: '/volunteerprofile/:id',
+      templateUrl: "templates/volunteerprofile.html",
+      controller: 'VolunteerProfileCtrl',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
+    }
+  )
 });
