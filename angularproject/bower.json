@@ -16,6 +16,7 @@
     "satellizer": "^0.15.5",
     "angular-permission": "^5.2.3",
     "bootstrap": "^3.3.7",
-    "jquery-validation": "^1.16.0"
+    "jquery-validation": "^1.16.0",
+    "country-select-js": "^1.1.0"
   }
 }
