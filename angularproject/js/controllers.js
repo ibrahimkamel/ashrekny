@@ -209,6 +209,16 @@ angular.module('myApp')
      $scope.uploadedFile = file[0];
   }
 })
+/*Hossam Controllers*/
+
+// .controller('myeventsCtrl',function($rootScope,modelFactory){
+    
+// })
+
+// .controller('storydetailsCtrl',function($rootScope,modelFactory){
+    
+// })
+
 function dateFormate(myDate){
   var date = myDate.toString().substr(4,11);
   var year = date.slice(-4),

@@ -59,5 +59,23 @@ angular.module('myApp')
         }
     }
   )
+  .state('stories', {
+      url: '/stories',
+      templateUrl: "templates/stories.html",
+      controller: 'myeventsCtrl'
+    }
+  )
+  .state('storydetails', {
+      url: '/storydetails',
+      templateUrl: "templates/storydetails.html",
+      controller: 'storydetailsCtrl'
+    }
+  )
+  .state('select', {
+      url: '/select',
+      templateUrl: "templates/select.html",
+      controller: 'selectCtrl'
+    }
+  )
   
 });
