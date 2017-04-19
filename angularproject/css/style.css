@@ -52,6 +52,11 @@ a{
   color: #2f2f2f;
   
 }
+h2 a{ 
+  text-decoration: none;
+  color: #2f2f2f;
+  
+}
 a:focus{
   outline: none;
   text-decoration: none;
@@ -1019,12 +1024,28 @@ div[data-dimension] {
   padding: 12px;
   min-height: 500px;
 }
+
+/*.courseArchive_sidebar2{
+  background-color: #fff;
+  float: right;
+  display: inline-block;
+  width: 100%; 
+  padding: 12px;
+  min-height: 500px;
+}*/
 .single_sidebar{
   float: left;
   display: inline;
   width: 100%;
   margin-bottom: 15px;  
 }
+
+/*.single_sidebar2{
+  float: right;
+  display: inline;
+  width: 100%;
+  margin-bottom: 15px;  
+}*/
 .single_sidebar > h2 {
   color: #fff;
   font-size: 26px;

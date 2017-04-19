@@ -78,8 +78,12 @@
       <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
             <div class="contact_form wow fadeInLeft">
-                    <form class="well submitphoto_form">         
-                      <input type="text" class="wp-form-control wpcf7-text" placeholder="اكتب تقييم">
+                    <form class="well submitphoto_form" method = "POST" 
+                    ng-submit="postreview(review,eventDetails.id)">  
+
+                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" placeholder="اكتب تقييم">
+
+                      <input  star-Rating class="wp-form-control wpcf7-text myRating" name="rate" ng-model="review.rate" placeholder="اكتب تقييم">
                       <input type="submit" value="ارسال" class="wpcf7-submit">
                     </form>
             </div>
@@ -91,25 +95,22 @@
       <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
                     <div class="comments-list">
-                      <div class="page-header">
-                        <h1>التعليقات <small class="pull-left">comments number</small></h1>
-                      </div>
-                       <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
-                           <p class="pull-left"><small ng->{{review.created_at | date : "dd/MM/y" }}</small></p>
+                        <div class="page-header">
+                          <h1>التعليقات <small class="pull-left">comments number</small></h1>
+                        </div>
+                        <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
+                           <p class="pull-left"><small>{{review.created_at | date : "dd/MM/y" }}</small>
+                              <p star-Rating class="myRating text-center" ng-model='review.rate'></p>
+                           </p>
                             <a class="media-left" href="#">
                               <img src="http://lorempixel.com/40/40/people/1/" alt="profile pic">
                             </a>
                             <div class="media-body">
-                                
                               <h4 class="media-heading user_name">{{review.volunteer.first_name}}</h4>
-                              {{review.comment}}
-                              {{review.rate}}
-
-
                               <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
                             </div>
-                          </div>
-                   </div>
+                        </div>
+                    </div>
          </div> 
       </div>  
     </section>

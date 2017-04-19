@@ -6,12 +6,12 @@
                     <div class="col-lg-9 col-9 col-sm-9">
                         <div class="single_blog_archive wow fadeInUp ">
                             <div class=" col-lg-3 blogimg_container event" >
-                              <a href="#" class="blog_img">
+                              <a href="./{{event.id}}/eventdetails" class="blog_img">
                                 <img alt="img" src="../laravelproject/{{event.logo}}">
                               </a>
                             </div>
                             <div class=" col-lg-6" >
-                                <h2 class="blog_title"><a href="./{{event.id}}/eventdetails"></a>{{event.title}}</h2> </tt>
+                                <h2 class="blog_title"><a href="./{{event.id}}/eventdetails">{{event.title}}</a></h2> </tt>
                                 <div star-Rating class="myRating" ng-model='event.avg_rate'></div><br>
                                 <br>
                                 <div class="blog_commentbox">

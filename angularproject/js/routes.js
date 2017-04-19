@@ -12,7 +12,7 @@ angular.module('myApp')
       data: {
           permissions: {
             except: ['isloggedin'],
-            redirectTo: 'profile'
+            redirectTo: 'home'
           }
         }
     }
@@ -59,6 +59,29 @@ angular.module('myApp')
         }
     }
   )
+  .state('volunteerprofile', {
+      url: '/volunteerprofile/:id',
+      templateUrl: "templates/volunteerprofile.html",
+      controller: 'VolunteerProfileCtrl'
+    }
+  )
+  .state('stories', {
+      url: '/stories',
+      templateUrl: "templates/stories.html",
+      controller: 'storiesCtrl'
+    }
+  )
+  .state('storydetails', {
+      url: '/:id/storydetails',
+      templateUrl: "templates/storydetails.html",
+      controller: 'storydetailsCtrl'
+    }
+  )
+  .state('select', {
+      url: '/select',
+      templateUrl: "templates/select.html",
+      controller: 'selectCtrl'
+})
   .state('orgprofile', {
       url: '/orgprofile/:id',
       templateUrl: "templates/orgprofile.html",
@@ -78,5 +101,17 @@ angular.module('myApp')
         }
     }
   )
-  
+.state('signup', {
+      url: '/signup',
+      templateUrl: "templates/signup.html",
+      controller: 'signup',
+      data: {
+          permissions: {
+            except: ['isloggedin'],
+            redirectTo: 'home'
+          }
+        }
+     
+     }
+  )
 });
