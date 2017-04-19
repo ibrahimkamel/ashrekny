@@ -50,6 +50,7 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::post('/{id}/addReview','Api\EventController@addReview');
 			Route::post('/{id}/update','Api\EventController@update');
 			Route::post('/{id}/delete','Api\EventController@delete');
+			Route::post('/edittasks','Api\EventController@editTasks');
 			
 		});
 		Route::group(['prefix' => 'eventalbum'], function(){
@@ -127,7 +128,7 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::get('/gettop','Api\EventController@getTop');
 			Route::get('/{id}/get','Api\EventController@get');
 			Route::get('/{id}/getOrganization','Api\EventController@getOrganization');
-			//Route::get('/{id}/getTasks','Api\EventController@getTasks');
+			Route::get('/{id}/gettasks','Api\EventController@getTasks');
 			Route::get('/{id}/getCategories','Api\EventController@getCategories');
 			Route::get('/{id}/getAlbum','Api\EventController@getAlbum');
 			Route::get('/{id}/getReview','Api\EventController@getReview');

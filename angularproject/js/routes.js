@@ -114,4 +114,10 @@ angular.module('myApp')
      
      }
   )
+.state('editevent', {
+      url: '/:id/eventdetails/edit',
+      templateUrl: "templates/editevent.html",
+      controller: 'editEventCtrl'
+     }
+  )
 });

@@ -556,3 +556,108 @@ $scope.setLicense=function(file)
                             console.log(err);
                         });
  })
+  .controller('editEventCtrl',function($rootScope,$scope,modelFactory,$compile,$state,$stateParams){
+    
+    var id = $stateParams.id;
+    modelFactory.getData('get',
+       'http://localhost/GP/laravelproject/api/event/'+id+'/get'
+        ).then(function successCallback(data){
+            $scope.event = data;
+            console.log($scope.event)
+        },function errorCallback(err){
+            console.log(err);
+        });
+    modelFactory.getData('get',
+   'http://localhost/GP/laravelproject/api/event/'+id+'/gettasks'
+    ).then(function successCallback(data){
+        $scope.eventTasks = data;
+        console.log($scope.eventTasks)
+    },function errorCallback(err){
+        console.log(err);
+    });
+    $scope.add=function(valid){    
+    if(valid){
+      //Formating Date input like YYYY-MM-DD
+        $scope.newEvent.start_date=dateFormate($scope.start_date);
+        
+        if($scope.end_date){
+          $scope.newEvent.end_date=dateFormate($scope.end_date);
+        }
+    $scope.newEvent.organization_id=3;
+    console.log($scope.newEvent);
+    if($scope.uploadedFile){
+      $scope.newEvent.logo = $scope.uploadedFile;
+    }
+    var form = new FormData();
+    form.append('title', $scope.newEvent.title);
+    form.append('description', $scope.newEvent.description);
+    form.append('start_date', $scope.newEvent.start_date);
+    if($scope.newEvent.end_date){
+        form.append('end_date', $scope.newEvent.end_date);
+    }
+    form.append('country', $scope.newEvent.country);
+    form.append('city', $scope.newEvent.city);
+    form.append('region', $scope.newEvent.region);
+    form.append('full_address', $scope.newEvent.region);
+    if($scope.newEvent.tasks){
+        form.append('tasks', JSON.stringify($scope.newEvent.tasks));
+    }
+    form.append('logo', $scope.newEvent.logo);
+    form.append('organization_id', $rootScope.currentUser.role_id);
+    console.log( $scope.newEvent.tasks);
+    var tasks = $scope.newEvent.tasks;
+
+    var method = 'post',
+        url    = 'http://localhost/GP/laravelproject/api/event/add',
+        processData = false,
+        transformRequest = angular.identity,
+        headers = {'Content-Type': undefined};
+
+    modelFactory.getData(method, url, form, processData, transformRequest, headers).then(
+      function(data){
+        console.log(data);
+        console.log("success");
+    },
+      function(err){
+        console.log("fail");
+        console.log(err);
+    });
+    $state.go('events');
+    } 
+  }
+  
+  $scope.no_of_needs = 0;
+  
+  console.log($rootScope.currentUser);
+
+  console.log($rootScope.currentUser.isVolunteer);
+  $scope.add_need=function(){
+        console.log($scope.eventTasks);
+        var data = JSON.stringify($scope.eventTasks);
+        modelFactory.getData('post',
+        'http://localhost/GP/laravelproject/api/task/edit',
+        data
+        ).then(function successCallback(data){
+        },function errorCallback(err){
+            console.log(err);
+        });
+
+        // $scope.no_of_needs++;
+        // var need = "<div id='need"+$scope.no_of_needs+"' class='col-md-7 col-md-offset-3'>\
+        // <div class='col-md-9'>\
+        // <input ng-model='newEvent.tasks["+$scope.no_of_needs+"].name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>\
+        // </div>\
+        // <div class='col-md-3'>\
+        // <input ng-model='newEvent.tasks["+$scope.no_of_needs+"].required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='text'>\
+        // </div></div>"
+        // ;
+        // $('#needs').append(need);
+        // var newneed = (angular.element($('#need'+$scope.no_of_needs)));
+        // $compile(newneed)($scope);
+        // console.log($scope.newEvent.tasks);
+    }
+  $scope.uploadLogo=function(file){
+     console.log(file[0]);
+     $scope.uploadedFile = file[0];
+  }
+})
