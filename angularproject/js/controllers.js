@@ -387,7 +387,7 @@ angular.module('myApp')
 .controller('signup', function($scope, modelFactory,$state) {
 
    
-$scope.addUser = function(isvaild) {
+ $scope.addUser = function(isvaild) {
  
    
   if (isvaild) {
@@ -556,3 +556,14 @@ $scope.setLicense=function(file)
                             console.log(err);
                         });
  })
+.controller('myEventsCtrl',function($scope,$rootScope,modelFactory,$stateParams){
+        var id = $stateParams.id;
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/get/user/'+id
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.myevents = data.myevents;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+})

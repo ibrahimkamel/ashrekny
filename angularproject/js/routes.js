@@ -77,19 +77,20 @@ angular.module('myApp')
       controller: 'storydetailsCtrl'
     }
   )
-  .state('select', {
+.state('select', {
       url: '/select',
       templateUrl: "templates/select.html",
       controller: 'selectCtrl'
-})
-  .state('orgprofile', {
+  }
+)
+.state('orgprofile', {
       url: '/orgprofile/:id',
       templateUrl: "templates/orgprofile.html",
       controller: 'orgProfileCtrl'
     }
-  )
+)
 
-  .state('addstory', {
+.state('addstory', {
       url: '/addstory',
       templateUrl: "templates/addstory.html",
       controller: 'addStoryCtrl',
@@ -100,7 +101,7 @@ angular.module('myApp')
           }
         }
     }
-  )
+)
 .state('signup', {
       url: '/signup',
       templateUrl: "templates/signup.html",
@@ -113,5 +114,17 @@ angular.module('myApp')
         }
      
      }
+  )
+.state('myEvents', {
+      url: '/myevents/:id',
+      templateUrl: "templates/myevents.html",
+      controller: 'myEventsCtrl',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'events'
+          }
+        }
+    }
   )
 });
