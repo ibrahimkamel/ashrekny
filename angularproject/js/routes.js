@@ -62,11 +62,11 @@ angular.module('myApp')
   .state('stories', {
       url: '/stories',
       templateUrl: "templates/stories.html",
-      controller: 'myeventsCtrl'
+      controller: 'storiesCtrl'
     }
   )
   .state('storydetails', {
-      url: '/storydetails',
+      url: '/:id/storydetails',
       templateUrl: "templates/storydetails.html",
       controller: 'storydetailsCtrl'
     }
