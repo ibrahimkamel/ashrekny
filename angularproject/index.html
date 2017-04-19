@@ -113,10 +113,19 @@
               <li><a href="signup"><i class="fa fa-user fa-fw pull-left"></i>أشترك</a></li>
               <li><a href="auth"><i class="fa fa-sign-in pull-left"></i> تسجيل الدخول</a></li>
             </ul>
+            
             <ul class="nav navbar-nav pull-left" 
             ng-show="currentUser != null">
               <li><a href="#" ng-click="logout()"><i class="fa fa-user fa-fw pull-left"></i>خروج</a></li>
             </ul>      
+            <ul class="nav navbar-nav pull-left" 
+            ng-show="currentUser != null&&currentUser.isVolunteer">
+              <li><a href="addstory"><i class="fa fa-plus fa-fw pull-left"></i>احكى قصه</a></li>
+            </ul> 
+            <ul class="nav navbar-nav pull-left" 
+            ng-show="currentUser != null&&!currentUser.isVolunteer">
+              <li><a href="addevent"><i class="fa fa-plus fa-fw pull-left"></i>اضف ايفنت</a></li>
+            </ul> 
           </div><!--/.nav-collapse -->
         </div>     
       </nav>  
