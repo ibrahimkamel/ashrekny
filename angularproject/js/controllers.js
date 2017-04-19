@@ -208,7 +208,138 @@ angular.module('myApp')
      console.log(file[0]);
      $scope.uploadedFile = file[0];
   }
-})
+}).controller('signup', function($scope, modelFactory) {
+
+   
+$scope.addUser = function(isvaild) {
+ 
+   
+    
+ 
+  if (isvaild) {
+
+
+ var    processData = false,
+        transformRequest = angular.identity,
+        headers = {'Content-Type': undefined},
+    
+  formdata= new FormData();
+    
+    formdata.append("firstName",$scope.user.firstName);
+     formdata.append("secondName",$scope.user.secondName);
+      formdata.append("gender",$scope.user.gender);
+       formdata.append("email",$scope.user.email);
+       formdata.append("password",$scope.user.password);
+     formdata.append("region",$scope.user.region);
+     formdata.append("city",$scope.user.city);
+      formdata.append("gender",$scope.user.gender);
+      if($scope.profilePic)
+     {   formdata.append("profilepic",$scope.profilePic);}
+        for (var pair of formdata.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]); 
+}
+   
+
+   modelFactory.getData('post',
+    'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
+   ).then(function(data) {
+     if (data.volErrors) {
+      $scope.volerror = data.volErrors;
+      
+
+     }
+     if (data.userErrors) {
+      $scope.userAsVolErros = data.userErrors;
+      console.log($scope.userAsVolErros);
+     
+     }
+ 
+    },
+    function(err) {
+
+    }); }};
+
+
+$scope.addOrg = function(isvaild) {
+  
+    
+ 
+  if (isvaild) {
+
+ var    processData = false,
+        transformRequest = angular.identity,
+        headers = {'Content-Type': undefined},
+    
+  formdata= new FormData();
+    
+    formdata.append("orgName",$scope.org.orgName);
+     formdata.append("desc",$scope.org.desc);
+      formdata.append("region",$scope.org.region);
+       formdata.append("city",$scope.org.city);
+       formdata.append("email",$scope.org.email);
+       formdata.append("password",$scope.org.password);
+      formdata.append("fullAddress",$scope.org.fullAddress);
+            formdata.append("officeHours",$scope.org.officeHours);
+  formdata.append("license_number",$scope.org.license_number);
+      
+   if($scope.logo)
+     {   formdata.append("logo",$scope.logo);}
+        if($scope.license)
+     {   formdata.append("licenseScan",$scope.license);}
+
+       
+        for (var pair of formdata.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]); 
+}
+
+
+
+
+   modelFactory.getData('post',
+    'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
+   ).then(function(data) {
+    
+     if (data.userErrors) {
+      $scope.orgAsUserErrors = data.userErrors;
+      console.log(data.userErrors);
+     }
+
+
+     if (data.orgErrors) {
+      $scope.orgErrors = data.orgErrors;
+     }
+
+
+
+    },
+    function(err) {
+
+    }); }};/////
+
+
+$scope.setProfilePic=function(file)
+{ console.log(file[0]);
+  $scope.profilePic=file[0];
+  console.log( $scope.profilePic);
+
+}
+
+$scope.setLogo=function(file)
+{ console.log(file[0]);
+  $scope.logo=file[0];
+
+}
+
+$scope.setLicense=function(file)
+{ console.log(file[0]);
+  $scope.license=file[0];
+
+}})
+
+
+
+  
+
 function dateFormate(myDate){
   var date = myDate.toString().substr(4,11);
   var year = date.slice(-4),

@@ -22,15 +22,18 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function add(Request $request)
+
     {
+ 
+
         $userRules = [
             'email'=>'required|max:50|unique:users',
             'password'=>'required|max:50',
             'region'=>'required|max:50',
-            'city'=>'required|max:50|min:10'
+            'city'=>'required|max:50'
         ];
 
-        $messsages = array(
+        $userMesssages = array(
             'email.required'=> 'من فضلك ادخل البريد الالكتروني',
             'email.unique'=>'البريد الالكتروني موجود من قبل',
             'email.max'=>'يجب ألا يزيد البريد الالكتروني عن 50 حرف',
@@ -41,7 +44,30 @@ class UserController extends Controller
             'region.max'=>'يجب ألا يزيد اسم المنطقة عن 50 حرف',
             'city.max'=>'يجب ألا يزيد اسم المدينة عن 50 حرف'
         );
-        $validator = Validator::make($request->all(), $userRules,$messsages);
+           
+           $volMesssages = array(
+            'firstName.required'=> 'من فضلك ادخل الاسم الأول',
+            'firstName.max'=>'يجب ألا يزيد الاسم الأول عن 50 حرف',
+             'secondName.required'=> 'من فضلك ادخل الاسم الثاني',
+            'secondName.max'=>'يجب ألا يزيد الاسم الثاني عن 50 حرف',
+            'gender.required'=>'من فضلك ادخل النوع',
+            'gender.in'=>'النوع يجب أن يكون ذكر أو انثي',  
+             
+        );
+         
+           $orgMesssages = array(
+            'orgName.required'=> 'من فضلك ادخل اسم المنظمة',
+            'orgName.max'=>'يجب ألا يزيد اسم المنظمة عن 50 حرف',
+            'fullAddress.required'=>'من فضلك ادخل العنوان بالتفصيل',
+             'license_number.required'=>'من فضلك ادخل رقم الترخيص',
+            'license_number.max'=>'يجب ألا يزيد رقم الترخيص عن 50 حرف ',  
+            'license_number.unique'=>'رقم الترخيص موجود من قبل',
+            'officeHours.required'=>'من فضلك ادخل ساعات العمل',
+            'officeHours.max'=>'يجب ألا تزيد ساعات العمل عن 100 حرف',
+            'licenseScan.required'=>'لم يتم ادخار صورة الترخيص',
+            
+        );
+        $validator = Validator::make($request->all(), $userRules,$userMesssages);
        
         if ($validator->fails())
         {//\Response::json();
@@ -54,26 +80,28 @@ class UserController extends Controller
         $newUser->region=$request->region;
         $newUser->city=$request->city;
 
-        $newUser->save();
-
-        $userID=$newUser->id;
         if($request->firstName){
             $volunteerRules = [
                 'firstName'=>'required|max:50|',
                 'secondName'=>'required|max:50',
                 'gender'=>'required|in:male,female'
             ];
-        $validator = Validator::make(Input::all(), $volunteerRules);
-        if ($validator->fails())
+        $volunteerValidator = Validator::make(Input::all(), $volunteerRules, $volMesssages);
+        if ($validator->fails()&&$volunteerValidator)
         {//\Response::json();
-            return \Response::json(['volErrors' => $validator->getMessageBag()->toArray()], 400);
+            return \Response::json(['volErrors' => $validator->getMessageBag()->toArray(),
+            'userErrors' => $validator->getMessageBag()->toArray()], 200);
         }
+         $newUser->save();
+
+        $userID=$newUser->id;
         
         $newVolunteer= new Volunteer;
         $newVolunteer->first_name=$request->firstName;
         $newVolunteer->last_name=$request->secondName;
         $newVolunteer->gender=$request->gender;
-         
+        if($request->profilepic)
+        {$newVolunteer->profile_picture= $request->file('profilepic')->store('images/userProfilePictures');} 
         $newVolunteer->user_id=$userID;
         $newVolunteer->save();
         return response()->json("Done Volunteer Adding",200);    
@@ -84,14 +112,18 @@ class UserController extends Controller
                 'orgName'=>'required|max:50',
                 'fullAddress'=>'required',
                 'license_number'=>'required|max:50|unique:organizations',
-                'officeHours'=>'required|max:100'
+                'officeHours'=>'required|max:100',
+                'licenseScan'=>'required'
             ];
-            $validator = Validator::make(Input::all(), $orgRules);
+            $validator = Validator::make(Input::all(), $orgRules,$orgMesssages);
             if ($validator->fails())
-            {//\Response::json();
+            { 
                 return \Response::json(['orgErrors' => $validator
                     ->getMessageBag()->toArray()], 200);
             }
+              $newUser->save();
+
+        $userID=$newUser->id;
 
            $newOrg=new Organization;
            $newOrg->user_id=$userID;
@@ -102,14 +134,18 @@ class UserController extends Controller
            $newOrg->opening_hours=$request->officeHours;
 
           if($request->file('logo')){
-            $newOrg->logo=$request->file('logo')->store('images/logos');
+            $newOrg->logo=$request->file('logo')->store('images/orgnizationLogos');
           }
           if($request->file('licenseScan')){
-            $newOrg->license_scan=$request->file('licenseScan')->store('images/licenses');
+            $newOrg->license_scan=$request->file('licenseScan')->store('images/orgnizationLicenses');
           }
           $newOrg->save();
            return response()->json("Done Orgnization Adding",200);
         }
+
+
+
+
     }
 
     /**
