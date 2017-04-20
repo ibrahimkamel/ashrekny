@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Story;
-
+use App\User;
+use App\Volunteer;
 class StoryController extends Controller
 {
     /**
@@ -64,7 +65,7 @@ class StoryController extends Controller
      */
     public function get($id)
     {
-        $story= Story::find($id);
+        $story= Story::with('volunteer')->find($id);
         return response()->json($story,200);
     }
 
@@ -103,6 +104,30 @@ class StoryController extends Controller
     public function getMostRecent()
     {
         $stories = Story::orderBy('id', 'desc')->take(3)->get();
+        return response()->json($stories,200);
+    }
+
+    /**
+     * Get most recent stories.
+     *
+     * @return \Illuminate\Http\Response
+     * [Hosam] Function in SyoryController
+     */
+    public function getVolunteerStories($id)
+    {
+        
+        //$categories = Story::all();
+        $stories = Volunteer::find($id)->stories;
+
+        // $title = $request->get('title');
+        // $content = $request->get('content');
+        // $volunteer = $request->get('volunteer_id');
+
+        // $story = Story::find($id);
+        // $story->title = $title;
+        // $story->content = $content;
+        // $story->volunteer_id = $volunteer;
+
         return response()->json($stories,200);
     }
 }

@@ -539,6 +539,26 @@ $scope.setLicense=function(file)
                         });
  })
 
+  .controller('mystoriesCtrl',function($rootScope,$scope,modelFactory){
+    var id = $rootScope.currentUser.role_id;
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/story/getall/volunteer/'+id
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.volunteerstory = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        modelFactory.getData('get',
+            'http://localhost/GP/laravelproject/api/story/mostrecent'
+            ).then(function successCallback(data){
+                            $scope.mostrecent = data;
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+ })
+
+
   .controller('storydetailsCtrl',function($scope,modelFactory,$stateParams){
     var id = $stateParams.id;
         modelFactory.getData('get',
