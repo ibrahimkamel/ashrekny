@@ -43,11 +43,13 @@ angular.module('myApp')
                         console.log(err);
                     });
 })
-.controller('EventDetailsCtrl',function($scope,modelFactory,$stateParams){
+.controller('EventDetailsCtrl',function($scope,$rootScope,modelFactory,$stateParams){
         var id = $stateParams.id;
         //ajax to let volunteer participate in an event's task
         $scope.participate=function(task){//edit volunteer id
-            var data = {volunteer_id : 1 , task_id : task.id}
+            var volunteerid = $rootScope.currentUser.volunteer.id;
+            console.log(volunteerid);
+            var data = JSON.stringify({volunteer_id : volunteerid , task_id : task.id});
             console.log(data);
             modelFactory.getData('post',
             'http://localhost/GP/laravelproject/api/task/participate',data
@@ -60,7 +62,8 @@ angular.module('myApp')
         }; 
         //ajax to let volunteer cancel his participation in an event's task
         $scope.cancelparticipate=function(task){
-            var data = {volunteer_id : 1 , task_id : task.id}
+            var volunteerid = $rootScope.currentUser.volunteer.id;
+            var data = JSON.stringify({volunteer_id : volunteerid , task_id : task.id});
             console.log(data);
             modelFactory.getData('post',
             'http://localhost/GP/laravelproject/api/task/cancelparticipate',data
@@ -71,13 +74,15 @@ angular.module('myApp')
                     console.log(err);
                  });
         };
+
         //ajax to post review on an event
         $scope.postreview=function(review,eventID){
             var commentform = review.comment;
             var rateform = review.rate;
             var eventidform = eventID;
+            var volunteerid = $rootScope.currentUser.volunteer.id;
             console.log(commentform,eventidform,rateform);
-            var postdata = { id : eventidform, volunteer_id : 1 , comment : commentform,rate : rateform}
+            var postdata = { id : eventidform, volunteer_id : volunteerid , comment : commentform , rate : rateform}
             var data=JSON.stringify(postdata);
             console.log(postdata);
             modelFactory.getData('post',
@@ -85,10 +90,6 @@ angular.module('myApp')
             ).then(function successCallback(data){
                     console.log(data);
                     console.log("success");
-                },function errorCallback(err){
-                    console.log(err);
-                    console.log("error");
-                 });
             modelFactory.getData('get',
             'http://localhost/GP/laravelproject/api/event/'+id+'/getReviews'
             ).then(function successCallback(data){
@@ -99,6 +100,11 @@ angular.module('myApp')
                           },function errorCallback(err){
                             console.log(err);
                         });
+                },function errorCallback(err){
+                    console.log(err);
+                    console.log("error");
+                 });
+            
         }; 
         //ajax request to get event's details      
         modelFactory.getData('get',

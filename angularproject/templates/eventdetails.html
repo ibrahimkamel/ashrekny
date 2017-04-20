@@ -1,4 +1,8 @@
+
+<link  href="app/bower_components/angular-input-stars/angular-input-stars.css" rel="stylesheet"></link>
+
 <section id="imgBanner">
+
   <h2>slider</h2>
 </section> 
     <!--=========== BEGIN EVENT BANNER SECTION ================-->
@@ -81,9 +85,8 @@
                     <form class="well submitphoto_form" method = "POST" 
                     ng-submit="postreview(review,eventDetails.id)">  
 
-                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" placeholder="اكتب تقييم">
-
-                      <input  star-Rating class="wp-form-control wpcf7-text myRating" name="rate" ng-model="review.rate" placeholder="اكتب تقييم">
+                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment"  placeholder="اكتب تقييم">
+                      <input-stars max="5" ng-model="review.rate"></input-stars>                      
                       <input type="submit" value="ارسال" class="wpcf7-submit">
                     </form>
             </div>
@@ -109,9 +112,10 @@
                             <div class="media-body">
                               <h4 class="media-heading user_name">{{review.volunteer.first_name}}</h4>
                               <p>{{review.comment}}</p>
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
                             </div>
+                            <hr>
                         </div>
+
                     </div>
          </div> 
       </div>  
