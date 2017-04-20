@@ -63,7 +63,16 @@ class TaskController extends Controller
      */
     public function edit(Request $request)
     {
-        //
+        $tasks = $request->all();
+        for($i=0; $i<count($tasks); $i++){
+            $element = $tasks[$i];
+            $id = $element['id'];
+            $task = Task::find($id);
+            $task->name = $element['name'];
+            $task->required_volunteers = $element['required_volunteers'];
+            $task->save();
+        }
+        return response()->json('successfully edited', 200);
     }
 
     /**

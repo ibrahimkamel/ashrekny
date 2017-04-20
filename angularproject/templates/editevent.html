@@ -18,7 +18,7 @@
 <div class="col-md-2"></div>
   <label class="col-md-1 control-label">العنوان</label>
   <div class="col-md-7">
-  <input required ng-model="newEvent.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
+  <input required ng-model="event.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
  </div>
   </div>
 
@@ -29,7 +29,7 @@
   <label class="col-md-1 control-label">وصف الإيفنت</label>
     <div class="col-md-7">
 
-          <textarea required ng-model="newEvent.description" class="wp-form-control wpcf7-textarea" name="description" placeholder="الوصف"></textarea>
+          <textarea required ng-model="event.description" class="wp-form-control wpcf7-textarea" name="description" placeholder="الوصف"></textarea>
 
   </div>
 
@@ -41,7 +41,7 @@
   <label class="col-md-1 control-label">تاريخ البدء</label> 
     <div class="col-md-7">
     
-  <input required ng-model="newEvent.start_date" name="start_date" class="wp-form-control  wpcf7-text" id="startDate">
+  <input required ng-model="event.start_date" name="start_date" class="wp-form-control  wpcf7-text" id ="startDate">
    
   </div>
   
@@ -53,7 +53,7 @@
   <label class="col-md-1 control-label">تاريخ الانتهاء</label>  
     <div class="col-md-7">
    
-  <input ng-model="end_date" name="newEvent.end_date" class="wp-form-control  wpcf7-text" id="endDate">
+  <input ng-model="event.end_date" name="end_date" class="wp-form-control  wpcf7-text" id ="endDate">
   
   </div>
 </div>
@@ -71,7 +71,7 @@
       <option>Saudi</option>
     </select> -->
     <div class="col-md-7">
-    <input id="country" required ng-model="newEvent.country" name="country" class="wp-form-control wpcf7-text" >
+    <input id="country" required ng-model="event.country" name="country" class="wp-form-control wpcf7-text" >
       
 
     </div>
@@ -83,7 +83,7 @@
 <div class="col-md-2"></div>
   <label class="col-md-1 control-label">المحافظة</label>  
     <div class="col-md-7">
-  <input required ng-model="newEvent.city" name="city" placeholder="المحافظة" class="wp-form-control  wpcf7-text"  type="text">
+  <input required ng-model="event.city" name="city" placeholder="المحافظة" class="wp-form-control  wpcf7-text"  type="text">
   </div>
 </div>
 
@@ -93,7 +93,7 @@
 <div class="col-md-2"></div>
   <label class="col-md-1 control-label">المنطقة</label>  
   <div class="col-md-7">     
-  <input required ng-model="newEvent.region" name="region" placeholder="المنطقة" class="wp-form-control  wpcf7-text"  type="text">
+  <input required ng-model="event.region" name="region" placeholder="المنطقة" class="wp-form-control  wpcf7-text"  type="text">
   </div>
 </div>
 
@@ -103,7 +103,7 @@
 <div class="col-md-2"></div>
   <label class="col-md-1 control-label">العنوان</label>  
     <div class="col-md-7">
-  <input ng-model="newEvent.full_address" name="full_address" placeholder="العنوان" class="wp-form-control  wpcf7-text" type="text">
+  <input ng-model="event.full_address" name="full_address" placeholder="العنوان" class="wp-form-control  wpcf7-text" type="text">
   </div>
 </div>
 
@@ -124,16 +124,18 @@
 
     <div id="needs">
       <div class="col-md-7">
+    <div ng-repeat="task in eventTasks">
       
         <div class="col-md-9">
           
-              <input ng-model='newEvent.tasks[0].name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>
+              <input ng-model='task.name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>
         </div>
         
         <div class='col-md-3'>
-          <input ng-model='newEvent.tasks[0].required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='number' min='0'>
+          <input ng-model='task.required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='number' min="0">
         </div>
       
+      </div>
       </div>
     </div>
   <div class="col-md-2">
@@ -162,11 +164,12 @@
 
 <script src="app/bower_components/country-select-js/build/js/countrySelect.min.js"></script>
 <script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
+
 <script>
    $('#addEventForm').validate();
-    $('#country').countrySelect();
-    $('#startDate').datepicker({ dateFormat: 'yy-mm-dd' });
+   $('#startDate').datepicker({ dateFormat: 'yy-mm-dd' });
    $('#endDate').datepicker({ dateFormat: 'yy-mm-dd' });
+    $('#country').countrySelect();
 </script>
  
 <style>

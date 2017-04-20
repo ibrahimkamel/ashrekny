@@ -16,13 +16,13 @@
                 <hr>
                 <div class="col-lg-6 col-6 col-sm-6">
                   <div class="single_blog">                    
-                    <h4>نشر بواسطة: {{eventDetails.organization.name}}</h4>
+                    <h3>نشر بواسطة: {{eventDetails.organization.name}}</h3>
                     <p>{{eventDetails.description}}</p> 
                     <div class="blog_commentbox">
                       <h3>تصنيفات:</h3>
                       <div ng-repeat="category in eventDetails.categories">
                         {{category.name}}
-                      </div>
+                      </div><br>
                       <p><i class="fa fa-clock-o"></i><strong>الميعاد من:</strong>{{eventDetails.start_date}} - الى: {{eventDetails.end_date}}</p><br>
                       <p><i class="fa fa-map-marker"></i>
                           <strong>المكان:</strong>{{eventDetails.full_address}} <br>
@@ -101,12 +101,14 @@
                         <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
                            <p class="pull-left"><small>{{review.created_at | date : "dd/MM/y" }}</small>
                               <p star-Rating class="myRating text-center" ng-model='review.rate'></p>
+
                            </p>
                             <a class="media-left" href="#">
                               <img src="http://lorempixel.com/40/40/people/1/" alt="profile pic">
                             </a>
                             <div class="media-body">
                               <h4 class="media-heading user_name">{{review.volunteer.first_name}}</h4>
+                              <p>{{review.comment}}</p>
                               <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
                             </div>
                         </div>
