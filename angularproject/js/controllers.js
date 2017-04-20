@@ -308,6 +308,7 @@ angular.module('myApp')
 })
 .controller('orgProfileCtrl',function($scope,modelFactory,$stateParams){
         var id=$stateParams.id;
+        $scope.location=0;
         modelFactory.getData('get',
         'http://localhost/GP/laravelproject/api/organization/get/'+id
         ).then(function successCallback(data){
@@ -343,8 +344,11 @@ angular.module('myApp')
         modelFactory.getData('get',
         'http://localhost/GP/laravelproject/api/organization/'+id+'/getevents'
         ).then(function successCallback(data){
-                        $scope.events = data.events;
-                         // console.log($scope.events);
+                        $scope.fourevents = data.events;
+                        console.log($scope.fourevents);
+                        $scope.events=$scope.fourevents.slice($scope.location,$scope.location+=4);
+
+                        console.log($scope.events);
                       },function errorCallback(err){
                         console.log(err);
                     });
@@ -364,6 +368,22 @@ angular.module('myApp')
                       },function errorCallback(err){
                         console.log(err);
                     });
+        $scope.next=function()
+        {
+            // $scope.location+=4;
+            $scope.events=$scope.fourevents.slice($scope.location,$scope.location+=4);
+            // console.log($scope.organizations);
+            // var newneed = (angular.element($('body')));
+            // $compile(newneed)($scope);
+        };
+        $scope.previous=function()
+        {
+            $scope.location-=8;
+            $scope.events=$scope.fourevents.slice($scope.location,$scope.location+=4);
+            // console.log($scope.organizations);
+            // var newneed = (angular.element($('body')));
+            // $compile(newneed)($scope);
+        };
 })
 .controller('addStoryCtrl',function($rootScope,$scope,modelFactory,$state){
     $scope.add = function(valid){
@@ -557,16 +577,36 @@ $scope.setLicense=function(file)
                         });
  })
 
-.controller('OrganizationsCtrl',function($scope,modelFactory){
+.controller('OrganizationsCtrl',function($scope,modelFactory,$compile){
         $scope.descriptionLimit=100;
+        $scope.location=0;
         modelFactory.getData('get',
         'http://localhost/GP/laravelproject/api/organization/getall'
         ).then(function successCallback(data){
-                        console.log(data);
-                        $scope.organizations = data.organization;
+                        $scope.fourorganizations = data.organization;
+                        console.log($scope.fourorganizations);
+                        $scope.organizations=$scope.fourorganizations.slice($scope.location,$scope.location+=4);
+                        // console.log($scope.organizations);
                       },function errorCallback(err){
                         console.log(err);
                     });
+
+        $scope.next=function()
+        {
+            // $scope.location+=4;
+            $scope.organizations=$scope.fourorganizations.slice($scope.location,$scope.location+=4);
+            // console.log($scope.organizations);
+            // var newneed = (angular.element($('body')));
+            // $compile(newneed)($scope);
+        };
+        $scope.previous=function()
+        {
+            $scope.location-=8;
+            $scope.organizations=$scope.fourorganizations.slice($scope.location,$scope.location+=4);
+            // console.log($scope.organizations);
+            // var newneed = (angular.element($('body')));
+            // $compile(newneed)($scope);
+        };
         
         
 })
