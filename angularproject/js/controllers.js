@@ -183,12 +183,12 @@ angular.module('myApp')
     $scope.add=function(valid){    
     if(valid){
       //Formating Date input like YYYY-MM-DD
-        $scope.newEvent.start_date=dateFormate($scope.start_date);
+    //     $scope.newEvent.start_date=dateFormate($scope.start_date);
         
-        if($scope.end_date){
-          $scope.newEvent.end_date=dateFormate($scope.end_date);
-        }
-    $scope.newEvent.organization_id=3;
+    //     if($scope.end_date){
+    //       $scope.newEvent.end_date=dateFormate($scope.end_date);
+    //     }
+    // $scope.newEvent.organization_id=3;
     console.log($scope.newEvent);
     if($scope.uploadedFile){
       $scope.newEvent.logo = $scope.uploadedFile;
@@ -209,7 +209,7 @@ angular.module('myApp')
     }
     form.append('logo', $scope.newEvent.logo);
     form.append('organization_id', $rootScope.currentUser.role_id);
-    console.log( $scope.newEvent.tasks);
+    // console.log( $scope.newEvent.tasks);
     var tasks = $scope.newEvent.tasks;
 
     var method = 'post',

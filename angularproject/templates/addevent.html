@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="app/bower_components/country-select-js/build/css/countrySelect.css">
-
+<link rel="stylesheet" href="app/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
  <!--=========== BEGIN CONTACT SECTION ================
     <section id="contact">
       <div class="container">
@@ -41,7 +41,7 @@
   <label class="col-md-1 control-label">تاريخ البدء</label> 
     <div class="col-md-7">
     
-  <input required ng-model="start_date" name="start_date" class="wp-form-control  wpcf7-text" type="date">
+  <input required ng-model="newEvent.start_date" name="start_date" class="wp-form-control  wpcf7-text" id="startDate">
    
   </div>
   
@@ -53,7 +53,7 @@
   <label class="col-md-1 control-label">تاريخ الانتهاء</label>  
     <div class="col-md-7">
    
-  <input ng-model="end_date" name="end_date" class="wp-form-control  wpcf7-text" type="date">
+  <input ng-model="end_date" name="newEvent.end_date" class="wp-form-control  wpcf7-text" id="endDate">
   
   </div>
 </div>
@@ -161,10 +161,12 @@
 <script src="js/add-event.js"></script>
 
 <script src="app/bower_components/country-select-js/build/js/countrySelect.min.js"></script>
-
+<script src="app/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script>
    $('#addEventForm').validate();
     $('#country').countrySelect();
+    $('#startDate').datepicker({ dateFormat: 'yy-mm-dd' });
+   $('#endDate').datepicker({ dateFormat: 'yy-mm-dd' });
 </script>
  
 <style>
