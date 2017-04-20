@@ -555,4 +555,101 @@ $scope.setLicense=function(file)
                           },function errorCallback(err){
                             console.log(err);
                         });
- })
+ }).controller('editVolunteerProfile', function($scope, modelFactory,$state,$rootScope) {
+
+
+     var id = $rootScope.currentUser.id;
+    //To DO get volunteer id dynamic
+   // var id=34 ;
+      console.log(id);
+    // get volunteer data
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/'+id+'/getdetails'
+    ).then(function successCallback(data){
+        console.log(data);
+        $scope.volunteer = data.volunteer;
+        console.log($scope.volunteer);
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;
+    });
+    //get user data
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/get/'+id
+    ).then(function successCallback(data){
+        
+        $scope.user = data.user;
+        console.log($scope.user);
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;
+    });
+
+$scope.updateUser = function(isvaild) {
+    console.log("hello");
+    
+  if (isvaild) {
+
+
+ var    processData = false,
+        transformRequest = angular.identity,
+        headers = {'Content-Type': undefined},
+    
+  formdata= new FormData();
+    
+    formdata.append("firstName",$scope.volunteer.first_name);
+     formdata.append("secondName",$scope.volunteer.last_name);
+      formdata.append("gender",$scope.volunteer.gender);
+       formdata.append("email",$scope.user.email);
+       formdata.append("password",$scope.user.password);
+     formdata.append("region",$scope.user.region);
+     formdata.append("city",$scope.user.city);
+      formdata.append("phone",$scope.volunteer.phone);
+      formdata.append("work",$scope.volunteer.work);
+      if($scope.profilePic)
+     {   formdata.append("profilepic",$scope.profilePic);}
+        for (var pair of formdata.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]); 
+}
+   
+
+   modelFactory.getData('post',
+    'http://localhost/GP/laravelproject/api/user/update',formdata,processData, transformRequest, headers
+   ).then(function(data) {
+     
+    $state.go('volunteerprofile');
+ 
+    },
+    function(err) {
+
+ if (err.volErrors) {
+      $scope.volerror = err.volErrors;
+      
+
+     }
+     if (err.userErrors) {
+      $scope.userAsVolErros = err.userErrors;
+      console.log($scope.userAsVolErros);
+     
+     }
+
+
+
+    }); }};
+
+ 
+
+
+$scope.setProfilePic=function(file)
+{ console.log(file[0]);
+  $scope.profilePic=file[0];
+  console.log( $scope.profilePic);
+
+}
+
+ 
+}
+)
+
+
+
+
+

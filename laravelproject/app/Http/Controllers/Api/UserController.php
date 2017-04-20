@@ -146,7 +146,7 @@ class UserController extends Controller
 
 
 
-    }
+    }//end 
 
     /**
      * get user profile.
@@ -188,17 +188,27 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
-    {
-        $user = Auth::user();
+    {  
+  
+        
+        
+        $id = Auth::user()->id;
+         
 
         $userRules = [
-            'email'=>'required|max:50|unique:users',
+           'email' => 'unique:users,email,'.$id,    
             'password'=>'required|max:50',
             'region'=>'required|max:50',
-            'city'=>'required|max:50|min:10'
+            'city'=>'required|max:50'
         ];
+        $volunteerRules = [
+                'firstName'=>'required|max:50|',
+                'secondName'=>'required|max:50',
+                'gender'=>'required|in:male,female',
+                'phone'=>'unique:users,phone,'.$id,  
+            ];
 
-        $messsages = array(
+        $userMesssages = array(
             'email.required'=> 'من فضلك ادخل البريد الالكتروني',
             'email.unique'=>'البريد الالكتروني موجود من قبل',
             'email.max'=>'يجب ألا يزيد البريد الالكتروني عن 50 حرف',
@@ -207,76 +217,54 @@ class UserController extends Controller
             'region.required'=>'من فضل ادخل اسم المنطقة',
             'city.required'=>'من فضلك ادخل اسم المدينة',
             'region.max'=>'يجب ألا يزيد اسم المنطقة عن 50 حرف',
-            'city.max'=>'يجب ألا يزيد اسم المدينة عن 50 حرف'
+            'city.max'=>'يجب ألا يزيد اسم المدينة عن 50 حرف',
+            'phone.unique'=>' رقم الموبيل موجود من قبل',
         );
-        $validator = Validator::make($request->all(), $userRules,$messsages);
+           
+           $volMesssages = array(
+            'firstName.required'=> 'من فضلك ادخل الاسم الأول',
+            'firstName.max'=>'يجب ألا يزيد الاسم الأول عن 50 حرف',
+             'secondName.required'=> 'من فضلك ادخل الاسم الثاني',
+            'secondName.max'=>'يجب ألا يزيد الاسم الثاني عن 50 حرف',
+            'gender.required'=>'من فضلك ادخل النوع',
+            'gender.in'=>'النوع يجب أن يكون ذكر أو انثي',  
+             
+        ); 
+          
+        $validator = Validator::make($request->all(), $userRules,$userMesssages);
        
         if ($validator->fails())
-        {//\Response::json();
-          return \Response::json(['userErrors' => $validator->getMessageBag()->toArray()], 200);
+        { 
+          return \Response::json(['userErrors' => $validator
+            ->getMessageBag()->toArray()], 500);
         } 
-        $user->email= $request->email;
-        $user->password=$request->password;
-        $user->region=$request->region;
-        $user->city=$request->city;
-
-        $user->save();
-
-        $userID=$user->id;
-        if($request->firstName){
-            $volunteerRules = [
-                'firstName'=>'required|max:50|',
-                'secondName'=>'required|max:50',
-                'gender'=>'required|in:male,female'
-            ];
-        $validator = Validator::make(Input::all(), $volunteerRules);
-        if ($validator->fails())
-        {//\Response::json();
-            return \Response::json(['volErrors' => $validator
-                ->getMessageBag()->toArray()], 400);
+        $targetUser = Auth::user();
+        $targetUser->email= $request->email;
+        $targetUser->password=bcrypt($request->password);
+        $targetUser->region=$request->region;
+        $targetUser->city=$request->city;
+        $volunteerValidator = Validator::make(Input::all(), $volunteerRules, $volMesssages);
+        if ($validator->fails()&&$volunteerValidator)
+        { 
+            return \Response::json(['volErrors' => $validator->getMessageBag()->toArray(),
+            'userErrors' => $validator->getMessageBag()->toArray()], 500);
         }
-        $volunteer= $user->volunteer;
-        $volunteer->first_name=$request->firstName;
-        $volunteer->last_name=$request->secondName;
-        $volunteer->gender=$request->gender;
-         
-        $volunteer->user_id=$userID;
-        $volunteer->save();
-        return response()->json("Done Volunteer Adding",200);    
+         $targetUser->save();
+
+       $targetVolunter=$targetUser->volunteer;
+        $targetVolunter->first_name=
+        $request->firstName;
+        $targetVolunter->last_name=$request->secondName;
+        $targetVolunter->gender=$request->gender;
+        $targetVolunter->phone=$request->phone;
+        $targetVolunter->work=$request->work;
+        if($request->profilepic)
+        {$targetVolunter->profile_picture= $request->file('profilepic')->store('images/userProfilePictures');} 
+        
+        $targetVolunter->save();
+        return response()->json("Done Volunteer Editting",200);    
      
-        } else if ($request->orgName){
-
-            $orgRules = [
-                'orgName'=>'required|max:50',
-                'fullAddress'=>'required',
-                'license_number'=>'required|max:50|unique:organizations',
-                'officeHours'=>'required|max:100'
-            ];
-            $validator = Validator::make(Input::all(), $orgRules);
-            if ($validator->fails())
-            {//\Response::json();
-                return \Response::json(['orgErrors' => $validator
-                    ->getMessageBag()->toArray()], 200);
-            }
-
-           $org=$user->organization;
-           $org->user_id=$userID;
-           $org->name=$request->orgName;
-           $org->description=$request->desc;
-           $org->full_address=$request->fullAddress;
-           $org->license_number=$request->license_number;
-           $org->openning_hours=$request->officeHours;
-
-          if($request->file('logo')){
-            $org->logo=$request->file('logo')->store('images/logos');
-          }
-          if($request->file('licenseScan')){
-            $org->license_scan=$request->file('licenseScan')->store('images/licenses');
-          }
-          $org->save();
-           return response()->json("Done Orgnization Adding",200);
         }
 
     }
 
-}

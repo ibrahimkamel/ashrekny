@@ -113,5 +113,17 @@ angular.module('myApp')
         }
      
      }
+  ).state('editVolunteerProfile', {
+      url: '/editMyProfile',
+      templateUrl: "templates/editVolProfile.html",
+      controller: 'editVolunteerProfile',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
+     
+     }
   )
 });
