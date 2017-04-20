@@ -17,3 +17,9 @@ function dateFormate(myDate){
     var formated_date = year + '-' + (month<10?'0':'') + month + '-' + day;   
   return formated_date;
 }
+
+$.validator.addMethod("dateFormat",
+    function(value, element) {
+        return value.match(/^dddd?-dd?-dd$/);
+    },
+    "من فضلك أدخل التاريخ على هيئة YYYY-MM-DD");
