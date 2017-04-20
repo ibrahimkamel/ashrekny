@@ -38,3 +38,33 @@ display:inline-block;
 .validation{
   color:#ff0000;
 }
+
+.topEvents,.topStories{
+	background-color: #F6F6F6;
+	display: inline;
+  	float: left;
+  	padding: 60px;
+  	width: 100%;
+}
+.topOrganizations{
+	display: inline;
+  	float: left;
+  	padding: 60px;
+  	width: 100%;
+}
+
+hr.style12 {
+	height: 6px;
+	background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+    border: 0;
+}
+
+.singCourse_imgarea{
+	float: left;
+  	overflow: hidden;
+  	position: relative;
+  	text-align: center;
+}
+.topThree{
+	width: 100% !important;
+}

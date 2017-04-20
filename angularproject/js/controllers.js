@@ -257,8 +257,8 @@ angular.module('myApp')
      $scope.uploadedFile = file[0];
   }
 })
-.controller('VolunteerProfileCtrl',function($scope,$rootScope,modelFactory){
-    var id = 1;
+.controller('VolunteerProfileCtrl',function($scope,$rootScope,modelFactory,$stateParams){
+    var id = $stateParams.id;
     // get volunteer data
     modelFactory.getData('get','http://localhost/GP/laravelproject/api/volunteer/get/'+id
     ).then(function successCallback(data){
@@ -289,7 +289,7 @@ angular.module('myApp')
     // get volunteer events
     modelFactory.getData('get','http://localhost/GP/laravelproject/api/volunteer/'+id+'/getevents')
     .then(function successCallback(data){
-        //console.log(data);
+        console.log(data);
         $scope.events = data.events;
     },function errorCallback(err){
         console.log(err);
@@ -556,3 +556,44 @@ $scope.setLicense=function(file)
                             console.log(err);
                         });
  })
+  .controller('HomeController',function($scope,$rootScope,modelFactory){
+    //console.log("kimo");
+    // ajax to get all events 
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/event/getAll')
+    .then(function successCallback(data){
+        //console.log(data);
+        $scope.allevents = data;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;    
+    });
+    // ajax to get top 3 events
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/event/gettop')
+    .then(function successCallback(data){
+        // console.log(data);
+        $scope.topEvents = data;
+        // console.log($scope.events);
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;    
+    });
+    // ajax to get the top 3 organization
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/organization/gettop')
+    .then(function successCallback(data){
+        // console.log(data);
+        $scope.topOrgs = data.organization;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;    
+    });
+    // ajax to get most recent 3 stories
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/story/mostrecent')
+    .then(function successCallback(data){
+        //console.log(data);
+        $scope.mostRecentStories = data;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;    
+    });
+
+})
