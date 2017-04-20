@@ -127,4 +127,11 @@ angular.module('myApp')
         }
     }
   )
+.state('contactus', {
+      url: '/contactus',
+      templateUrl: "templates/contactus.html"
+      }
+    )
 });
+
+
