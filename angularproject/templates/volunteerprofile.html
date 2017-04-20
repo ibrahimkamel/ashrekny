@@ -81,7 +81,7 @@
                       <div ng-repeat="story in stories" class="media">
                         <div class="media-left">
                           <a class="news_img" href="./{{story.id}}/storydetails">
-                            <img class="media-object" src="img/news.jpg" alt="img">
+                            <!-- <img class="media-object" src="../laravelproject/{{event.logo}}" alt="img"> -->
                           </a>
                         </div>
                         <div class="media-body">
@@ -101,12 +101,12 @@
                         <div ng-repeat="event in events" class="media">
                           <div class="media-left">
                             <a class="news_img" href="#">
-                              <img class="media-object" src="img/news.jpg" alt="img">
+                              <img class="media-object" src="../laravelproject/{{event.logo}}" alt="img">
                             </a>
                           </div>
                           <div class="media-body">
                              <h3>
-                              <a href="#">{{event.title}}</a>
+                              <a href="./{{event.id}}/eventdetails">{{event.title}}</a>
                              </h3>
                              <span>{{event.description}}</span>
                              <hr>

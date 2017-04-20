@@ -4,6 +4,8 @@ jQuery.extend(jQuery.validator.messages, {
     maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
     minlength: jQuery.validator.format("أدخل عنوان مكون من 5 حروف على الأقل"),
     rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
+    min: jQuery.validator.format("أدخل رقم صحيح"),
+    number: jQuery.validator.format("أدخل رقم صحيح")
 });
 
 function dateFormate(myDate){
@@ -15,3 +17,9 @@ function dateFormate(myDate){
     var formated_date = year + '-' + (month<10?'0':'') + month + '-' + day;   
   return formated_date;
 }
+
+$.validator.addMethod("dateFormat",
+    function(value, element) {
+        return value.match(/^dddd?-dd?-dd$/);
+    },
+    "من فضلك أدخل التاريخ على هيئة YYYY-MM-DD");
