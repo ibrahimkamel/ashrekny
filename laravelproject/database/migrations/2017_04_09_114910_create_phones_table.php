@@ -16,7 +16,7 @@ class CreatePhonesTable extends Migration
         Schema::create('phones', function(Blueprint $table){
             $table->increments('id');
             $table->integer('organization_id')->unsigned();
-            $table->string('phone_number', 20);
+            $table->string('phone_number', 50);
             $table->foreign('organization_id')->references('id')
             ->on('organizations')->onDelete('cascade')->onUpdate('cascade');
             $table->unique(array('organization_id','phone_number'));

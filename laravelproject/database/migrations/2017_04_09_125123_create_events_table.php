@@ -19,9 +19,9 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date')->nullable();
-            $table->string('country', 50);
-            $table->string('city', 50);
-            $table->string('region', 50);
+            $table->string('country', 100);
+            $table->string('city', 100);
+            $table->string('region', 100);
             $table->string('full_address', 200)->nullable();
             $table->integer('avg_rate', false)->nullable();
             $table->integer('organization_id')->unsigned();
