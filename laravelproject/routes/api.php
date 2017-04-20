@@ -51,6 +51,7 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::post('/{id}/update','Api\EventController@update');
 			Route::post('/{id}/delete','Api\EventController@delete');
 			Route::post('/edittasks','Api\EventController@editTasks');
+			Route::get('/get/user/{id}','Api\EventController@getMyEvents');
 			
 		});
 		Route::group(['prefix' => 'eventalbum'], function(){
