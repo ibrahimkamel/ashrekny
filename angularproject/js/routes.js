@@ -132,6 +132,11 @@ angular.module('myApp')
       templateUrl: "templates/contactus.html"
       }
     )
+.state('aboutus', {
+      url: '/aboutus',
+      templateUrl: "templates/aboutus.html"
+      }
+    )
 });
 
 
