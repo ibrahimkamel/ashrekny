@@ -14,7 +14,7 @@ class CreateOrganizationsTable extends Migration
         Schema::create('organizations', function(Blueprint $table){
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('name', 50);
+            $table->string('name', 100);
             $table->text('logo')->nullable();
             $table->text('description')->nullable();
             $table->string('full_address', 200);

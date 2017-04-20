@@ -15,7 +15,7 @@ class CreateStory extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
+            $table->string('title',100);
             $table->text('content');
             $table->integer('volunteer_id')->unsigned();
             $table->foreign('volunteer_id')->references('id')

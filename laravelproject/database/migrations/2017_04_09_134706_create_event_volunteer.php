@@ -23,7 +23,6 @@ class CreateEventVolunteer extends Migration
             ->on('volunteers')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('rate', false)->default(0);
             $table->string('comment', 200)->nullable();
-            $table->unique(array('event_id','volunteer_id'));
             $table->timestamps();
         });
     }

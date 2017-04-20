@@ -17,22 +17,10 @@ $stateProvider
       }
   }
 )
-.state('profile', {
-    url: '/profile',
-    templateUrl: "templates/profile.html",
-    controller: 'ProfileCtrl',
-    data: {
-        permissions: {
-          except: ['anonymous'],
-          redirectTo: 'auth'
-        }
-      }
-  }
-)
 .state('home', {
     url: '/home',
     templateUrl: "templates/home.html",
-    controller: 'HomeCtrl'
+    controller: 'HomeController'
   }
 )
 .state('events', {
@@ -63,6 +51,7 @@ $stateProvider
     url: '/volunteerprofile/:id',
     templateUrl: "templates/volunteerprofile.html",
     controller: 'VolunteerProfileCtrl'
+
   }
 )
 .state('stories', {
@@ -75,18 +64,6 @@ $stateProvider
     url: '/:id/storydetails',
     templateUrl: "templates/storydetails.html",
     controller: 'storydetailsCtrl'
-  }
-)
-.state('mystories', {
-    url: '/mystories',
-    templateUrl: "templates/mystories.html",
-    controller: 'mystoriesCtrl',
-    data: {
-        permissions: {
-          only: ['volunteer'],
-          redirectTo: 'home'
-        }
-      }
   }
 )
 .state('select', {
@@ -125,4 +102,64 @@ $stateProvider
    
    }
 )
+.state('editVolunteerProfile', {
+      url: '/editMyProfile',
+      templateUrl: "templates/editVolProfile.html",
+      controller: 'editVolunteerProfile',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
+     
+     }
+)
+.state('editevent', {
+      url: '/:id/eventdetails/edit',
+      templateUrl: "templates/editevent.html",
+      controller: 'editEventCtrl'
+     }
+)
+.state('myEvents', {
+      url: '/myevents/:id',
+      templateUrl: "templates/myevents.html",
+      controller: 'myEventsCtrl',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'events'
+          }
+        }
+    }
+)
+.state('organizations', {
+        url: '/organizations',
+        templateUrl: "templates/organizations.html",
+        controller: 'OrganizationsCtrl'
+      }
+)
+.state('contactus', {
+      url: '/contactus',
+      templateUrl: "templates/contactus.html"
+      }
+)
+.state('aboutus', {
+      url: '/aboutus',
+      templateUrl: "templates/aboutus.html"
+      }
+)
+.state('mystories', {
+    url: '/mystories',
+    templateUrl: "templates/mystories.html",
+    controller: 'mystoriesCtrl',
+    data: {
+        permissions: {
+          only: ['volunteer'],
+          redirectTo: 'home'
+        }
+      }
+  }
+)
+
 });

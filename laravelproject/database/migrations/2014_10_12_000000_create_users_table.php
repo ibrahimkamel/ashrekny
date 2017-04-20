@@ -17,9 +17,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('email', 50)->unique();
             $table->string('password');
-            $table->string('country', 50)->default("Egypt");
-            $table->string('region', 50);
-            $table->string('city', 50);
+            $table->string('country', 100)->default("Egypt");
+            $table->string('region', 100);
+            $table->string('city', 100);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Event;
 use App\Task;
 use App\Review;
-
+use App\User;
+use App\Volunteer;
+use App\Organization;
 class EventController extends Controller
 {
     /**
@@ -208,7 +210,7 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
             'title'       => 'required|max:100',
@@ -233,7 +235,7 @@ class EventController extends Controller
         $tasks            = $request->get('tasks');
         $logo             = $request->file('logo');
 
-        $event               = new Event;
+        $event               = Event::find($id);
         $event->title        = $title;
         $event->description = $description;
         $event->start_date  = $start_date;
@@ -294,5 +296,31 @@ class EventController extends Controller
         }
         return response()->json($reviewsvolunteers,200);
 
+    }
+        /**
+     * get my events
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getMyEvents($userid)
+    {
+        $user=User::find($userid);
+        $volunteer=$user->volunteer;
+        if($volunteer)
+        {
+            $role_id = $volunteer->id;
+            $myevents=[];
+            $tasks=Volunteer::find($role_id)->tasks;
+            foreach ($tasks as $task)
+            {   
+                $myevents[$task->id] = Event::with('tasks')->find($task->event_id);
+            }
+        }
+        else
+        {
+            $role_id = $user->organization->id;
+            $myevents=Organization::find($role_id)->events;
+        }
+        return response()->json(compact('myevents'),200);
     }
 }

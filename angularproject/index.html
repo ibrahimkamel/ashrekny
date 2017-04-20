@@ -89,8 +89,11 @@
               <li><a href="organizations">الجمعيات</a></li>
               <li><a href="events">إيفينتات</a></li>
               <li><a href="stories">القصص</a></li>
-              <li ng-show="currentUser != null">
-                <a href="profile">صفحتي</a>
+              <li ng-show="currentUser.isVolunteer ==false">
+                <a href="./orgprofile/{{currentUser.id}}">صفحتي</a>
+              </li>
+              <li ng-show="currentUser.isVolunteer ==true">
+                <a href="./volunteerprofile/{{currentUser.id}}">صفحتي</a>
               </li>
               <li><a href="aboutus">من نحن</a></li>                
               <li><a href="contactus">أتص بنا</a></li>

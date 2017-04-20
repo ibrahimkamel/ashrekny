@@ -21,7 +21,7 @@ class CreateVolunteersTable extends Migration
             $table->string('work', 50)->nullable();
             $table->text('profile_picture')->nullable();
             $table->enum('gender', ['male', 'female'])->default('male');
-            $table->string('phone', 20)->nullable()->unique();
+            $table->string('phone', 50)->nullable()->unique();
             $table->foreign('user_id')->references('id')
             ->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
