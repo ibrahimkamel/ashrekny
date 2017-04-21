@@ -155,7 +155,7 @@ img{
   color: #fff;
 }
 .navbar-default {
-  background-color: #313b3d;
+  background-color: #438189;
   border-color: transparent;
 }
 #navbar{overflow-x: hidden;}
@@ -916,7 +916,7 @@ div[data-dimension] {
   float: left;
   display: inline;
   width: 100%;
-  background-color: #1e2223;
+  background-color: #438189;
   padding: 60px 0px;
 }
 .single_footer_widget {
@@ -937,7 +937,6 @@ div[data-dimension] {
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 3px;
-  display: block;
 }
 .footer_social li a {
   color: #fff;

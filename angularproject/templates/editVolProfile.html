@@ -86,28 +86,20 @@ id="exampleInputCity" placeholder="المدينة" name="city" ng-model="user.ci
  
    
     <legend>النوع</legend>
-    <div class="form-check">
-      <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="gender" 
-        id="optionsRadios1" value="male" checked ng-model="volunteer.gender" required>
-       ذكر
-      </label>
-    </div>
+    <div class="form-group">
+      <label class="form-check-label">ذكر</label>
+      <input type="radio" class="form-check-input" name="gender" id="optionsRadios1" value="male" checked ng-model="volunteer.gender" required>
     
-    <div class="form-check">
-    <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="gender" 
-        id="optionsRadios2" value="female"  ng-model="volunteer.gender" required>
-        انثي
-      </label>
-    <p class="validation" ng-if="addUserForm.gender.$error.required&&submited">من فضلك ادخل النوع</p>
+      <label class="form-check-label">انثي</label>
+      <input type="radio" class="form-check-input" name="gender" id="optionsRadios2" value="female"  ng-model="volunteer.gender" required>
+      <p class="validation" ng-if="addUserForm.gender.$error.required&&submited">من فضلك ادخل النوع</p>
+    </div>
     <div ng-repeat="err in volerror.gender">
-  <span class="validation">{{err}}</span>
- </div>
- <div>
-  <label >الصورة الشخصية</label>
- 
- <input type="file" name="profilePic" onchange="angular.element(this).scope().setProfilePic(this.files)">
-</div>
-  <button class="wpcf7-submit">اشترك</button>
+      <span class="validation">{{err}}</span>
+    </div>
+    <div>
+      <label >الصورة الشخصية</label>
+      <input type="file" name="profilePic" onchange="angular.element(this).scope().setProfilePic(this.files)">
+    </div>
+    <button class="wpcf7-submit">اشترك</button>
 </form>
