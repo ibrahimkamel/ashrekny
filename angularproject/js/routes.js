@@ -161,5 +161,10 @@ $stateProvider
       }
   }
 )
-
+.state('editstory', {
+      url: '/:id/story/edit',
+      templateUrl: "templates/editstory.html",
+      controller: 'editStoryCtrl'
+     }
+)
 });

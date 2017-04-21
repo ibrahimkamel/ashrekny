@@ -84,12 +84,10 @@ class StoryController extends Controller
 
         $title = $request->get('title');
         $content = $request->get('content');
-        $volunteer = $request->get('volunteer_id');
 
         $story = Story::find($id);
         $story->title = $title;
         $story->content = $content;
-        $story->volunteer_id = $volunteer;
 
         $story->save();
 

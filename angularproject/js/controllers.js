@@ -836,3 +836,31 @@ angular.module('myApp')
         $scope.dataerr = err;    
     });
 })
+.controller('editStoryCtrl',function($scope,modelFactory,$state,$stateParams){
+    
+    var id = $stateParams.id;
+    //ajax request to get story datails 
+    modelFactory.getData('get',
+       'http://localhost/GP/laravelproject/api/story/get/'+id
+        ).then(function successCallback(data){
+            $scope.story = data;
+            console.log($scope.story)
+        },function errorCallback(err){
+            console.log(err);
+        });
+    
+    //function that send ajax with the new values
+    $scope.edit=function(valid){    
+    if(valid){
+    var data = JSON.stringify($scope.story);
+    modelFactory.getData('post',
+    'http://localhost/GP/laravelproject/api/story/'+id+'/update',
+    data
+    ).then(function successCallback(data){
+        $state.go('stories');
+    },function errorCallback(err){
+        console.log(err);
+    }); 
+    }
+  }
+})

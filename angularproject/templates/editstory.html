@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="css/droid-sans.css" />
-<form name="storyForm" novalidate ng-submit="add(storyForm.$valid)" class="well storyForms"  method="POST"  id="addStoryForm">
+<form name="storyForm" novalidate ng-submit="edit(storyForm.$valid)" class="well storyForms"  method="POST"  id="editStoryForm">
 <fieldset>
 <!-- Form Name -->
-<legend>إحكِ قصة</legend>
+<legend>عدل القصة</legend>
 
 <!-- Text input-->
 
@@ -10,7 +10,7 @@
 <div class="col-md-1"></div>
   <label class="col-md-2 control-label">عنوان القصة</label>
   <div class="col-md-7">
-  <input required ng-model="newStory.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
+  <input required ng-model="story.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
  </div>
   </div>
 
@@ -21,7 +21,7 @@
   <label class="col-md-2 control-label">المحتوى</label>
     <div class="col-md-7">
 
-          <textarea required ng-model="newStory.content" class="wp-form-control wpcf7-textarea" name="content" placeholder="الوصف"></textarea>
+          <textarea required ng-model="story.content" class="wp-form-control wpcf7-textarea" name="content" placeholder="الوصف"></textarea>
 
   </div>
 
@@ -45,14 +45,14 @@
 <script src="app/bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="js/add-event.js"></script>
 <script>
-   $('#addStoryForm').validate();
+   $('#editStoryForm').validate();
 </script>
  
 <style>
   .error{
     color: red;
   }
-  #addStoryForm{
+  #editStoryForm{
     font-family: 'droid-sans';
     font-size: 16px;
   }
