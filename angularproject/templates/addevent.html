@@ -142,6 +142,7 @@
     <span class="glyphicon glyphicon-plus"></span></button>
   </div>
 </div>
+
 <!-- Text input-->
       
 <div class="form-group col-md-12">
@@ -150,22 +151,26 @@
 
     <div class="col-md-7">
     
-      <label class="col-md-2 checkbox-inline"><input type="checkbox" value="">تعليم</label>
-      <label class="col-md-2 checkbox-inline"><input type="checkbox" value="">صحة</label>
-      <label class="col-md-2 checkbox-inline"><input type="checkbox" value="">مرأة</label>
-      <label class="col-md-2 checkbox-inline"><input type="checkbox" value="">طفولة</label>
-      <label class="col-md-2 checkbox-inline"><input type="checkbox" value="">بيئة</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="تعليم">تعليم</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="صحة">صحة</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="مرأة">مرأة</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="طفولة">طفولة</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="بيئة">بيئة</label>
     
-    <!-- div class="col-md-5 input-group">
-      <label class="col-md-2 control-label">أخرى</label>
-      <div class="col-md-3">
-        <input class='wp-form-control wpcf7-text' type="text" placeholder="أخرى">
-      </div>
-      
-    </div> -->
   </div>
 
 </div>
+
+
+<!-- Text input-->     
+<div class="form-group col-md-12">
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">مجالات أخرى</label>  
+    <div class="col-md-7">
+  <input ng-model="othercategory" name="category" placeholder="أخرى" class="wp-form-control  wpcf7-text" type="text">
+  </div>
+</div>
+
 
 <!-- Button -->
 <div class="form-group col-md-12">

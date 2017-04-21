@@ -147,26 +147,18 @@ angular.module('myApp')
 })
 .controller('addEventCtrl',function($rootScope,$scope,modelFactory,$compile,$state){
 
-    // modelFactory.getData('get', 'http://localhost/GP/laravelproject/api/user/'+$rootScope.currentUser.id+'/getdetails').then(
-    //   function(data){
-    //     console.log(data.organization.id);
-    //     $scope.organization_id = data.organization.id;
-    //     console.log("success");
-    // },
-    //   function(err){
-    //     console.log("fail");
-    //     console.log(err);
-    // });
     
     $scope.add=function(valid){    
     if(valid){
-      //Formating Date input like YYYY-MM-DD
-    //     $scope.newEvent.start_date=dateFormate($scope.start_date);
-        
-    //     if($scope.end_date){
-    //       $scope.newEvent.end_date=dateFormate($scope.end_date);
-    //     }
-    // $scope.newEvent.organization_id=3;
+    var categories = [];
+    $('.categories:checked').each(function(i){
+         categories[i] = $(this).val();
+     });
+    if($scope.othercategory){
+        categories.push($scope.othercategory);
+    }
+    console.log(categories);
+    
     console.log($scope.newEvent);
     if($scope.uploadedFile){
       $scope.newEvent.logo = $scope.uploadedFile;
@@ -187,6 +179,9 @@ angular.module('myApp')
     }
     form.append('logo', $scope.newEvent.logo);
     form.append('organization_id', $rootScope.currentUser.role_id);
+    if(categories){
+        form.append('categories', JSON.stringify(categories));
+    }
     // console.log( $scope.newEvent.tasks);
     var tasks = $scope.newEvent.tasks;
 
@@ -215,7 +210,7 @@ angular.module('myApp')
 
   console.log($rootScope.currentUser.isVolunteer);
   $scope.add_need=function(){
-        console.log($rootScope.isVolunteer);
+
         $scope.no_of_needs++;
         var need = "<div id='need"+$scope.no_of_needs+"' class='col-md-7 col-md-offset-3'>\
         <div class='col-md-9'>\

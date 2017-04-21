@@ -10,6 +10,7 @@ use App\Review;
 use App\User;
 use App\Volunteer;
 use App\Organization;
+use App\Category;
 class EventController extends Controller
 {
     /**
@@ -125,7 +126,6 @@ class EventController extends Controller
 
     public function add(Request $request)
     {
-
         $this->validate($request, [
             'title'       => 'required|max:100',
             'description' => 'required',
@@ -148,6 +148,7 @@ class EventController extends Controller
         $organization_id  = $request->get('organization_id');
         $tasks            = $request->get('tasks');
         $logo             = $request->file('logo');
+        $categories       = $request->get('categories');
 
         $event               = new Event;
         $event->title        = $title;
@@ -178,6 +179,17 @@ class EventController extends Controller
                 }
                 $newTask->event_id = $event->id;
                 $newTask->save();
+            }
+        }
+        if(isset($categories))
+        {
+            $categories = json_decode($categories);
+            foreach ($categories as $category) 
+            {
+                $newCategory = new Category;
+                $newCategory->name = $category;
+                $newCategory->save();
+                $event->categories()->attach($newCategory->id);
             }
         }
         return response()->json("success",200);
