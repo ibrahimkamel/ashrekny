@@ -85,7 +85,7 @@
                     <form class="well submitphoto_form" novalidate method = "POST" 
                     ng-submit="postreview(review,eventDetails.id)" name="reviewForm">  
 
-                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" ng-init="formkey='Your default value'" placeholder="اكتب تقييم">
+                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" placeholder="اكتب تقييم">
                       <input-stars required max="5" ng-model="review.rate"></input-stars>                      
                       <input type="submit" value="ارسال" class="wpcf7-submit">
                     </form>

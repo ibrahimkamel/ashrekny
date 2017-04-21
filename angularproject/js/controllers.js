@@ -46,7 +46,7 @@ angular.module('myApp')
 .controller('EventDetailsCtrl',function($scope,$rootScope,modelFactory,$stateParams){
         var id = $stateParams.id;
         //ajax to let volunteer participate in an event's task
-        $scope.participate=function(task){//edit volunteer id
+        $scope.participate=function(task){
             var volunteerid = $rootScope.currentUser.volunteer.id;
             console.log(volunteerid);
             var data = JSON.stringify({volunteer_id : volunteerid , task_id : task.id});
@@ -843,4 +843,39 @@ angular.module('myApp')
         console.log(err);
         $scope.dataerr = err;    
     });
+})
+.controller('reviewVolunteersCtrl',function($scope,$rootScope,modelFactory,$stateParams){
+        var id = $stateParams.id;
+        //get volunteers that participated in certain event
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/getvolunteers/'+id
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.eventid=data.eventid;
+                        $scope.eventname=data.eventname;
+                        $scope.volunteers = data.volunteers;
+                        console.log($scope.volunteers);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+        //function to rate each volunteer in the event
+        $scope.reviewvolunteers = function(eventid,volunteerid,reviewvolunteer){
+            var volunteerid= volunteerid;
+            var eventid=eventid;
+            var organizarionid = $rootScope.currentUser.organization.id;
+            var comment = reviewvolunteer.comment;
+            var rate = reviewvolunteer.rate;
+            var attend = reviewvolunteer.attend;
+            var postdata = { id : eventid, volunteerid : volunteerid ,organizationid:organizarionid, comment : comment, rate : rate, attend : attend}
+            var data=JSON.stringify(postdata);
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/event/reviewvolunteers/'+id,data
+            ).then(function successCallback(data){
+                            console.log(data);
+                            $scope.volunteers = data;
+                            console.log($scope.volunteers);
+                          },function errorCallback(err){
+                            console.log(err);
+                        });
+        };
 })

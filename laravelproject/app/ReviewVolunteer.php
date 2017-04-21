@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ReviewVolunteer extends Model
 {
-        protected $table = 'event_organization_volunteer';
+    protected $table = 'event_organization_volunteer';
 
     public function volunteer(){
     	return $this->belongsTo('App\Volunteer');
