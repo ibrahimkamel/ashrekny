@@ -82,11 +82,11 @@
       <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
             <div class="contact_form wow fadeInLeft">
-                    <form class="well submitphoto_form" method = "POST" 
-                    ng-submit="postreview(review,eventDetails.id)">  
+                    <form class="well submitphoto_form" novalidate method = "POST" 
+                    ng-submit="postreview(review,eventDetails.id)" name="reviewForm">  
 
-                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment"  placeholder="اكتب تقييم">
-                      <input-stars max="5" ng-model="review.rate"></input-stars>                      
+                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" ng-init="formkey='Your default value'" placeholder="اكتب تقييم">
+                      <input-stars required max="5" ng-model="review.rate"></input-stars>                      
                       <input type="submit" value="ارسال" class="wpcf7-submit">
                     </form>
             </div>

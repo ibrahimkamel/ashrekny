@@ -315,6 +315,7 @@ class EventController extends Controller
             {   
                 $myevents[$task->id] = Event::with('tasks')->find($task->event_id);
             }
+            $myevents = array_unique($myevents);
         }
         else
         {

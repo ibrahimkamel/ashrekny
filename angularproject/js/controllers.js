@@ -104,6 +104,8 @@ angular.module('myApp')
                     console.log(err);
                     console.log("error");
                  });
+            $scope.reviewForm.$setPristine();
+            $scope.review={};
             
         }; 
         //ajax request to get event's details      
