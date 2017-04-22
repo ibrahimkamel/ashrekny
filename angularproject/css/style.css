@@ -1850,3 +1850,33 @@ div[data-dimension] {
 
 	
 }
+
+/*---------------- Filter ------------------------*/
+.contentbox {
+  background-color: #87CEFA;
+  border: 1px solid #000;
+  
+}
+
+#sidebar {
+  float: right;
+}
+
+.bord {
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: #bfbfbf;
+  margin-bottom: 10px;
+}
+
+.list-group input {
+  display: block;
+  float: left;
+}
+
+.post {
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+}

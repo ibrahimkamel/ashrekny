@@ -170,6 +170,9 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/{id}/get','Api\TaskController@get');
 
 	});
+	Route::group(['prefix' => 'select'], function(){
+		Route::get('/selected','Api\selectController@getSelected');
+	});
 });
 
 

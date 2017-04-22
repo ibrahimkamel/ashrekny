@@ -836,3 +836,79 @@ angular.module('myApp')
         $scope.dataerr = err;    
     });
 })
+
+/*Hosam Select Controller*/
+
+.controller('selectCtrl', function($scope,modelFactory) {
+
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/select/selected')
+    .then(function successCallback(data){
+            console.log(data);
+            $scope.cat = data.categories;
+            $scope.selected = [];
+            $scope.exist = function(item){
+                return $scope.selected.indexOf(item) > -1;
+              }
+
+            $scope.toggleSelection = function(item){
+                var idx = $scope.selected.indexOf(item);
+                if (idx > -1) {
+                    $scope.selected.splice(idx, 1);
+                }else {
+                    $scope.selected.push(item);
+                }
+              }
+
+            $scope.checkAll = function(){
+                if ($scope.selectAll) {
+                    angular.forEach($scope.users, function(item){
+                        idx = $scope.selected.indexOf(item);
+                        if (idx >= 0) {
+                            return true;
+                        }else {
+                            $scope.selected.push(item);
+                        }
+                    })
+                }else {
+                    $scope.selected = [];
+                }
+              }
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+     modelFactory.getData('get','http://localhost/GP/laravelproject/api/select/selected')
+    .then(function successCallback(data){
+            console.log(data);
+            $scope.use = data.users;
+            $scope.selecteded = [];
+            $scope.exist = function(item){
+                return $scope.selecteded.indexOf(item) > -1;
+              }
+
+            $scope.toggleSelection = function(item){
+                var idx = $scope.selecteded.indexOf(item);
+                if (idx > -1) {
+                    $scope.selecteded.splice(idx, 1);
+                }else {
+                    $scope.selecteded.push(item);
+                }
+              }
+
+            $scope.checkAll = function(){
+                if ($scope.selectAll) {
+                    angular.forEach($scope.users, function(item){
+                        idx = $scope.selecteded.indexOf(item);
+                        if (idx >= 0) {
+                            return true;
+                        }else {
+                            $scope.selecteded.push(item);
+                        }
+                    })
+                }else {
+                    $scope.selecteded = [];
+                }
+              }
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+})
