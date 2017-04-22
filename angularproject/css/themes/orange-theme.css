@@ -239,6 +239,17 @@ Author URI : http://www.wpfreeware.com/
   color: #ff9933;
   text-shadow:1px 1px 0 #262626;
 }
+.wpcf7-delete {
+  border: 1px solid #660000;
+  background-color: #ffffff;
+  color: #660000;
+  text-shadow:1px 1px 0 #262626;  
+}
+.wpcf7-delete:hover,.wpcf7-delete:focus{
+  background-color: #660000;
+  color: #ffffff;
+  text-shadow:1px 1px 0 #262626;
+}
 
 
 /*=======================================

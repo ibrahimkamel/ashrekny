@@ -128,7 +128,7 @@
       <div class="col-md-7">
     <div ng-repeat="task in eventTasks">
       
-        <div class="col-md-9">
+        <div class="col-md-7">
           
               <input ng-model='task.name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>
         </div>
@@ -136,6 +136,10 @@
         <div class='col-md-3'>
           <input ng-model='task.required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='number' min="0">
         </div>
+        <div class="col-md-2">
+          <button class="btn wpcf7-delete" type="button" ng-click="delete_task(task.id)">
+          <span class="glyphicon glyphicon-remove"></span></button>
+         </div>
       
       </div>
       </div>
