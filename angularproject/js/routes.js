@@ -122,7 +122,7 @@ $stateProvider
      }
 )
 .state('myEvents', {
-      url: '/myevents/:id',
+      url: '/myevents',
       templateUrl: "templates/myevents.html",
       controller: 'myEventsCtrl',
       data: {

@@ -799,8 +799,8 @@ angular.module('myApp')
      $scope.uploadedFile = file[0];
   }
 })
-.controller('myEventsCtrl',function($scope,$rootScope,modelFactory,$stateParams){
-        var id = $stateParams.id;
+.controller('myEventsCtrl',function($scope,$rootScope,modelFactory){
+        var id = $rootScope.currentUser.id;
         modelFactory.getData('get',
         'http://localhost/GP/laravelproject/api/event/get/user/'+id
         ).then(function successCallback(data){
