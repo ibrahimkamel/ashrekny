@@ -928,12 +928,19 @@ angular.module('myApp')
        
 })
 .controller('SearchCtrl',function($scope,modelFactory){
-        modelFactory.getData('get',
-        'http://localhost/GP/laravelproject/api/event/getAll'
+    var search= "a";
+    var searchdata={data:search}
+    var data = JSON.stringify(searchdata);
+        modelFactory.getData('post',
+        'http://localhost/GP/laravelproject/api/search',data
         ).then(function successCallback(data){
                         console.log(data);
-                        $scope.events = data;
+                        $scope.events_results = data.events;
+                        $scope.organizations_results = data.organizations;
+                        $scope.stories_results = data.stories;
+                        console.log(data.events);
                       },function errorCallback(err){
                         console.log(err);
                     });
+        
 })
