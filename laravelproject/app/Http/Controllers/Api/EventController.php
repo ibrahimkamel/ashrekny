@@ -375,6 +375,7 @@ class EventController extends Controller
         $review->organization_id=$organization_id;
         $review->comment = $comment;
         $review->rate = $rate;
+        $review->attend = $attend;
         $review->save();
         return response()->json("successfully created",200);
     }
