@@ -159,7 +159,7 @@ Route::group(['middleware' => 'cors'], function(){
 
 	});
 	Route::group(['prefix' => 'review'], function(){
-		
+		Route::get('/invitedvolunteer','Api\EventController@invite');
 
 	});
 	Route::group(['prefix' => 'story'], function(){

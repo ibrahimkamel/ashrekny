@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Volunteer extends Model
 {
+
+    public $table='volunteers';
     public function user(){
     	return $this->belongsTo('App\User');
     }
@@ -30,5 +32,7 @@ class Volunteer extends Model
 	public function reviews(){
     	return $this->hasMany('App\Review');
     }
-
+    public function invitedvolunteers(){
+        return $this->hasMany('App\Invitedvolunteer','id','volunteer_id');
+    }
 }

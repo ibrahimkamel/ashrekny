@@ -29,4 +29,7 @@ class Event extends Model
     public function organization(){
     	return $this->belongsTo('App\Organization');
     }
+    public function invitedvolunteers(){
+        return $this->hasMany('App\Invitedvolunteer', 'id', 'event_id');
+    }
 }

@@ -12,6 +12,7 @@ use App\Volunteer;
 use App\Organization;
 use App\Category;
 use App\ReviewVolunteer;
+use App\Invitedvolunteer;
 class EventController extends Controller
 {
     /**
@@ -385,12 +386,15 @@ class EventController extends Controller
         return response()->json("successfully created",200);
     }
 
-    public function getRecommendedVolunteers ($id)
-{
+    public function invite ()
+    {
 
-
-    
-}
+        $data=Volunteer::find(2)->invitedvolunteers;
+        $data2=Event::find(1)->invitedvolunteers;
+        $data3=Invitedvolunteer::with('invitedvolunteers')->with('invitedevents')->get();
+        return response()->json(compact('data','data2','data3'),200);
+        
+    }
 
 
 
