@@ -179,4 +179,10 @@ $stateProvider
       }
   }
 )
+.state('search', {
+    url: '/search',
+    templateUrl: "templates/search.html",
+    controller: 'SearchCtrl'
+  }
+)
 });
