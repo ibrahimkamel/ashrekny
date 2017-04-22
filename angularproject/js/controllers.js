@@ -912,4 +912,18 @@ angular.module('myApp')
                             console.log(err);
                         });
         };
+}).controller('recommendVolunteer',function($scope,modelFactory){
+    console.log("roma");
+
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/id/getrecommendedvolunteers'
+       
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.stories = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+       
 })
+

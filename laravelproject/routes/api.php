@@ -120,6 +120,7 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/{id}/getevents','Api\VolunteerController@getEvents');
 		Route::get('/{id}/getcategories', 'Api\VolunteerController@getCategories');
 		Route::get('/{id}/getuser','Api\VolunteerController@getUser');
+		
 
 	});
 	Route::group(['prefix' => 'category'], function(){
@@ -138,6 +139,7 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::get('/{id}/getReview','Api\EventController@getReview');
 			Route::get('/{id}/getCategories','Api\EventController@getCategories');
 			Route::get('/{id}/getReviews','Api\EventController@getReviews');
+			Route::get('/{id}/getrecommendedvolunteers','Api\EventController@getRecommendedVolunteers');
 
 	});
 	Route::group(['prefix' => 'eventalbum'], function(){

@@ -384,4 +384,20 @@ class EventController extends Controller
         $review->save();
         return response()->json("successfully created",200);
     }
+
+    public function getRecommendedVolunteers ($id)
+{
+
+
+    
 }
+
+
+
+
+
+}
+
+
+
+
