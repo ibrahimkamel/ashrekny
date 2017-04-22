@@ -203,12 +203,12 @@ angular.module('myApp')
       function(data){
         console.log(data);
         console.log("success");
+        $state.go('events');
     },
       function(err){
         console.log("fail");
         console.log(err);
     });
-    $state.go('events');
     } 
   }
   
