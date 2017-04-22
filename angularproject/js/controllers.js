@@ -880,6 +880,8 @@ angular.module('myApp')
 })
 .controller('reviewVolunteersCtrl',function($scope,$rootScope,modelFactory,$stateParams){
         var id = $stateParams.id;
+        $scope.lolo=2;
+        $scope.reviewvolunteer=[];
         //get volunteers that participated in certain event
         modelFactory.getData('get',
         'http://localhost/GP/laravelproject/api/event/getvolunteers/'+id
@@ -893,13 +895,14 @@ angular.module('myApp')
                         console.log(err);
                     });
         //function to rate each volunteer in the event
-        $scope.reviewvolunteers = function(eventid,volunteerid,reviewvolunteer){
+        $scope.reviewvolunteers = function(eventid,volunteerid,index){
+            console.log($scope.reviewvolunteer[index]);
             var volunteerid= volunteerid;
             var eventid=eventid;
             var organizarionid = $rootScope.currentUser.organization.id;
-            var comment = reviewvolunteer.comment;
-            var rate = reviewvolunteer.rate;
-            var attend = reviewvolunteer.attend;
+            var comment = $scope.reviewvolunteer[index].comment;
+            var rate = $scope.reviewvolunteer[index].rate;
+            var attend = $scope.reviewvolunteer[index].attend;
             var postdata = { id : eventid, volunteerid : volunteerid ,organizationid:organizarionid, comment : comment, rate : rate, attend : attend}
             var data=JSON.stringify(postdata);
             modelFactory.getData('post',
@@ -962,12 +965,19 @@ var invitedvol= $scope.invitedVolunteers=[];
 
 })
 .controller('SearchCtrl',function($scope,modelFactory){
-        modelFactory.getData('get',
-        'http://localhost/GP/laravelproject/api/event/getAll'
+    var search= "a";
+    var searchdata={data:search}
+    var data = JSON.stringify(searchdata);
+        modelFactory.getData('post',
+        'http://localhost/GP/laravelproject/api/search',data
         ).then(function successCallback(data){
                         console.log(data);
-                        $scope.events = data;
+                        $scope.events_results = data.events;
+                        $scope.organizations_results = data.organizations;
+                        $scope.stories_results = data.stories;
+                        console.log(data.events);
                       },function errorCallback(err){
                         console.log(err);
                     });
+        
 })
