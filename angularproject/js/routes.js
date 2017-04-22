@@ -179,4 +179,17 @@ $stateProvider
       }
   }
 )
+.state('recommendVolunteers',{
+   url: '/:id/getrecommendedvolunteers',
+   
+    templateUrl: "templates/recommendedVolunteers.html",
+    controller: 'recommendVolunteer',
+  }
+)
+.state('search', {
+    url: '/search',
+    templateUrl: "templates/search.html",
+    controller: 'SearchCtrl'
+  }
+)
 });

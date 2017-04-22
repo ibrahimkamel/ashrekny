@@ -203,12 +203,12 @@ angular.module('myApp')
       function(data){
         console.log(data);
         console.log("success");
+        $state.go('events');
     },
       function(err){
         console.log("fail");
         console.log(err);
     });
-    $state.go('events');
     } 
   }
   
@@ -912,4 +912,28 @@ angular.module('myApp')
                             console.log(err);
                         });
         };
+})
+.controller('recommendVolunteer',function($scope,modelFactory){
+    console.log("roma");
+
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/id/getrecommendedvolunteers'
+       
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.stories = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+       
+})
+.controller('SearchCtrl',function($scope,modelFactory){
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/getAll'
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.events = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
 })
