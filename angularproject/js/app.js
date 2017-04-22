@@ -5,7 +5,8 @@ angular.module('myApp', [
   'ui.router',
   'satellizer',
   'permission',
-  'permission.ui'
+  'permission.ui',
+  'angular-input-stars'
 ])
 .config(function($authProvider, $urlRouterProvider) {
   $authProvider.loginUrl = 'http://localhost/GP/laravelproject/api/authenticate';

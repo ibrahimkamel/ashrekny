@@ -10,6 +10,8 @@ use App\Review;
 use App\User;
 use App\Volunteer;
 use App\Organization;
+use App\Category;
+use App\ReviewVolunteer;
 class EventController extends Controller
 {
     /**
@@ -125,7 +127,6 @@ class EventController extends Controller
 
     public function add(Request $request)
     {
-
         $this->validate($request, [
             'title'       => 'required|max:100',
             'description' => 'required',
@@ -148,6 +149,7 @@ class EventController extends Controller
         $organization_id  = $request->get('organization_id');
         $tasks            = $request->get('tasks');
         $logo             = $request->file('logo');
+        $categories       = $request->get('categories');
 
         $event               = new Event;
         $event->title        = $title;
@@ -178,6 +180,17 @@ class EventController extends Controller
                 }
                 $newTask->event_id = $event->id;
                 $newTask->save();
+            }
+        }
+        if(isset($categories))
+        {
+            $categories = json_decode($categories);
+            foreach ($categories as $category) 
+            {
+                $newCategory = new Category;
+                $newCategory->name = $category;
+                $newCategory->save();
+                $event->categories()->attach($newCategory->id);
             }
         }
         return response()->json("success",200);
@@ -315,6 +328,7 @@ class EventController extends Controller
             {   
                 $myevents[$task->id] = Event::with('tasks')->find($task->event_id);
             }
+            $myevents = array_unique($myevents);
         }
         else
         {
@@ -322,5 +336,47 @@ class EventController extends Controller
             $myevents=Organization::find($role_id)->events;
         }
         return response()->json(compact('myevents'),200);
+    }
+    /**
+     * get volunteers who partcipated in certain event
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getvolunteers($id)
+    {
+        $eventid=$id;
+        $eventname=Event::find($eventid)->title;
+        $tasks = Event::find($eventid)->tasks;
+        $volunteers=[];
+        foreach ($tasks as $task) {
+            $volunteers=Task::find($task->id)->volunteers;
+        }
+         // $volunteers= array_unique($volunteers);
+        return response()->json(compact('volunteers','eventid','eventname'),200);
+
+    }
+    /**
+     * add reviews on each volunteer participated in event.
+     *  TODO IN NEXT SPRINT
+     * @return \Illuminate\Http\Response
+     */
+    public function reviewvolunteers(Request $request)
+    {
+        
+        $event_id = $request->get('id');
+        $volunteer_id=$request->get('volunteerid');
+        $comment=$request->get('comment');
+        $rate=$request->get('rate');
+        $attend=$request->get('attend');
+        $organization_id=$request->get('organizationid');
+        $review = new ReviewVolunteer;
+        $review->event_id = $event_id;
+        $review->volunteer_id = $volunteer_id;
+        $review->organization_id=$organization_id;
+        $review->comment = $comment;
+        $review->rate = $rate;
+        $review->attend = $attend;
+        $review->save();
+        return response()->json("successfully created",200);
     }
 }

@@ -115,6 +115,5 @@ class OrganizationController extends Controller
     {
         $user = Organization::find($id)->user;
         return response()->json(compact('user'),200);
-    }
-
+    } 
 }

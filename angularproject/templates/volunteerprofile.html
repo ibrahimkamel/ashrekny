@@ -1,10 +1,11 @@
 <div class="container">
-  <p style="padding: 10px;"></p>
+  <p style="padding: 40px;"></p>
     <div class="row">
       <div class="col-md-6 col-lg-6">
           <h2>صفحتي</h2>
           <div class="panel panel-info">
             <div class="panel-heading">
+              <a href="./editMyProfile" class="btn btn-primary pull-left"><i class="fa fa-pencil-square-o fa-lg"></i></a>
               <h3 class="panel-title">
                 {{volunteer.first_name}} {{volunteer.last_name}}
               </h3>
@@ -79,11 +80,11 @@
                   <ul class="news_tab">
                     <li>
                       <div ng-repeat="story in stories" class="media">
-                        <div class="media-left">
+                        <!-- <div class="media-left">
                           <a class="news_img" href="./{{story.id}}/storydetails">
-                            <!-- <img class="media-object" src="../laravelproject/{{event.logo}}" alt="img"> -->
+                            <img class="media-object" src="../laravelproject/{{event.logo}}" alt="img">
                           </a>
-                        </div>
+                        </div> -->
                         <div class="media-body">
                             <h3>
                               <a href="./{{story.id}}/storydetails">{{story.title}}</a>

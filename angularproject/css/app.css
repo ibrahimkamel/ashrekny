@@ -1,5 +1,5 @@
 .tabvolunteer{
-	border-right: 2px solid #78ADC9;
+	border-right: 2px solid #FF9933;
 }
 .panel-title{
 	font-size: 20px;
@@ -68,6 +68,71 @@ hr.style12 {
   	position: relative;
   	text-align: center;
 }
+
+.singCourse_imgarea .mask{
+	background-color:#438189;
+}
+
 .topThree{
 	width: 100% !important;
 }
+.panel-heading{
+	padding: 10px 10px 20px 20px;
+}
+
+@font-face {
+    font-family: arabicFont;
+    src: url(../fonts/DroidSans.ttf);
+}
+
+@font-face {
+    font-family: arabicFontTwo;
+    src: url(../fonts/A-Mosalas.ttf);
+}
+
+body, h1,h2,h3,h4,h5,h6 {
+	font-family: arabicFont;
+}
+
+.navbar-default .navbar-nav > li > a{
+	font-size:20px;
+	font-family:arabicFont;
+}
+.navbar-default .navbar-brand span{
+	font-size:40px;
+}
+
+.navbar-brand{
+	font-family: arabicFontTwo;
+}
+
+.footer_widget_nav li a, .single_footer_widget h3, p{
+	font-family: arabicFont;
+	font-size: 20px;
+}
+
+.footer_widget_nav li a:hover{
+	color:#ffffff;
+}
+
+.eventsFooter{
+	position:relative;
+	left:-40px;
+}
+
+.storyDescription{
+	word-wrap:break-word;
+}
+
+.singCourse_title{
+	font-weight:bold;
+}
+.stars{
+	color: #FDE35E;
+}
+.ratetable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+

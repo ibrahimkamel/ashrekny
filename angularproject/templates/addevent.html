@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="app/bower_components/country-select-js/build/css/countrySelect.css">
 <link rel="stylesheet" href="app/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="css/droid-sans.css" />
  <!--=========== BEGIN CONTACT SECTION ================
     <section id="contact">
       <div class="container">
@@ -15,8 +16,8 @@
 <!-- Text input-->
 
 <div class="form-group col-md-12">
-<div class="col-md-2"></div>
-  <label class="col-md-1 control-label">العنوان</label>
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">العنوان</label>
   <div class="col-md-7">
   <input required ng-model="newEvent.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
  </div>
@@ -25,8 +26,8 @@
 <!-- Text area -->
   
 <div class="form-group col-md-12">
-<div class="col-md-2"></div>
-  <label class="col-md-1 control-label">وصف الإيفنت</label>
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">وصف الإيفنت</label>
     <div class="col-md-7">
 
           <textarea required ng-model="newEvent.description" class="wp-form-control wpcf7-textarea" name="description" placeholder="الوصف"></textarea>
@@ -37,8 +38,8 @@
 
 <!-- Text input-->
   <div class="form-group col-md-12">
-  <div class="col-md-2"></div>
-  <label class="col-md-1 control-label">تاريخ البدء</label> 
+  <div class="col-md-1"></div>
+  <label class="col-md-2 control-label">تاريخ البدء</label> 
     <div class="col-md-7">
     
   <input required ng-model="newEvent.start_date" name="start_date" class="wp-form-control  wpcf7-text" id="startDate">
@@ -49,11 +50,11 @@
 
 <!-- Text input-->
        <div class="form-group col-md-12">
-       <div class="col-md-2"></div>
-  <label class="col-md-1 control-label">تاريخ الانتهاء</label>  
+       <div class="col-md-1"></div>
+  <label class="col-md-2 control-label">تاريخ الانتهاء</label>  
     <div class="col-md-7">
    
-  <input ng-model="end_date" name="newEvent.end_date" class="wp-form-control  wpcf7-text" id="endDate">
+  <input ng-model="newEvent.end_date" name="end_date" class="wp-form-control  wpcf7-text" id="endDate">
   
   </div>
 </div>
@@ -61,8 +62,8 @@
 <!-- Select Basic -->
    
 <div class="form-group col-md-12"> 
-  <div class="col-md-2"></div>
-  <label class="col-md-1 control-label">البلد</label>
+  <div class="col-md-1"></div>
+  <label class="col-md-2 control-label">البلد</label>
     
     <!-- <select id="country" required ng-model="newEvent.country" name="country" class="wp-form-control  wpcf7-text" >
       <option>Country</option>
@@ -80,8 +81,8 @@
 <!-- Text input-->
  
 <div class="form-group col-md-12">
-<div class="col-md-2"></div>
-  <label class="col-md-1 control-label">المحافظة</label>  
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">المحافظة</label>  
     <div class="col-md-7">
   <input required ng-model="newEvent.city" name="city" placeholder="المحافظة" class="wp-form-control  wpcf7-text"  type="text">
   </div>
@@ -90,8 +91,8 @@
 <!-- Text input-->
  
 <div class="form-group col-md-12">
-<div class="col-md-2"></div>
-  <label class="col-md-1 control-label">المنطقة</label>  
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">المنطقة</label>  
   <div class="col-md-7">     
   <input required ng-model="newEvent.region" name="region" placeholder="المنطقة" class="wp-form-control  wpcf7-text"  type="text">
   </div>
@@ -100,8 +101,8 @@
 <!-- Text input-->
       
 <div class="form-group col-md-12">
-<div class="col-md-2"></div>
-  <label class="col-md-1 control-label">العنوان</label>  
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">العنوان</label>  
     <div class="col-md-7">
   <input ng-model="newEvent.full_address" name="full_address" placeholder="العنوان" class="wp-form-control  wpcf7-text" type="text">
   </div>
@@ -110,8 +111,8 @@
 <!-- Text input-->
       
 <div class="form-group col-md-12">
-<div class="col-md-2"></div>
-  <label class="col-md-1 control-label">صورة الإيفنت</label>  
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">صورة الإيفنت</label>  
     <div class="col-md-7">
   <input name="logo" onchange="angular.element(this).scope().uploadLogo(this.files)" placeholder="صورة الإيفنت" class="wp-form-control  wpcf7-text" type="file">
   </div>
@@ -119,8 +120,8 @@
 
 <!-- Text input-->
 <div class="form-group col-md-12">
-<div class="col-md-2"></div>
-  <label class="col-md-1 control-label">الاحتياج</label> 
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">الاحتياج</label> 
 
     <div id="needs">
       <div class="col-md-7">
@@ -141,6 +142,35 @@
     <span class="glyphicon glyphicon-plus"></span></button>
   </div>
 </div>
+
+<!-- Text input-->
+      
+<div class="form-group col-md-12">
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">مجال النشاط</label> 
+
+    <div class="col-md-7">
+    
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="تعليم">تعليم</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="صحة">صحة</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="مرأة">مرأة</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="طفولة">طفولة</label>
+      <label class="col-md-2 checkbox-inline"><input class="categories" type="checkbox" name="category[]" value="بيئة">بيئة</label>
+    
+  </div>
+
+</div>
+
+
+<!-- Text input-->     
+<div class="form-group col-md-12">
+<div class="col-md-1"></div>
+  <label class="col-md-2 control-label">مجالات أخرى</label>  
+    <div class="col-md-7">
+  <input ng-model="othercategory" name="category" placeholder="أخرى" class="wp-form-control  wpcf7-text" type="text">
+  </div>
+</div>
+
 
 <!-- Button -->
 <div class="form-group col-md-12">
@@ -165,12 +195,19 @@
 <script>
    $('#addEventForm').validate();
     $('#country').countrySelect();
-    $('#startDate').datepicker({ dateFormat: 'yy-mm-dd' });
-   $('#endDate').datepicker({ dateFormat: 'yy-mm-dd' });
+    $('#startDate').datepicker({ dateFormat: 'yy-mm-dd',  minDate: 0 });
+   $('#endDate').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
 </script>
  
 <style>
   .error{
     color: red;
+  }
+  #addEventForm{
+    font-family: 'droid-sans';
+    font-size: 16px;
+  }
+  label{
+    color: #78adc9;
   }
 </style>

@@ -1,5 +1,5 @@
 <!--=========== Slider SECTION ================-->
-  <p style="padding: 20px;"></p>
+  <p style="padding: 18px;"></p>
   <section>
     <div class="container-fluid">
       <div class="row">
@@ -29,7 +29,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12"> 
           <div class="title_area">
-            <h2 class="title_two">Top 3 Events</h2>
+            <h2 class="title_two"><i class="fa fa-th-list"></i> أعلي 3 إيفينتات</h2>
             <span></span> 
           </div>
         </div>
@@ -44,7 +44,7 @@
                   <div class="singCourse_imgarea topThree">
                     <img src="../laravelproject/{{event.logo}}"/>
                     <div class="mask">                         
-                      <a href="./{{event.id}}/eventdetails" class="course_more">View Event</a>
+                      <a href="./{{event.id}}/eventdetails" class="course_more">قراءة التفاصيل</a>
                     </div>
                   </div>
                   <div class="singCourse_content">
@@ -72,7 +72,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12"> 
           <div class="title_area">
-            <h2 class="title_two">Top Organizations</h2>
+            <h2 class="title_two"><i class="fa fa-cubes"></i> أعلي منظمات</h2>
             <span></span> 
           </div>
         </div>
@@ -87,7 +87,7 @@
                   <div class="singCourse_imgarea topThree">
                     <img src="../laravelproject/{{organization.logo}}"/>
                     <div class="mask">                         
-                      <a href="./orgprofile/{{organization.id}}" class="course_more">View Organization</a>
+                      <a href="./orgprofile/{{organization.id}}" class="course_more">قراءة التفاصيل</a>
                     </div>
                   </div>
                   <div class="singCourse_content">
@@ -115,8 +115,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12"> 
           <div class="title_area">
-            <h2 class="title_two">Most Recent Stories</h2>
-            <span></span> 
+            <h2 class="title_two"><i class="fa fa-star"></i> اجدد القصص</h2>
           </div>
         </div>
       </div> 
@@ -129,13 +128,13 @@
                 <div class="single_course">
                   <div class="singCourse_imgarea topThree">
                     <!-- <img src="../laravelproject/{{story.logo}}"/> -->
-                    <div class="mask">                         
+                    <!-- <div class="mask">                         
                       <a href="./{{story.id}}/storydetails" class="course_more">View Story</a>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="singCourse_content">
                   <h3 class="singCourse_title"><a href="./{{story.id}}/storydetails">{{story.title}}</a></h3>
-                  <p class="singCourse_price"><span class="glyphicon glyphicon-list-alt"></span> {{story.content}}</p>
+                  <p class="singCourse_price storyDescription"><span class="glyphicon glyphicon-list-alt"></span> {{story.content}}</p>
                   </div>
                   <!-- <div class="singCourse_author">
                     <img src="img/author.jpg" alt="img">
@@ -149,5 +148,5 @@
       </div>
       <!-- End Top Organizations -->
   </section>
-  <!--=========== END Stories SECTION ================-->              
+  <!--=========== END Stories SECTION ================-->
 </div>    
