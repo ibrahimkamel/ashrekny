@@ -913,3 +913,13 @@ angular.module('myApp')
                         });
         };
 })
+.controller('SearchCtrl',function($scope,modelFactory){
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/getAll'
+        ).then(function successCallback(data){
+                        console.log(data);
+                        $scope.events = data;
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
+})
