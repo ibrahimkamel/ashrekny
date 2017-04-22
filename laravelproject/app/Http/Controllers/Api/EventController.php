@@ -187,10 +187,15 @@ class EventController extends Controller
             $categories = json_decode($categories);
             foreach ($categories as $category) 
             {
-                $newCategory = new Category;
-                $newCategory->name = $category;
-                $newCategory->save();
-                $event->categories()->attach($newCategory->id);
+                $categoryID = Category::select('id')->where('name',$category)->get();
+                if(isset($categoryID)){
+                    $event->categories()->attach($categoryID);
+                }else{
+                    $newCategory = new Category;
+                    $newCategory->name = $category;
+                    $newCategory->save();
+                    $event->categories()->attach($newCategory->id);
+                }
             }
         }
         return response()->json("success",200);
