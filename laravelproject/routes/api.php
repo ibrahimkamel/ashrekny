@@ -52,6 +52,8 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::post('/{id}/delete','Api\EventController@delete');
 			Route::post('/edittasks','Api\EventController@editTasks');
 			Route::get('/get/user/{id}','Api\EventController@getMyEvents');
+			Route::get('/getvolunteers/{id}','Api\EventController@getVolunteers');
+			Route::post('/reviewvolunteers/{id}','Api\EventController@reviewvolunteers');
 			
 		});
 		Route::group(['prefix' => 'eventalbum'], function(){
@@ -74,6 +76,7 @@ Route::group(['middleware' => 'cors'], function(){
 		
 
 		});
+		
 		Route::group(['prefix' => 'story'], function(){
 			Route::post('/add','Api\StoryController@add');
 			Route::post('/{id}/update','Api\StoryController@update');		

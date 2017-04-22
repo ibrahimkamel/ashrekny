@@ -167,4 +167,16 @@ $stateProvider
       controller: 'editStoryCtrl'
      }
 )
+.state('reviewvolunteers', {
+    url: '/getvolunteers/:id',
+    templateUrl: "templates/reviewvolunteer.html",
+    controller: 'reviewVolunteersCtrl',
+    data: {
+        permissions: {
+          only: ['organization'],
+          redirectTo: 'home'
+        }
+      }
+  }
+)
 });
