@@ -100,6 +100,18 @@ id="exampleInputCity" placeholder="مواعيد العمل" name="officeHours" n
 </div>
 </div> 
 
+ <label  >الاهتمامات</label>
+ <select class="selectpicker" multiple ng-model="org.category">
+  <option   ng-true-value ="'مرأة'">مرأة</option>
+  <option   ng-true-value="'تعليم'">تعليم</option>
+  <option  ng-true-value="'صحة'">صحة</option>
+   <option ng-true-value="'طفولة'">طفولة</option>
+    <option ng-true-value="'بيئة'">بيئة</option>
+  
+</select>
+
+ 
+
 
 <div class="form-group">
    <label for="exampleInputCity">رقم الترخيص</label>
@@ -198,7 +210,18 @@ id="exampleInputCity" placeholder="المدينة" name="city" ng-model="user.ci
   <span class="validation">{{err}}</span>
  </div>
 </div>
+ <label  >الاهتمامات</label>
+ <select class="selectpicker" multiple ng-model="user.category">
+  <option   ng-true-value ="'مرأة'">مرأة</option>
+  <option   ng-true-value="'تعليم'">تعليم</option>
+  <option  ng-true-value="'صحة'">صحة</option>
+   <option ng-true-value="'طفولة'">طفولة</option>
+    <option ng-true-value="'بيئة'">بيئة</option>
+  
+</select>
+
  
+
    
     <legend>النوع</legend>
     <div class="form-check">

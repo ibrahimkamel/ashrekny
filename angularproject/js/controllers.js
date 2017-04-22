@@ -385,11 +385,10 @@ angular.module('myApp')
 
        
      $scope.addUser = function(isvaild) {
-     
+         console.log($scope.user);
+         
        
       if (isvaild) {
-
-
      var    processData = false,
             transformRequest = angular.identity,
             headers = {'Content-Type': undefined},
@@ -406,10 +405,16 @@ angular.module('myApp')
           formdata.append("gender",$scope.user.gender);
           if($scope.profilePic)
          {   formdata.append("profilepic",$scope.profilePic);}
-            for (var pair of formdata.entries()) {
+   
+    if($scope.user.category)
+      {
+        formdata.append("categories",$scope.user.category);
+      } 
+      
+           
+         for (var pair of formdata.entries()) {
         console.log(pair[0]+ ', ' + pair[1]); 
-        }
-       
+    }
 
            modelFactory.getData('post',
             'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
@@ -462,6 +467,12 @@ angular.module('myApp')
              {   formdata.append("logo",$scope.logo);}
                 if($scope.license)
              {   formdata.append("licenseScan",$scope.license);}
+
+             if($scope.org.category)
+      {
+        formdata.append("categories",$scope.org.category);
+      } 
+      
 
                
                 for (var pair of formdata.entries()) {
