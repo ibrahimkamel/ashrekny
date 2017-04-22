@@ -68,6 +68,11 @@ hr.style12 {
   	position: relative;
   	text-align: center;
 }
+
+.singCourse_imgarea .mask{
+	background-color:#438189;
+}
+
 .topThree{
 	width: 100% !important;
 }
