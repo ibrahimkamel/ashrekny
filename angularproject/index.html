@@ -97,6 +97,11 @@
               </li>
               <li><a href="aboutus">من نحن</a></li>                
               <li><a href="contactus">أتصل بنا</a></li>
+              <li class="search-icon">
+                <a href="#!">
+                  <i class="fa fa-search"></i>
+                </a>
+              </li>
             </ul>
             <!-- <div style="position: relative;top:15px;">
               <form class="navbar-form pull-right">
@@ -136,8 +141,19 @@
     <!-- END MENU -->    
   </header>
   <!--=========== END HEADER SECTION ================--> 
-    
-      <div ui-view></div>
+  <!-- Search Box Start -->
+  <div class="search-box-outer" style="display: none!important;">
+      <div class="search-box">
+        <form>
+          <input type="text" value="" class="form-control" placeholder="أكتب و أضغط Enter للبحث" />
+        </form>
+        <a href="#!" class="close-search">
+          <i class="fa fa-close"></i></a> 
+      </div>
+  </div>
+  <!-- Search Box End -->  
+
+  <div ui-view></div>
     
   
   <!--=========== BEGIN FOOTER SECTION ================-->
