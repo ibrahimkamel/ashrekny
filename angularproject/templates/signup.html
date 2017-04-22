@@ -1,8 +1,7 @@
- 
 
 <div class="container">
    
-<p style="padding: 30px"></p>
+  <p style="padding: 30px"></p>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="/#home">منظمة</a></li>
     <li><a data-toggle="tab" href="/#menu1">متطوع</a></li>
@@ -12,16 +11,13 @@
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
         <form  novalidate name="addOrgForm "class="col-xs-9 well" method="post"
- ng-submit="submitted=true;addOrg(addOrgForm.$valid)"  enctype="multipart/form-data">
+        ng-submit="submitted=true;addOrg(addOrgForm.$valid)"  enctype="multipart/form-data">
 
  
-<div class="form-group">
+      <div class="form-group">
 
- 
-
-<label  >اسم المنظمة</label>
-<input type="text" class="wp-form-control wpcf7-text" id="exampleInputName1"
- placeholder="اسم المنظمة" name="orgName" ng-model="org.orgName" required maxlength="50">
+        <label  >اسم المنظمة</label>
+        <input type="text" class="wp-form-control wpcf7-text" id="exampleInputName1" placeholder="اسم المنظمة" name="orgName" ng-model="org.orgName" required maxlength="50">
  <p class="validation" ng-if="addOrgForm.orgName.$error.required&&submitted">من فضلك ادخل اسم المنظمة</p>
   
  <div ng-repeat="err in  orgErrors.orgName ">
