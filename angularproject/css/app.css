@@ -136,12 +136,3 @@ body, h1,h2,h3,h4,h5,h6 {
     width: 100%;
 }
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: right;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
