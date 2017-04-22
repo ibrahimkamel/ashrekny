@@ -26,8 +26,10 @@ class TaskController extends Controller
      */
     public function participate(Request $request)
     {
+        // dd($request->all());
         $task =  Task::find($request->get('task_id'));
         $volunteerID = $request->get('volunteer_id');
+        //dd($volunteerID );
         $task->volunteers()->attach($volunteerID);
         $task->required_volunteers = ($task->required_volunteers) -1;
         $task->going_volunteers = ($task->going_volunteers)+1;

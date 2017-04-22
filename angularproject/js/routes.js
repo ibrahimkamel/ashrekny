@@ -161,5 +161,22 @@ $stateProvider
       }
   }
 )
-
+.state('editstory', {
+      url: '/:id/story/edit',
+      templateUrl: "templates/editstory.html",
+      controller: 'editStoryCtrl'
+     }
+)
+.state('reviewvolunteers', {
+    url: '/getvolunteers/:id',
+    templateUrl: "templates/reviewvolunteer.html",
+    controller: 'reviewVolunteersCtrl',
+    data: {
+        permissions: {
+          only: ['organization'],
+          redirectTo: 'home'
+        }
+      }
+  }
+)
 });
