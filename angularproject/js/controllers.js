@@ -781,12 +781,16 @@ angular.module('myApp')
         console.log($scope.eventTasks);
         
         var need = "<div id='need"+$scope.no_of_needs+"' class='col-md-7 col-md-offset-3'>\
-        <div class='col-md-9'>\
+        <div class='newtask"+$scope.no_of_needs+"'><div class='col-md-7'>\
         <input ng-model='event.tasks["+$scope.no_of_needs+"].name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>\
         </div>\
         <div class='col-md-3'>\
         <input ng-model='event.tasks["+$scope.no_of_needs+"].required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='number' min='0'>\
-        </div></div>"
+         </div>\
+        <div class='col-md-2'>\
+          <button class='btn wpcf7-delete' type='button' ng-click='delete_newtask("+$scope.no_of_needs+")'>\
+          <span class='glyphicon glyphicon-remove'></span></button>\
+        </div></div></div>"
         ;
         $('#needs').append(need);
         var newneed = (angular.element($('#need'+$scope.no_of_needs)));
@@ -797,6 +801,19 @@ angular.module('myApp')
   $scope.uploadLogo=function(file){
      console.log(file[0]);
      $scope.uploadedFile = file[0];
+  }
+  $scope.delete_task=function(id){
+    console.log(id);
+    $('.task-'+id).remove();
+    modelFactory.getData('post',
+    'http://localhost/GP/laravelproject/api/task/'+id+'/delete'
+    ).then(function successCallback(data){
+        },function errorCallback(err){
+            console.log(err);
+         });
+  }
+  $scope.delete_newtask=function(id){
+    $('.newtask'+id).remove();
   }
 })
 .controller('myEventsCtrl',function($scope,$rootScope,modelFactory){

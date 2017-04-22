@@ -86,7 +86,7 @@ Route::group(['middleware' => 'cors'], function(){
 		 Route::post('/participate','Api\TaskController@participate');
 		 Route::post('/cancelparticipate','Api\TaskController@cancelparticipate');
 		 Route::post('/edit','Api\TaskController@edit');
-		 Route::post('/delete','Api\TaskController@delete');
+		 Route::post('/{id}/delete','Api\TaskController@delete');
 		});
 	});
 
