@@ -175,6 +175,7 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/{id}/get','Api\TaskController@get');
 
 	});
+	Route::post('/search','Api\SearchController@get');
 });
 
 
