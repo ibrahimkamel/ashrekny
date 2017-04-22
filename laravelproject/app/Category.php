@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     public function volunteers(){
-    	return $this->hasMany('App\Volunteer');
+    	return $this->belongsToMany('App\Volunteer');
     }
 
     public function organizations(){
@@ -15,6 +15,6 @@ class Category extends Model
     }
 
     public function events(){
-    	return $this->hasMany('App\Event');
+    	return $this->belongsToMany('App\Event');
     }
 }

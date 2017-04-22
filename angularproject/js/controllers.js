@@ -933,19 +933,53 @@ angular.module('myApp')
                         });
         };
 })
-.controller('recommendVolunteer',function($scope,modelFactory){
-    console.log("roma");
-
-        modelFactory.getData('get',
-        'http://localhost/GP/laravelproject/api/event/id/getrecommendedvolunteers'
+.controller('recommendVolunteer',function($scope,modelFactory,$stateParams,$state){
+      var id = $stateParams.id;
+          modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/'+id+'/getrecommendedvolunteers'
        
         ).then(function successCallback(data){
-                        console.log(data);
-                        $scope.stories = data;
+                        $scope.recommendedVolnteers= data;
+                        console.log($scope.recommendedVolnteers);
                       },function errorCallback(err){
                         console.log(err);
                     });
+
+     $scope.skip= function() {
+   $state.go('eventdetails',{"id":id});
+}
+
+ 
+
+$scope.invite=function()
+{
+console.log("helllo");
+var invitedvol= $scope.invitedVolunteers=[];
+ angular.forEach($scope.recommendedVolnteers, function(volunteer){
+    if (volunteer.selected){$scope.invitedVolunteers.push(volunteer.id);}
+  })
+  console.log($scope.invitedVolunteers);
+  var postdata = { id : id, invitedVolunteers:invitedvol}
+       var data=JSON.stringify(postdata);
+  console.log(data);
+   
+  modelFactory.getData('post',
+         'http://localhost/GP/laravelproject/api/event/inviteVolunteers',data
        
+        ).then(function successCallback(data){
+                  
+                         console.log(data);
+                  },function errorCallback(err){
+                         console.log(err);
+                     });
+
+
+
+}
+
+
+
+
 })
 .controller('SearchCtrl',function($scope,modelFactory){
     var search= "a";
