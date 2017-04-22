@@ -1,3 +1,6 @@
+
+<link  href="app/bower_components/angular-input-stars/angular-input-stars.css" rel="stylesheet"></link>
+
 <section id="imgBanner">
   <h2>slider</h2>
 </section> 
@@ -29,7 +32,7 @@
                           {{eventDetails.region}},{{eventDetails.city}},{{eventDetails.country}}
                       </p>                      
                     </div>              
-                    </div>
+                  </div>
                 </div>
                 <!--table-->
                 <div class="col-lg-6 col-6 col-sm-6">
@@ -55,9 +58,8 @@
                                    <span class="glyphicon glyphicon-plus-sign"></span> 
                                  </a>
                             </td>
-
                         </tr>
-                     </tbody>
+                      </tbody>
                   </table>
                   <!-- end table tasks-->
 
@@ -78,15 +80,16 @@
       <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
             <div class="contact_form wow fadeInLeft">
-                    <form class="well submitphoto_form" method = "POST" 
-                    ng-submit="postreview(review,eventDetails.id)">  
+                <form class="well submitphoto_form" novalidate method = "POST" 
+                ng-submit="postreview(review,eventDetails.id)" name="reviewForm">  
 
-                      <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" placeholder="اكتب تقييم">
-
-                      <input  star-Rating class="wp-form-control wpcf7-text myRating" name="rate" ng-model="review.rate" placeholder="اكتب تقييم">
-                      <input type="submit" value="ارسال" class="wpcf7-submit">
-                    </form>
+                  <input type="text" class="wp-form-control wpcf7-text" name="comment" ng-model="review.comment" placeholder="اكتب تقييم">
+                  <input-stars required max="5" ng-model="review.rate"></input-stars>                      
+                  <input type="submit" value="ارسال" class="wpcf7-submit">
+                </form>
             </div>
+         </div>
+      </div>
     </section>
     <!--=========== END POST EVENT REVIEW BANNER SECTION ================-->
 
@@ -94,25 +97,25 @@
     <section>
       <div class="row">
          <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
-                    <div class="comments-list">
-                        <div class="page-header">
-                          <h1>التعليقات <small class="pull-left">comments number</small></h1>
-                        </div>
-                        <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
-                           <p class="pull-left"><small>{{review.created_at | date : "dd/MM/y" }}</small>
-                              <p star-Rating class="myRating text-center" ng-model='review.rate'></p>
-
-                           </p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/1/" alt="profile pic">
-                            </a>
-                            <div class="media-body">
-                              <h4 class="media-heading user_name">{{review.volunteer.first_name}}</h4>
-                              <p>{{review.comment}}</p>
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                        </div>
+            <div class="comments-list">
+                <div class="page-header">
+                  <h1>التعليقات <small class="pull-left">comments number</small></h1>
+                </div>
+                <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
+                   <p class="pull-left"><small>{{review.created_at | date : "dd/MM/y" }}</small>
+                      <p star-Rating class="myRating text-center" ng-model='review.rate'></p>
+                   </p>
+                    <a class="media-left" href="#">
+                      <img src="http://lorempixel.com/40/40/people/1/" alt="profile pic">
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading user_name">{{review.volunteer.first_name}}</h4>
+                      <p>{{review.comment}}</p>
                     </div>
+                    <hr>
+                </div>
+
+            </div>
          </div> 
       </div>  
     </section>

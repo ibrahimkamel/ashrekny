@@ -33,7 +33,7 @@
     <!-- gallery slider css -->
     <link type="text/css" media="all" rel="stylesheet" href="css/jquery.tosrus.all.css" />    
     <!-- Default Theme css file -->
-    <link id="switcher" href="css/themes/default-theme.css" rel="stylesheet">
+    <link id="switcher" href="css/themes/orange-theme.css" rel="stylesheet">
 
     <!-- Bootstrap RTL -->
     <link href="css/bootstrap.rtl.css" rel="stylesheet">
@@ -78,14 +78,14 @@
             </button>
             <!-- LOGO -->
             <!-- TEXT BASED LOGO -->
-            <a class="navbar-brand" ui-sref="home">جمعيات<span> إشركني</span></a>              
+            <a class="navbar-brand" ui-sref="home"><span> إشركني</span></a>              
             <!-- IMG BASED LOGO  -->
              <!-- <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"></a>  -->            
                    
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul id="top-menu" class="nav navbar-nav navbar-left main-nav">
-              <li class="active"><a href="home">الرئيسيه</a></li>
+              <li><a href="home">الرئيسيه</a></li>
               <li><a href="organizations">الجمعيات</a></li>
               <li><a href="events">إيفينتات</a></li>
               <li><a href="stories">القصص</a></li>
@@ -96,9 +96,9 @@
                 <a href="./volunteerprofile/{{currentUser.id}}">صفحتي</a>
               </li>
               <li><a href="aboutus">من نحن</a></li>                
-              <li><a href="contactus">أتص بنا</a></li>
+              <li><a href="contactus">أتصل بنا</a></li>
             </ul>
-            <div style="position: relative;top:15px;">
+            <!-- <div style="position: relative;top:15px;">
               <form class="navbar-form pull-right">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="أبحث...." ng-model="searchText">
@@ -110,7 +110,7 @@
               </div>
             </form>  
               
-            </div>
+            </div> -->
             <ul class="nav navbar-nav pull-left" 
             ng-show="currentUser == null">
               <li><a href="signup"><i class="fa fa-user fa-fw pull-left"></i>أشترك</a></li>
@@ -137,7 +137,7 @@
   </header>
   <!--=========== END HEADER SECTION ================--> 
     
-      <div style="margin-top: 80px" ui-view></div>
+      <div ui-view></div>
     
   
   <!--=========== BEGIN FOOTER SECTION ================-->
@@ -149,30 +149,31 @@
             <div class="col-ld-3  col-md-3 col-sm-3">
               <div class="single_footer_widget">
                 <h3>من نحن</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>إشركني هي منظمه تعمل علي تجميع المنظمات الخيريه الغير معروفه و تساعد المتطوعين في التواصل مع الجمعيات و تقديم المساعده</p>
               </div>
             </div>
-            <div class="col-ld-3  col-md-3 col-sm-3">
+            <div class="col-ld-3 col-md-3 col-sm-3 eventsFooter">
               <div class="single_footer_widget">
-                <h3>Community</h3>
+                <h3>إيفنتات</h3>
                 <ul class="footer_widget_nav">
-                  <li><a href="#">Our Tutors</a></li>
-                  <li><a href="#">Our Students</a></li>
-                  <li><a href="#">Our Team</a></li>
-                  <li><a href="#">Forum</a></li>
-                  <li><a href="#">News &amp; Media</a></li>
+                  <li><a href="#">السابقه</a></li>
+                  <li><a href="#">الحاليه</a></li>
+                  <li><a href="#">القادمه</a></li>
                 </ul>
               </div>
             </div>
             <div class="col-ld-3  col-md-3 col-sm-3">
               <div class="single_footer_widget">
-                <h3>Others</h3>
+                <h3>كل الصفحات</h3>
                 <ul class="footer_widget_nav">
-                  <li><a href="#">Link 1</a></li>
-                  <li><a href="#">Link 2</a></li>
-                  <li><a href="#">Link 3</a></li>
-                  <li><a href="#">Link 4</a></li>
-                  <li><a href="#">Link 5</a></li>
+                  <li><a href="#">الرئيسيه</a></li>
+                  <li><a href="#">الجمعيات</a></li>
+                  <li><a href="#">إيفينتات</a></li>
+                  <li><a href="#">القصص</a></li>
+                  <li><a href="#">القصص</a></li>
+                  <li><a href="#">صفحتي</a></li>
+                  <li><a href="#">من نحن</a></li>
+                  <li><a href="#">أتصل بنا</a></li>
                 </ul>
               </div>
             </div>
@@ -227,7 +228,7 @@
   <script src="app/bower_components/satellizer/dist/satellizer.js"></script>
   <script src="app/bower_components/angular-permission/dist/angular-permission.js"></script>
   <script src="app/bower_components/angular-permission/dist/angular-permission-ui.js"></script>
-
+  <script  src="app/bower_components/angular-input-stars/angular-input-stars.js"></script>
   <!-- angular structure -->
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>

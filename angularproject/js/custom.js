@@ -19,7 +19,7 @@
 	10. EVENTS SLIDER
 	11. GALLERY SLIDER
 	12. SCROLL TOP BUTTON
-	13. SCROLL UP BUTTON	 	
+	13. SCROLL UP BUTTON
 	
 **/
 
@@ -240,7 +240,5 @@ jQuery(function($){
 	    $('html, body').animate({scrollTop : 0},800);
 	    return false;
 	  });
-	
 
-	
 });

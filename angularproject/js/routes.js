@@ -122,7 +122,7 @@ $stateProvider
      }
 )
 .state('myEvents', {
-      url: '/myevents/:id',
+      url: '/myevents',
       templateUrl: "templates/myevents.html",
       controller: 'myEventsCtrl',
       data: {
@@ -161,5 +161,35 @@ $stateProvider
       }
   }
 )
-
+.state('editstory', {
+      url: '/:id/story/edit',
+      templateUrl: "templates/editstory.html",
+      controller: 'editStoryCtrl'
+     }
+)
+.state('reviewvolunteers', {
+    url: '/getvolunteers/:id',
+    templateUrl: "templates/reviewvolunteer.html",
+    controller: 'reviewVolunteersCtrl',
+    data: {
+        permissions: {
+          only: ['organization'],
+          redirectTo: 'home'
+        }
+      }
+  }
+)
+.state('recommendVolunteers',{
+   url: '/:id/getrecommendedvolunteers',
+   
+    templateUrl: "templates/recommendedVolunteers.html",
+    controller: 'recommendVolunteer',
+  }
+)
+.state('search', {
+    url: '/search',
+    templateUrl: "templates/search.html",
+    controller: 'SearchCtrl'
+  }
+)
 });

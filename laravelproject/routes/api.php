@@ -52,6 +52,8 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::post('/{id}/delete','Api\EventController@delete');
 			Route::post('/edittasks','Api\EventController@editTasks');
 			Route::get('/get/user/{id}','Api\EventController@getMyEvents');
+			Route::get('/getvolunteers/{id}','Api\EventController@getVolunteers');
+			Route::post('/reviewvolunteers/{id}','Api\EventController@reviewvolunteers');
 			
 		});
 		Route::group(['prefix' => 'eventalbum'], function(){
@@ -74,6 +76,7 @@ Route::group(['middleware' => 'cors'], function(){
 		
 
 		});
+		
 		Route::group(['prefix' => 'story'], function(){
 			Route::post('/add','Api\StoryController@add');
 			Route::post('/{id}/update','Api\StoryController@update');		
@@ -117,6 +120,7 @@ Route::group(['middleware' => 'cors'], function(){
 		Route::get('/{id}/getevents','Api\VolunteerController@getEvents');
 		Route::get('/{id}/getcategories', 'Api\VolunteerController@getCategories');
 		Route::get('/{id}/getuser','Api\VolunteerController@getUser');
+		
 
 	});
 	Route::group(['prefix' => 'category'], function(){
@@ -135,6 +139,7 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::get('/{id}/getReview','Api\EventController@getReview');
 			Route::get('/{id}/getCategories','Api\EventController@getCategories');
 			Route::get('/{id}/getReviews','Api\EventController@getReviews');
+			Route::get('/{id}/getrecommendedvolunteers','Api\EventController@getRecommendedVolunteers');
 
 	});
 	Route::group(['prefix' => 'eventalbum'], function(){

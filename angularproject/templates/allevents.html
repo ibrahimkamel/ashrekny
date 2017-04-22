@@ -2,28 +2,28 @@
     <div class="container">
         <div class="row">
             <div ng-repeat="event in events | filter:searchText">                
-                    <!-- start single blog archive -->
-                    <div class="col-lg-9 col-9 col-sm-9">
-                        <div class="single_blog_archive wow fadeInUp ">
-                            <div class=" col-lg-3 blogimg_container event" >
-                              <a href="./{{event.id}}/eventdetails" class="blog_img">
-                                <img alt="img" src="../laravelproject/{{event.logo}}">
-                              </a>
+                <!-- start single blog archive -->
+                <div class="col-lg-9 col-9 col-sm-9">
+                    <div class="single_blog_archive wow fadeInUp ">
+                        <div class=" col-lg-3 blogimg_container event" >
+                          <a href="./{{event.id}}/eventdetails" class="blog_img">
+                            <img alt="img" src="../laravelproject/{{event.logo}}">
+                          </a>
+                        </div>
+                        <div class=" col-lg-6" >
+                            <h2 class="blog_title"><a href="./{{event.id}}/eventdetails">{{event.title}}</a></h2>
+                            <div star-Rating class="myRating" ng-model='event.avg_rate'></div><br>
+                            <br>
+                            <div class="blog_commentbox">
+                              <p><i class="fa fa-clock-o"></i> الميعاد:{{event.start_date}} </p><br>
+                              <p><i class="fa fa-map-marker"></i>المكان: {{event.full_address}}</p>                    
                             </div>
-                            <div class=" col-lg-6" >
-                                <h2 class="blog_title"><a href="./{{event.id}}/eventdetails">{{event.title}}</a></h2> </tt>
-                                <div star-Rating class="myRating" ng-model='event.avg_rate'></div><br>
-                                <br>
-                                <div class="blog_commentbox">
-                                  <p><i class="fa fa-clock-o"></i> الميعاد:{{event.start_date}} </p><br>
-                                  <p><i class="fa fa-map-marker"></i>المكان: {{event.full_address}}</p>                    
-                                </div>
-                                <p class="blog_summary"> {{event.description}} </p>
-                                <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
-                            </div>
+                            <p class="blog_summary"> {{event.description}} </p>
+                            <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
                         </div>
                     </div>
-                    <!-- End single blog archive -->                
+                </div>
+                <!-- End single blog archive -->                
             </div>    
             <!-- start previous & next button -->
             <div class="col-lg-9 single_blog_prevnext">

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use App\Category;
  
 
 class UserController extends Controller 
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function add(Request $request)
 
-    {
+    { //dd($request->all());
  
 
         $userRules = [
@@ -104,8 +105,18 @@ class UserController extends Controller
         {$newVolunteer->profile_picture= $request->file('profilepic')->store('images/userProfilePictures');} 
         $newVolunteer->user_id=$userID;
         $newVolunteer->save();
+           
+        $volunteerCategories=$request->categories;
+    
+    $volunteerCategoriesArray = explode(',', $volunteerCategories);
+
+     foreach ($volunteerCategoriesArray as $Category)
+  
+   { $categoryID = Category::select('id')->where('name', '=',$Category)->get();
+     $newVolunteer->categories()->attach($categoryID);}
+
         return response()->json("Done Volunteer Adding",200);    
-     
+ 
         } else if ($request->orgName){
 
             $orgRules = [
@@ -139,7 +150,18 @@ class UserController extends Controller
           if($request->file('licenseScan')){
             $newOrg->license_scan=$request->file('licenseScan')->store('images/orgnizationLicenses');
           }
-          $newOrg->save();
+          
+$newOrg->save();
+ $orgnizationCategories=$request->categories;
+    
+    $orgnizationCategoriesArray = explode(',', $orgnizationCategories);
+
+     foreach ($orgnizationCategoriesArray as $Category)
+  
+   { $categoryID = Category::select('id')->where('name', '=',$Category)->get();
+     $newOrg->categories()->attach($categoryID);}
+   
+
            return response()->json("Done Orgnization Adding",200);
         }
 
