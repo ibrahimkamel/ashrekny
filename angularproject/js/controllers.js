@@ -293,7 +293,7 @@ angular.module('myApp')
         'http://localhost/GP/laravelproject/api/organization/get/'+id
         ).then(function successCallback(data){
                         $scope.organization = data.organization;
-                        // console.log($scope.organization);
+                        console.log($scope.organization);
                       },function errorCallback(err){
                         console.log(err);
                     });
@@ -1061,72 +1061,74 @@ var invitedvol= $scope.invitedVolunteers=[];
  var id = $rootScope.currentUser.id;
     //To DO get organization id dynamic
     console.log(id);
-    // get volunteer data
-    modelFactory.getData('get','http://localhost/GP/laravelproject/api/organization/'+id+'/getdetails'
+    
+    //get user data
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/'+id+'/getdetails'
     ).then(function successCallback(data){
-        console.log(data);
-        $scope.organization = data.organization;
-        console.log($scope.organization);
+        $scope.org = data.organization;
+        console.log($scope.org);
     },function errorCallback(err){
         console.log(err);
         $scope.dataerr = err;
     });
     //get user data
-    modelFactory.getData('get','http://localhost/GP/laravelproject/api/organization/get/'+id
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/get/'+id
     ).then(function successCallback(data){
-        
+        console.log(data);
         $scope.user = data.user;
-        console.log($scope.user);
     },function errorCallback(err){
         console.log(err);
         $scope.dataerr = err;
     });
 
     $scope.updateUser = function(isvaild) {
-        console.log("hello");
+        // console.log("hello");
         if (isvaild) {
-        var processData = false,
-            transformRequest = angular.identity,
-            headers = {'Content-Type': undefined},
+            var processData = false,
+                transformRequest = angular.identity,
+                headers = {'Content-Type': undefined},
+            
+            formdata= new FormData();
+            
+            formdata.append("name",$scope.org.name);
+            formdata.append("email",$scope.user.email);
+            formdata.append("description",$scope.org.description);
+            formdata.append("country",$scope.user.country);
+            formdata.append("region",$scope.user.region);
+            formdata.append("city",$scope.user.city);
+            formdata.append("full_address",$scope.org.full_address);
+            formdata.append("openning_hours",$scope.org.openning_hours);
+             
         
-        formdata= new FormData();
-        
-        formdata.append("orgName",$scope.organization.name);
-        formdata.append("email",$scope.organization.email);
-        formdata.append("desc",$scope.organization.description);
-        formdata.append("region",$scope.organization.region);
-        formdata.append("city",$scope.organization.city);
-        formdata.append("fullAddress",$scope.user.full_address);
-        formdata.append("licenseScan",$scope.user.license_scan);
-        formdata.append("officeHours",$scope.user.opening_hours);
-        formdata.append("license_number",$scope.user.license_number);
-        
-        if($scope.logo){
-            formdata.append("logo",$scope.logo);
-        }
-        for (var pair of formdata.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]); 
-        }
-        modelFactory.getData('post',
-        'http://localhost/GP/laravelproject/api/organization/update',formdata,processData, transformRequest, headers
-       ).then(function(data) {
-        $state.go('organizationprofile');
-        },
-        function(err) {
-
-            if (err.orgErrors) {
-              $scope.orgerror = err.orgErrors;
-             }
-            if (err.userErrors) {
-              $scope.userAsOrgErros = err.userErrors;
-              console.log($scope.userAsOrgErros);
+            if($scope.logo){
+                formdata.append("logo",$scope.logo);
             }
-        }); 
+            for (var pair of formdata.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/user/update',formdata,processData, transformRequest, headers
+           ).then(function(data) {
+            console.log(data);
+            $state.go('orgprofile',{id:$rootScope.currentUser.id});
+            },
+            function(err) {
+
+                if (err.orgErrors) {
+                  $scope.orgerror = err.orgErrors;
+                 }
+                if (err.userErrors) {
+                  $scope.userAsOrgErros = err.userErrors;
+                  console.log($scope.userAsOrgErros);
+                }
+            }); 
     }
 };
-    $scope.setProfilePic=function(file){
-        console.log(file[0]);
-        $scope.logo=file[0];
-        console.log( $scope.logo);
-    }
+    $scope.setLogo=function(file)
+        { console.log(file[0]);
+          $scope.logo=file[0];
+
+        }
+
+         
 })
