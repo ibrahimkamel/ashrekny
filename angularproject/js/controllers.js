@@ -1118,7 +1118,7 @@ var invitedvol= $scope.invitedVolunteers=[];
             'http://localhost/GP/laravelproject/api/user/update',formdata,processData, transformRequest, headers
            ).then(function(data) {
             console.log(data);
-            $state.go('orgprofile',{id:$rootScope.currentUser.id});
+            $state.go('orgprofile',{id:$rootScope.currentUser.role_id});
             },
             function(err) {
 
@@ -1136,7 +1136,5 @@ var invitedvol= $scope.invitedVolunteers=[];
         { console.log(file[0]);
           $scope.logo=file[0];
 
-        }
-
-         
+        }         
 })
