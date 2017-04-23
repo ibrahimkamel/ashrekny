@@ -166,7 +166,8 @@ class EventController extends Controller
         $event->organization_id = $organization_id;
         if($request->hasFile('logo'))
         {
-            $event->logo = $logo->store('images/logos');
+            $event->logo = $logo->store('public/images/logos');
+            // $event->logo = 'public/'.$event->logo;
         }
 
         $event->save();
@@ -268,7 +269,7 @@ class EventController extends Controller
         $event->organization_id = $organization_id;
         if($request->hasFile('logo'))
         {
-            $event->logo = $logo->store('images/logos');
+            $event->logo = $logo->store('public/images/logos');
         }
 
         $event->save();
@@ -407,7 +408,7 @@ class EventController extends Controller
         
     }
     public function getRecommendedVolunteers ($id)
-    {   
+    {  // dd( Event::find($id));
         $eventCategories=Event::find($id)->categories;
 
      $recvolunteers= collect();
@@ -444,6 +445,10 @@ class EventController extends Controller
           $userEmail=Volunteer::find($invitedVolunteer)->user->email;
           
            EmailUtility::send($userEmail,$subject, $content);
+           $invitedVolunteer= new Invitedvolunteer;
+          // $invitedVolunteer->event_id=$eventID;
+          // $invitedVolunteer->volunteer_id=$invitedVolunteer;
+
           }
       
       

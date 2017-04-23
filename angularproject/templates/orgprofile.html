@@ -27,7 +27,8 @@
 
 
 
-          <div class="container">
+    <div class="container">
+      <p style="padding-top:55px"></p>
           <div class="row">
             <div class="col-sm-5">
                 <div class="single_blog_archive wow fadeInUp ">
@@ -38,7 +39,9 @@
                                     </a>
                                   </div>
                                   <div class=" col-sm-6" >
-                                        <h3 class="blog_title"><a href="#">{{organization.name}}</a></h3> 
+                                        <h3 class="blog_title">
+                                          <a href="#">{{organization.name}}</a>
+                                        </h3> 
                                   </div>
                               </div>
                               <div class="row">
@@ -47,7 +50,9 @@
                                         <p><i class="fa fa-clock-o"></i> تاريخ التسجيل :</p>
                                   </div>
                                   <div class="col-sm-8" >
-                                        <p>{{organization.created_at}}</p>
+                                        <p>{{organization.created_at}}
+                                        <a href="./editorgprofile" class="btn btn-warning"><span class="fa fa-pencil fa-lg"></span></a>
+                                        </p>
                                   </div>
                               </div>
                               <div class="row">
