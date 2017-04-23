@@ -31,8 +31,9 @@
                           <strong>المكان:</strong>{{eventDetails.full_address}} <br>
                           {{eventDetails.region}},{{eventDetails.city}},{{eventDetails.country}}
                       </p>                      
-                    </div>              
+                    </div> 
                   </div>
+                    <a class="pull-left" href="./{{eventDetails.id}}/eventdetails/edit" ng-show="currentUser.isVolunteer==false && eventDetails.organization_id==currentUser.role_id" ><button class="wpcf7-edit"> تعديل <i class="fa fa-pencil-square-o"></i></button></a>             
                 </div>
                 <!--table-->
                 <div class="col-lg-6 col-6 col-sm-6">

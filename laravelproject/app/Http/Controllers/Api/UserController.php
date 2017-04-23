@@ -309,8 +309,7 @@ $newOrg->save();
         if($request->profilepic)
         {
           $targetVolunter->profile_picture= $request->file('profilepic')->store('public/images/userProfilePictures');
-        } 
-        
+        }
         $targetVolunter->save();
         return response()->json("Done Volunteer Editting",200);
       } 

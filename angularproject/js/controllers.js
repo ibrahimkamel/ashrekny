@@ -423,7 +423,7 @@ angular.module('myApp')
             'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
            ).then(function(data) {
              
-             $state.go('profile');
+             $state.go('orgprofile');
          
             },
             function(err) {

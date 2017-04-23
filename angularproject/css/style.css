@@ -1853,8 +1853,7 @@ div[data-dimension] {
 /*---------------- Filter ------------------------*/
 .contentbox {
   background-color: #87CEFA;
-  border: 1px solid #000;
-  
+  border: 1px solid #000;  
 }
 
 #sidebar {
@@ -1878,4 +1877,26 @@ div[data-dimension] {
   border-radius: 5px;
   margin-bottom: 5px;
   padding: 10px;
+}
+
+.wpcf7-delete {
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-transform: uppercase;
+   -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s; 
+}
+
+.wpcf7-edit {
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-transform: uppercase;
+   -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s; 
 }

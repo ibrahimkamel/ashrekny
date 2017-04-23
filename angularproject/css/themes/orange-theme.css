@@ -240,13 +240,24 @@ Author URI : http://www.wpfreeware.com/
   text-shadow:1px 1px 0 #262626;
 }
 .wpcf7-delete {
-  border: 1px solid #660000;
+  border: 1px solid #a94442;
   background-color: #ffffff;
-  color: #660000;
+  color: #a94442;
   text-shadow:1px 1px 0 #262626;  
 }
 .wpcf7-delete:hover,.wpcf7-delete:focus{
-  background-color: #660000;
+  background-color: #a94442;
+  color: #ffffff;
+  text-shadow:1px 1px 0 #262626;
+}
+.wpcf7-edit {
+  border: 1px solid #69c16b;
+  background-color: #ffffff;
+  color: #69c16b;
+  text-shadow:1px 1px 0 #262626;  
+}
+.wpcf7-edit:hover,.wpcf7-edit:focus{
+  background-color: #69c16b;
   color: #ffffff;
   text-shadow:1px 1px 0 #262626;
 }
