@@ -766,12 +766,16 @@ angular.module('myApp')
         console.log($scope.eventTasks);
         
         var need = "<div id='need"+$scope.no_of_needs+"' class='col-md-7 col-md-offset-3'>\
-        <div class='col-md-9'>\
+        <div class='newtask"+$scope.no_of_needs+"'><div class='col-md-7'>\
         <input ng-model='event.tasks["+$scope.no_of_needs+"].name' name='task' placeholder='الاحتياج' class='wp-form-control wpcf7-text'  type='text'>\
         </div>\
         <div class='col-md-3'>\
         <input ng-model='event.tasks["+$scope.no_of_needs+"].required_volunteers' placeholder='العدد' class='wp-form-control wpcf7-text'  type='number' min='0'>\
-        </div></div>"
+         </div>\
+        <div class='col-md-2'>\
+          <button class='btn wpcf7-delete' type='button' ng-click='delete_newtask("+$scope.no_of_needs+")'>\
+          <span class='glyphicon glyphicon-remove'></span></button>\
+        </div></div></div>"
         ;
         $('#needs').append(need);
         var newneed = (angular.element($('#need'+$scope.no_of_needs)));
@@ -782,6 +786,19 @@ angular.module('myApp')
   $scope.uploadLogo=function(file){
      console.log(file[0]);
      $scope.uploadedFile = file[0];
+  }
+  $scope.delete_task=function(id){
+    console.log(id);
+    $('.task-'+id).remove();
+    modelFactory.getData('post',
+    'http://localhost/GP/laravelproject/api/task/'+id+'/delete'
+    ).then(function successCallback(data){
+        },function errorCallback(err){
+            console.log(err);
+         });
+  }
+  $scope.delete_newtask=function(id){
+    $('.newtask'+id).remove();
   }
 })
 .controller('myEventsCtrl',function($scope,$rootScope,modelFactory){
@@ -865,6 +882,8 @@ angular.module('myApp')
 })
 .controller('reviewVolunteersCtrl',function($scope,$rootScope,modelFactory,$stateParams){
         var id = $stateParams.id;
+        $scope.lolo=2;
+        $scope.reviewvolunteer=[];
         //get volunteers that participated in certain event
         modelFactory.getData('get',
         'http://localhost/GP/laravelproject/api/event/getvolunteers/'+id
@@ -878,13 +897,14 @@ angular.module('myApp')
                         console.log(err);
                     });
         //function to rate each volunteer in the event
-        $scope.reviewvolunteers = function(eventid,volunteerid,reviewvolunteer){
+        $scope.reviewvolunteers = function(eventid,volunteerid,index){
+            console.log($scope.reviewvolunteer[index]);
             var volunteerid= volunteerid;
             var eventid=eventid;
             var organizarionid = $rootScope.currentUser.organization.id;
-            var comment = reviewvolunteer.comment;
-            var rate = reviewvolunteer.rate;
-            var attend = reviewvolunteer.attend;
+            var comment = $scope.reviewvolunteer[index].comment;
+            var rate = $scope.reviewvolunteer[index].rate;
+            var attend = $scope.reviewvolunteer[index].attend;
             var postdata = { id : eventid, volunteerid : volunteerid ,organizationid:organizarionid, comment : comment, rate : rate, attend : attend}
             var data=JSON.stringify(postdata);
             modelFactory.getData('post',
@@ -898,29 +918,70 @@ angular.module('myApp')
                         });
         };
 })
-.controller('recommendVolunteer',function($scope,modelFactory){
-    console.log("roma");
-
-        modelFactory.getData('get',
-        'http://localhost/GP/laravelproject/api/event/id/getrecommendedvolunteers'
+.controller('recommendVolunteer',function($scope,modelFactory,$stateParams,$state){
+      var id = $stateParams.id;
+          modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/'+id+'/getrecommendedvolunteers'
        
         ).then(function successCallback(data){
-                        console.log(data);
-                        $scope.stories = data;
+                        $scope.recommendedVolnteers= data;
+                        console.log($scope.recommendedVolnteers);
                       },function errorCallback(err){
                         console.log(err);
                     });
+
+     $scope.skip= function() {
+   $state.go('eventdetails',{"id":id});
+}
+
+ 
+
+$scope.invite=function()
+{
+console.log("helllo");
+var invitedvol= $scope.invitedVolunteers=[];
+ angular.forEach($scope.recommendedVolnteers, function(volunteer){
+    if (volunteer.selected){$scope.invitedVolunteers.push(volunteer.id);}
+  })
+  console.log($scope.invitedVolunteers);
+  var postdata = { id : id, invitedVolunteers:invitedvol}
+       var data=JSON.stringify(postdata);
+  console.log(data);
+   
+  modelFactory.getData('post',
+         'http://localhost/GP/laravelproject/api/event/inviteVolunteers',data
        
+        ).then(function successCallback(data){
+                  
+                         console.log(data);
+                  },function errorCallback(err){
+                         console.log(err);
+                     });
+
+
+
+}
+
+
+
+
 })
 .controller('SearchCtrl',function($scope,modelFactory){
-        modelFactory.getData('get',
-        'http://localhost/GP/laravelproject/api/event/getAll'
+    var search= "a";
+    var searchdata={data:search}
+    var data = JSON.stringify(searchdata);
+        modelFactory.getData('post',
+        'http://localhost/GP/laravelproject/api/search',data
         ).then(function successCallback(data){
                         console.log(data);
-                        $scope.events = data;
+                        $scope.events_results = data.events;
+                        $scope.organizations_results = data.organizations;
+                        $scope.stories_results = data.stories;
+                        console.log(data.events);
                       },function errorCallback(err){
                         console.log(err);
                     });
+        
 })
 // .controller('editOrganizationProfile', function($scope, modelFactory,$state,$rootScope) {
 
