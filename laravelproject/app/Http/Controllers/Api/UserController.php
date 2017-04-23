@@ -102,7 +102,7 @@ class UserController extends Controller
         $newVolunteer->last_name=$request->secondName;
         $newVolunteer->gender=$request->gender;
         if($request->profilepic)
-        {$newVolunteer->profile_picture= $request->file('profilepic')->store('images/userProfilePictures');} 
+        {$newVolunteer->profile_picture= $request->file('profilepic')->store('public/images/userProfilePictures');} 
         $newVolunteer->user_id=$userID;
         $newVolunteer->save();
            
@@ -145,10 +145,10 @@ class UserController extends Controller
            $newOrg->openning_hours=$request->officeHours;
 
           if($request->file('logo')){
-            $newOrg->logo=$request->file('logo')->store('images/orgnizationLogos');
+            $newOrg->logo=$request->file('logo')->store('public/images/orgnizationLogos');
           }
           if($request->file('licenseScan')){
-            $newOrg->license_scan=$request->file('licenseScan')->store('images/orgnizationLicenses');
+            $newOrg->license_scan=$request->file('licenseScan')->store('public/images/orgnizationLicenses');
           }
           
 $newOrg->save();
@@ -157,11 +157,11 @@ $newOrg->save();
     $orgnizationCategoriesArray = explode(',', $orgnizationCategories);
 
      foreach ($orgnizationCategoriesArray as $Category)
-  
+    
    { $categoryID = Category::select('id')->where('name', '=',$Category)->get();
-     $newOrg->categories()->attach($categoryID);}
+     $newOrg->categories()->attach($categoryID);
+   }
    
-
            return response()->json("Done Orgnization Adding",200);
         }
 
@@ -230,6 +230,14 @@ $newOrg->save();
                 'phone'=>'unique:users,phone,'.$id,  
             ];
 
+        $orgRules = [
+                'orgName'=>'required|max:50',
+                'fullAddress'=>'required',
+                'license_number'=>'required|max:50|unique:organizations',
+                'officeHours'=>'required|max:100',
+                'licenseScan'=>'required'
+            ];    
+
         $userMesssages = array(
             'email.required'=> 'من فضلك ادخل البريد الالكتروني',
             'email.unique'=>'البريد الالكتروني موجود من قبل',
@@ -251,7 +259,19 @@ $newOrg->save();
             'gender.required'=>'من فضلك ادخل النوع',
             'gender.in'=>'النوع يجب أن يكون ذكر أو انثي',  
              
-        ); 
+        );
+
+        $orgMesssages = array(
+            'orgName.required'=> 'من فضلك ادخل اسم المنظمة',
+            'orgName.max'=>'يجب ألا يزيد اسم المنظمة عن 50 حرف',
+            'fullAddress.required'=>'من فضلك ادخل العنوان بالتفصيل',
+             'license_number.required'=>'من فضلك ادخل رقم الترخيص',
+            'license_number.max'=>'يجب ألا يزيد رقم الترخيص عن 50 حرف ',  
+            'license_number.unique'=>'رقم الترخيص موجود من قبل',
+            'officeHours.required'=>'من فضلك ادخل ساعات العمل',
+            'officeHours.max'=>'يجب ألا تزيد ساعات العمل عن 100 حرف',
+            'licenseScan.required'=>'لم يتم ادخار صورة الترخيص',
+        );
           
         $validator = Validator::make($request->all(), $userRules,$userMesssages);
        
@@ -273,7 +293,7 @@ $newOrg->save();
         }
          $targetUser->save();
 
-       $targetVolunter=$targetUser->volunteer;
+        $targetVolunter=$targetUser->volunteer;
         $targetVolunter->first_name=
         $request->firstName;
         $targetVolunter->last_name=$request->secondName;
@@ -281,12 +301,48 @@ $newOrg->save();
         $targetVolunter->phone=$request->phone;
         $targetVolunter->work=$request->work;
         if($request->profilepic)
-        {$targetVolunter->profile_picture= $request->file('profilepic')->store('images/userProfilePictures');} 
+        {
+          $targetVolunter->profile_picture= $request->file('profilepic')->store('public/images/userProfilePictures');
+        } 
         
         $targetVolunter->save();
-        return response()->json("Done Volunteer Editting",200);    
-     
-        }
+        return response()->json("Done Volunteer Editting",200);
 
+        $validator = Validator::make(Input::all(), $orgRules,$orgMesssages);
+        if ($validator->fails())
+        { 
+          return \Response::json(['orgErrors' => $validator
+                    ->getMessageBag()->toArray()], 500);
+        }
+        $newUser->save();
+
+        $userID=$newUser->id;
+
+           $targetOrg=Auth::user();
+           $targetOrg->user_id=$userID;
+           $targetOrg->name=$request->orgName;
+           $targetOrg->description=$request->desc;
+           $targetOrg->full_address=$request->fullAddress;
+           $targetOrg->license_number=$request->license_number;
+           $targetOrg->openning_hours=$request->officeHours;
+
+          if($request->file('logo')){
+            $targetOrg->logo=$request->file('logo')->store('public/images/orgnizationLogos');
+          }
+          if($request->file('licenseScan')){
+            $targetOrg->license_scan=$request->file('licenseScan')->store('public/images/orgnizationLicenses');
+          }
+          
+          $targetOrg->save();
+          $orgnizationCategories=$request->categories;
+    
+          $orgnizationCategoriesArray = explode(',', $orgnizationCategories);
+          foreach ($orgnizationCategoriesArray as $Category)
+          { 
+            $categoryID = Category::select('id')->where('name', '=',$Category)->get();
+            $targetOrg->categories()->attach($categoryID);
+          }
+          return response()->json("Done Editting Orgnization",200);
     }
+}
 
