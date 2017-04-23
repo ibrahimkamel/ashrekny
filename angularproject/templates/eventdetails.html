@@ -1,6 +1,7 @@
 <link  href="app/bower_components/angular-input-stars/angular-input-stars.css" rel="stylesheet"></link>
 
 <section >
+  <!-- slider -->
   <div class="row">
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" ng-show="albums !=null">
             <!-- Indicators -->
@@ -124,7 +125,7 @@
                   <h1>التعليقات <small class="pull-left">{{eventDetails.reviewsCount}} تعليقات</small></h1>
                 </div>
                 <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
-                   <p class="pull-left"><small>{{review.created_at | date : "dd/MM/y" }}</small>
+                   <p class="pull-left"><small>{{review.created_at | date:'dd/mm/yyyy' }}</small>
                       <p star-Rating class="myRating text-center" ng-model='review.rate'></p>
                    </p>
                     <a class="media-left" href="#">
