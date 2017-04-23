@@ -1,16 +1,16 @@
   <div class="container-fluid">
       <div class="row">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" ng-show="albums !=null">
                   <!-- Indicators -->
                   
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                      <img src="../laravelproject/{{albums.photo_link}}" alt="img"> 
+                      <img src="../laravelproject/{{albums[0].photo_link}}" alt="img"> 
                     </div>
                     <!-- ng-repeat="album in albums " -->
-                    <div  class="item">
-                      <img src="../laravelproject/{{albums.photo_link}}" alt="img">
+                    <div ng-repeat="album in albums" class="item">
+                      <img src="../laravelproject/{{album.photo_link}}" alt="img">
                     </div>
                   </div>
 

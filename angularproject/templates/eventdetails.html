@@ -1,8 +1,30 @@
-
 <link  href="app/bower_components/angular-input-stars/angular-input-stars.css" rel="stylesheet"></link>
 
-<section id="imgBanner">
-  <h2>slider</h2>
+<section >
+  <div class="row">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" ng-show="albums !=null">
+            <!-- Indicators -->
+            
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+              <div class="item active">
+                <img src="../laravelproject/{{albums[0].photo_link}}" alt="img"> 
+              </div>
+              <!-- ng-repeat="album in albums " -->
+              <div ng-repeat="album in albums" class="item">
+                <img src="../laravelproject/{{album.photo_link}}" alt="img">
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            </a>
+          </div>
+    </div>
 </section> 
     <!--=========== BEGIN EVENT BANNER SECTION ================-->
     <section id="courseArchive">

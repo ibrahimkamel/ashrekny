@@ -152,6 +152,14 @@ angular.module('myApp')
                           },function errorCallback(err){
                             console.log(err);
                         });
+        modelFactory.getData('get',
+        'http://localhost/GP/laravelproject/api/event/'+id+'/getAlbum'
+        ).then(function successCallback(data){
+                        $scope.albums = data;
+                         console.log($scope.albums);
+                      },function errorCallback(err){
+                        console.log(err);
+                    });
 })
 .controller('addEventCtrl',function($rootScope,$scope,modelFactory,$compile,$state){
 

@@ -23,7 +23,7 @@ class Organization extends Model
     }
 
     public function album(){
-    	return $this->hasOne('App\OrganizationAlbum');
+    	return $this->hasMany('App\OrganizationAlbum');
     }
 
     public function events(){
