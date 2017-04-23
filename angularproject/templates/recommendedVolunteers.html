@@ -42,6 +42,7 @@
                                 <div>
                                     <a href="./volunteerprofile/{{volunteer.id}}" >{{volunteer.first_name}}  {{volunteer.last_name}}</a>
                                 </div>
+                                <div star-Rating class="myRating" ng-model='volunteer.avg_rate'>
                                 <input type="checkbox" ng-model="volunteer.selected" value="{{volunteer.id}}">
                                 
                                 <!-- <div class="action">
