@@ -12,6 +12,8 @@ use App\Volunteer;
 use App\Organization;
 use App\Category;
 use App\ReviewVolunteer;
+use App\Http\Controllers\Api\EmailUtility;
+     
 class EventController extends Controller
 {
     /**
@@ -386,11 +388,52 @@ class EventController extends Controller
     }
 
     public function getRecommendedVolunteers ($id)
-{
+{   
+    $eventCategories=Event::find($id)->categories;
 
+ $recvolunteers= collect();
 
+    foreach($eventCategories as $category)
+    {
+         
+         $volunteers = $category->volunteers->toArray();
+         foreach($volunteers as $volunteer)
+    {     
+       $recvolunteers->push($volunteer);}
+          }
+          $recommendedVolunteers = $recvolunteers->unique();
+          
+    return response()->json($recommendedVolunteers,200);
     
 }
+
+
+   public function addInvitedVolunteers(Request $req)
+   {   $eventID=$req->id;
+        $eventurl='http://localhost/GP/angularproject/'.$eventID.'/eventdetails';
+        $orgnizationname=Event::find($eventID)->organization->name;
+    $subject="دعوة حضور ايفينت";
+    $start="تدعوكم مؤسسة";
+    $mid="   لحضور هذا الايفينت بناء علي اهتمامتك
+    لمعرفة المزيد عن الايفينت افتح الرابط التالي";
+    $content=$start.$orgnizationname.$mid.$eventurl;
+    ;
+      $orgnizationname=Event::find($eventID)->organization->name;
+       $invitedVolunteers=$req->invitedVolunteers;
+       foreach($invitedVolunteers as $invitedVolunteer)
+       {
+          $userEmail=Volunteer::find($invitedVolunteer)->user->email;
+          
+           EmailUtility::send($userEmail,$subject, $content);
+          }
+      
+      
+   
+    return response()->json("Done Inviting Volunteers",200);
+ 
+
+
+   }
 
 
 

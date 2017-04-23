@@ -1,3 +1,22 @@
  <p style="padding:40px">Roma<p>
 
-     RommmmmmmmA
+     <div ng-repeat="volunteer in recommendedVolnteers">
+	<a href="./volunteerprofile/{{volunteer.id}}" >{{volunteer.first_name}}  {{volunteer.last_name}}</a>
+
+    
+  <input type="checkbox" ng-model="volunteer.selected" value="{{volunteer.id}}">
+  
+      
+</div>
+  <div class="form-group col-md-12">
+  <div class="col-md-4 col-md-offset-6">
+    <button class="wpcf7-submit" ng-click="invite()" > ادعهم <span class="glyphicon glyphicon-send"></span></button>
+     <button class="btn wpcf7-submit" ng-click="skip()"> 
+         تخطي<span class="glyphicon glyphicon-remove"></span></button>
+  </div>
+  
+</div>
+</div>
+  
+                    
+  	</div>

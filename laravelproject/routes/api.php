@@ -86,7 +86,7 @@ Route::group(['middleware' => 'cors'], function(){
 		 Route::post('/participate','Api\TaskController@participate');
 		 Route::post('/cancelparticipate','Api\TaskController@cancelparticipate');
 		 Route::post('/edit','Api\TaskController@edit');
-		 Route::post('/delete','Api\TaskController@delete');
+		 Route::post('/{id}/delete','Api\TaskController@delete');
 		});
 	});
 
@@ -140,6 +140,9 @@ Route::group(['middleware' => 'cors'], function(){
 			Route::get('/{id}/getCategories','Api\EventController@getCategories');
 			Route::get('/{id}/getReviews','Api\EventController@getReviews');
 			Route::get('/{id}/getrecommendedvolunteers','Api\EventController@getRecommendedVolunteers');
+			Route::post('/inviteVolunteers','Api\EventController@addInvitedVolunteers');
+
+			 
 
 	});
 	Route::group(['prefix' => 'eventalbum'], function(){
@@ -178,6 +181,7 @@ Route::group(['middleware' => 'cors'], function(){
 	Route::group(['prefix' => 'select'], function(){
 		Route::get('/selected','Api\selectController@getSelected');
 	});
+	Route::post('/search','Api\SearchController@get');
 });
 
 
