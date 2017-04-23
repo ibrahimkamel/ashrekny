@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Event;
 use App\Task;
+use App\Volunteer;
+use App\Http\Controllers\Api\EmailUtility;
 class TaskController extends Controller
 {
      /**
@@ -31,12 +33,20 @@ class TaskController extends Controller
         $volunteerID = $request->get('volunteer_id');
         //dd($volunteerID );
         $task->volunteers()->attach($volunteerID);
-        $task->required_volunteers = ($task->required_volunteers) -1;
+        $task->required_volunteers = ($task->required_volunteers);
         $task->going_volunteers = ($task->going_volunteers)+1;
         $task->save();
-        return response()->json(["required_volunteers" => $task->required_volunteers,
+        $eventName=$task->event->title;
+        $eventID=$task->event->id;
+        $eventStartdate=$task->event->start_date;
+        $organizationName=$task->event->organization->name;
+        $mail= Volunteer::find( $volunteerID)->user->email;
+        $subject="اشتراك فى ايفنت";
+        $eventurl='http://localhost/GP/angularproject/'.$eventID.'/eventdetails';
+        $content="لقد إشتركت فى ايفنت : ".$eventName." المنظم تحت إشراف : ".$organizationName."و الذى سيبدأ فى : ".$eventStartdate." نحن فى انتظارك!"." : رابط الايفنت للمتابعة ".$eventurl;
+        EmailUtility::send($mail,$subject,$content);
+         return response()->json(["required_volunteers" => $task->required_volunteers,
                                  "going_volunteers" => $task->going_volunteers],200);
-
     }
 
     /**
@@ -49,9 +59,17 @@ class TaskController extends Controller
         $task =  Task::find($request->get('task_id'));
         $volunteerID = $request->get('volunteer_id');
         $task->volunteers()->detach($volunteerID);
-        $task->required_volunteers = ($task->required_volunteers) +1;
+        $task->required_volunteers = ($task->required_volunteers);
         $task->going_volunteers = ($task->going_volunteers)-1;
         $task->save();
+        $eventName=$task->event->title;
+        $eventID=$task->event->id;
+        $organizationName=$task->event->organization->name;
+        $mail= Volunteer::find( $volunteerID)->user->email;
+        $subject="الغاء الاشتراك فى ايفنت";
+        $eventurl='http://localhost/GP/angularproject/'.$eventID.'/eventdetails';
+        $content="لقد تم الغاء اشتراكك فى :  ".$eventName." المنظم تحت إشراف : ".$organizationName." : رابط الايفنت للمتابعة ".$eventurl;
+        EmailUtility::send($mail,$subject,$content);
         return response()->json(["required_volunteers" => $task->required_volunteers,
                                  "going_volunteers" => $task->going_volunteers],200);
 
