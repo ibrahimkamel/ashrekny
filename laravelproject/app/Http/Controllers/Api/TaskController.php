@@ -42,7 +42,7 @@ class TaskController extends Controller
         $organizationName=$task->event->organization->name;
         $mail= Volunteer::find( $volunteerID)->user->email;
         $subject="اشتراك فى ايفنت";
-        $eventurl='http://localhost/GP/angularproject/'.$eventID.'/eventdetails';
+        $eventurl='<a href="http://localhost/GP/angularproject/'.$eventID.'/eventdetails">الرابط</a>';
         $content="لقد إشتركت فى ايفنت : ".$eventName." المنظم تحت إشراف : ".$organizationName."و الذى سيبدأ فى : ".$eventStartdate." نحن فى انتظارك!"." : رابط الايفنت للمتابعة ".$eventurl;
         EmailUtility::send($mail,$subject,$content);
          return response()->json(["required_volunteers" => $task->required_volunteers,
@@ -67,7 +67,7 @@ class TaskController extends Controller
         $organizationName=$task->event->organization->name;
         $mail= Volunteer::find( $volunteerID)->user->email;
         $subject="الغاء الاشتراك فى ايفنت";
-        $eventurl='http://localhost/GP/angularproject/'.$eventID.'/eventdetails';
+        $eventurl='<a href="http://localhost/GP/angularproject/'.$eventID.'/eventdetails">الرابط</a>';
         $content="لقد تم الغاء اشتراكك فى :  ".$eventName." المنظم تحت إشراف : ".$organizationName." : رابط الايفنت للمتابعة ".$eventurl;
         EmailUtility::send($mail,$subject,$content);
         return response()->json(["required_volunteers" => $task->required_volunteers,
