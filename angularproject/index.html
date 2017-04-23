@@ -90,10 +90,10 @@
               <li><a href="events">إيفينتات</a></li>
               <li><a href="stories">القصص</a></li>
               <li ng-show="currentUser.isVolunteer ==false">
-                <a href="./orgprofile/{{currentUser.id}}">صفحتي</a>
+                <a href="./orgprofile/{{currentUser.role_id}}">صفحتي</a>
               </li>
               <li ng-show="currentUser.isVolunteer ==true">
-                <a href="./volunteerprofile/{{currentUser.id}}">صفحتي</a>
+                <a href="./volunteerprofile/{{currentUser.role_id}}">صفحتي</a>
               </li>
               <li><a href="aboutus">من نحن</a></li>                
               <li><a href="contactus">أتصل بنا</a></li>

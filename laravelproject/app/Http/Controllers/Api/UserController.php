@@ -102,7 +102,7 @@ class UserController extends Controller
         $newVolunteer->last_name=$request->secondName;
         $newVolunteer->gender=$request->gender;
         if($request->profilepic)
-        {$newVolunteer->profile_picture= $request->file('profilepic')->store('images/userProfilePictures');} 
+        {$newVolunteer->profile_picture= $request->file('profilepic')->store('public/images/userProfilePictures');} 
         $newVolunteer->user_id=$userID;
         $newVolunteer->save();
            
@@ -145,10 +145,10 @@ class UserController extends Controller
            $newOrg->openning_hours=$request->officeHours;
 
           if($request->file('logo')){
-            $newOrg->logo=$request->file('logo')->store('images/orgnizationLogos');
+            $newOrg->logo=$request->file('logo')->store('public/images/orgnizationLogos');
           }
           if($request->file('licenseScan')){
-            $newOrg->license_scan=$request->file('licenseScan')->store('images/orgnizationLicenses');
+            $newOrg->license_scan=$request->file('licenseScan')->store('public/images/orgnizationLicenses');
           }
           
 $newOrg->save();
@@ -281,7 +281,7 @@ $newOrg->save();
         $targetVolunter->phone=$request->phone;
         $targetVolunter->work=$request->work;
         if($request->profilepic)
-        {$targetVolunter->profile_picture= $request->file('profilepic')->store('images/userProfilePictures');} 
+        {$targetVolunter->profile_picture= $request->file('profilepic')->store('public/images/userProfilePictures');} 
         
         $targetVolunter->save();
         return response()->json("Done Volunteer Editting",200);    
