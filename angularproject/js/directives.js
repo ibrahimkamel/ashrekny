@@ -13,7 +13,7 @@ angular.module('myApp').directive("starRating",function(){
     }
     for (var i = 0; i < 5-rating; i++) {
       // add stars empty
-      ele.append('<i class="fa fa-star-o fa-lg" aria-hidden="true"></i>')
+      ele.append('<i class="fa fa-star-o fa-lg stars" aria-hidden="true"></i>')
     }
   }
   }

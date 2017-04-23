@@ -963,7 +963,7 @@ angular.module('myApp')
 })
 .controller('reviewVolunteersCtrl',function($scope,$rootScope,modelFactory,$stateParams){
         var id = $stateParams.id;
-        $scope.lolo=2;
+
         $scope.reviewvolunteer=[];
         //get volunteers that participated in certain event
         modelFactory.getData('get',
@@ -992,8 +992,8 @@ angular.module('myApp')
             'http://localhost/GP/laravelproject/api/event/reviewvolunteers/'+id,data
             ).then(function successCallback(data){
                             console.log(data);
-                            $scope.volunteers = data;
-                            console.log($scope.volunteers);
+                            // $scope.volunteers = data;
+                            // console.log($scope.volunteers);
                           },function errorCallback(err){
                             console.log(err);
                         });

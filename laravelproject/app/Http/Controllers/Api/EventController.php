@@ -317,6 +317,7 @@ class EventController extends Controller
             $reviewsvolunteers[$review->id]=Review::with('volunteer')->find($review->id);
         }
         $reviewsCount = $reviews->count('id');
+        //get average rate for event
         $reviews_avgRate=$reviews->avg('rate');
         $event->avg_rate=$reviews_avgRate;
         $event->save();
@@ -373,10 +374,10 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function reviewvolunteers(Request $request)
-    {
-        
+    {        
         $event_id = $request->get('id');
         $volunteer_id=$request->get('volunteerid');
+        $volunteer=Volunteer::find($volunteer_id);
         $comment=$request->get('comment');
         $rate=$request->get('rate');
         $attend=$request->get('attend');
@@ -389,7 +390,11 @@ class EventController extends Controller
         $review->rate = $rate;
         $review->attend = $attend;
         $review->save();
-        return response()->json("successfully created",200);
+        //get average rate for volunteer
+        $avgrate=ReviewVolunteer::where('volunteer_id',$volunteer_id)->avg('rate');       
+        $volunteer->avg_rate=$avgrate;
+        $volunteer->save();
+        return response()->json("successfully added!",200);
     }
 
     public function invite ()
