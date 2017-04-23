@@ -250,6 +250,17 @@ Author URI : http://www.wpfreeware.com/
   color: #ffffff;
   text-shadow:1px 1px 0 #262626;
 }
+.wpcf7-edit {
+  border: 1px solid #69c16b;
+  background-color: #ffffff;
+  color: #69c16b;
+  text-shadow:1px 1px 0 #262626;  
+}
+.wpcf7-edit:hover,.wpcf7-edit:focus{
+  background-color: #69c16b;
+  color: #ffffff;
+  text-shadow:1px 1px 0 #262626;
+}
 /*=======================================
 Template Design By WpFreeware Team.
 Author URI : http://www.wpfreeware.com/

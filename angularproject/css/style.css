@@ -1890,3 +1890,14 @@ div[data-dimension] {
   -ms-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s; 
 }
+
+.wpcf7-edit {
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-transform: uppercase;
+   -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  -ms-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s; 
+}

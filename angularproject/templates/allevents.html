@@ -1,3 +1,4 @@
+<p style="padding:40px"><p>
 <section id="courseArchive">
     <div class="container">
         <div class="row">
@@ -21,7 +22,7 @@
                             <p class="blog_summary"> {{event.description}} </p>
                             <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
                             
-                            <a class="col-sm-offset-6" href="./{{event.id}}/eventdetails/edit" ng-show="currentUser.isVolunteer==false && event.organization_id==currentUser.role_id" ><button class="wpcf7-submit editButton"> تعديل <i class="fa fa-pencil-square-o"></i></button></a>
+                            <a class="col-sm-offset-6" href="./{{event.id}}/eventdetails/edit" ng-show="currentUser.isVolunteer==false && event.organization_id==currentUser.role_id" ><button class="wpcf7-edit"> تعديل <i class="fa fa-pencil-square-o"></i></button></a>
                             
                         </div>
                     </div>
