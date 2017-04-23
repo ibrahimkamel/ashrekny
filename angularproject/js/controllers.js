@@ -1047,9 +1047,8 @@ var invitedvol= $scope.invitedVolunteers=[];
 
 
 })
-.controller('SearchCtrl',function($scope,modelFactory){
-    var search= "a";
-    var searchdata={data:search}
+.controller('SearchCtrl',function($scope,modelFactory,$stateParams){
+    var searchdata={data:$stateParams.keyword}
     var data = JSON.stringify(searchdata);
         modelFactory.getData('post',
         'http://localhost/GP/laravelproject/api/search',data
@@ -1139,4 +1138,12 @@ var invitedvol= $scope.invitedVolunteers=[];
         }
 
          
+})
+.controller('IndexCtrl',function($scope,modelFactory,$state){
+    console.log($scope.keyword);
+    $scope.search=function()
+    {
+        if($scope.keyword!=""&&$scope.keyword!=undefined)
+        $state.go('search',{keyword:$scope.keyword});
+    }
 })

@@ -187,7 +187,7 @@ $stateProvider
   }
 )
 .state('search', {
-    url: '/search',
+    url: '/search/:keyword',
     templateUrl: "templates/search.html",
     controller: 'SearchCtrl'
   }

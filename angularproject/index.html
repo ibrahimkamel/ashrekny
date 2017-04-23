@@ -153,10 +153,10 @@
   </header>
   <!--=========== END HEADER SECTION ================--> 
   <!-- Search Box Start -->
-  <div class="search-box-outer" style="display: none!important;">
+  <div ng-controller="IndexCtrl" class="search-box-outer" style="display: none!important;">
       <div class="search-box">
-        <form>
-          <input type="text" value="" class="form-control" placeholder="أكتب و أضغط Enter للبحث" />
+        <form ng-submit="search()">
+          <input type="text" ng-model="keyword" value="" class="form-control" placeholder="أكتب و أضغط Enter للبحث" />
         </form>
         <a href="#!" class="close-search">
           <i class="fa fa-close"></i></a> 
