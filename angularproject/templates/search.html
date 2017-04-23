@@ -21,8 +21,15 @@
 					                <p><i class="fa fa-clock-o"></i> الميعاد:{{event.start_date}} </p><br>
 					                <p><i class="fa fa-map-marker"></i>المكان: {{event.full_address}}</p>          
 					              </div>
-					              <p class="blog_summary"> {{event.description}} </p>
-					              <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
+					              <div class="row">
+					              	<p class="blog_summary"> {{event.description}} </p>
+					               <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
+					              </div>
+					              <div class="row">
+					              	 <div class="fb-share-button col-sm-3 col-sm-offset-9" data-href="https://localhost/GP/angularproject/{{event.id}}/eventdetails" data-layout="button_count" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgoogle.com%2F&amp;src=sdkpreparse">Share</a></div>
+					              </div>
+					             
+					             
 					          </div>
 				        </div>
 				    </div>
