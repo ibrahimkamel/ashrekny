@@ -93,8 +93,8 @@ angular.module('myApp')
             modelFactory.getData('get',
             'http://localhost/GP/laravelproject/api/event/'+id+'/getReviews'
             ).then(function successCallback(data){
-                            $scope.eventDetails.reviewsvolunteers = data;
-                            // var oneDay = 24*60*60*1000; 
+                            $scope.eventDetails.reviewsvolunteers = data.reviewsvolunteers;
+                             $scope.eventDetails.reviewsCount = data.reviewsCount;
                             // $scope.eventDetails.reviews.diffdate=Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
                             console.log(data);
                           },function errorCallback(err){
@@ -145,8 +145,8 @@ angular.module('myApp')
         modelFactory.getData('get',
             'http://localhost/GP/laravelproject/api/event/'+id+'/getReviews'
             ).then(function successCallback(data){
-                            $scope.eventDetails.reviewsvolunteers = data;
-                            // var oneDay = 24*60*60*1000; 
+                            $scope.eventDetails.reviewsvolunteers = data.reviewsvolunteers;
+                            $scope.eventDetails.reviewsCount = data.reviewsCount;
                             // $scope.eventDetails.reviews.diffdate=Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
                             console.log(data);
                           },function errorCallback(err){

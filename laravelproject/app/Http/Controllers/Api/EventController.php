@@ -315,8 +315,8 @@ class EventController extends Controller
         foreach ($reviews as $review) {
             $reviewsvolunteers[$review->id]=Review::with('volunteer')->find($review->id);
         }
-        return response()->json($reviewsvolunteers,200);
-
+        $reviewsCount = $reviews->count('id');
+        return response()->json(compact('reviewsvolunteers','reviewsCount'),200);
     }
         /**
      * get my events
@@ -444,11 +444,7 @@ class EventController extends Controller
 
 
    }
-
-
-
-
-
+   
 }
 
 

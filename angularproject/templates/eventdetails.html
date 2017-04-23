@@ -99,7 +99,7 @@
          <div class="col-lg-8 col-md-8 col-sm-8 col-sm-offset-2">
             <div class="comments-list">
                 <div class="page-header">
-                  <h1>التعليقات <small class="pull-left">comments number</small></h1>
+                  <h1>التعليقات <small class="pull-left">{{eventDetails.reviewsCount}} تعليق</small></h1>
                 </div>
                 <div class="media" ng-repeat="review in eventDetails.reviewsvolunteers"> 
                    <p class="pull-left"><small>{{review.created_at | date : "dd/MM/y" }}</small>
