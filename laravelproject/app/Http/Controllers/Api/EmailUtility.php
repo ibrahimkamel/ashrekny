@@ -14,8 +14,7 @@ class EmailUtility
         
     public static function send($email,$subject,$content)
     {
-        //$title = $request->input('title');
-        //$content = $request->input('content');
+         
         Mail::send('Email',['content' => $content], function ($message) use ($subject,$email)
         {
 
