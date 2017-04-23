@@ -1853,8 +1853,7 @@ div[data-dimension] {
 /*---------------- Filter ------------------------*/
 .contentbox {
   background-color: #87CEFA;
-  border: 1px solid #000;
-  
+  border: 1px solid #000;  
 }
 
 #sidebar {

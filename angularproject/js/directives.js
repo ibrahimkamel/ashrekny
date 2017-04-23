@@ -18,10 +18,9 @@ angular.module('myApp').directive("starRating",function(){
   }
   }
 })
-
-
-angular.module('myApp').directive("mySelect",function(){
+.directive("mySelect",function(){
   return{
-    templateUrl: 'templates/select.html'
+    templateUrl: 'templates/select.html',
+    controller: 'selectCtrl'
   }
 })
