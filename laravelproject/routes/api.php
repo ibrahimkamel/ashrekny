@@ -33,7 +33,7 @@ Route::group(['middleware' => 'cors'], function(){
 		});
 		Route::group(['prefix' => 'organization'], function(){
 			
-			
+			Route::post('/update','Api\UserController@update');
 
 		});
 		Route::group(['prefix' => 'volunteer'], function(){

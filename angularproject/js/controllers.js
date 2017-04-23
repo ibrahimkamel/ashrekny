@@ -293,7 +293,7 @@ angular.module('myApp')
         'http://localhost/GP/laravelproject/api/organization/get/'+id
         ).then(function successCallback(data){
                         $scope.organization = data.organization;
-                        // console.log($scope.organization);
+                        console.log($scope.organization);
                       },function errorCallback(err){
                         console.log(err);
                     });
@@ -424,7 +424,7 @@ angular.module('myApp')
            ).then(function(data) {
              
              $state.go('auth');
-         
+      
             },
             function(err) {
 
@@ -1056,73 +1056,79 @@ var invitedvol= $scope.invitedVolunteers=[];
                     });
         
 })
-// .controller('editOrganizationProfile', function($scope, modelFactory,$state,$rootScope) {
+.controller('editOrganizationProfile', function($scope, modelFactory,$state,$rootScope) {
 
-//  var id = $rootScope.currentUser.id;
-//     //To DO get organization id dynamic
-//     console.log(id);
-//     // get volunteer data
-//     modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/'+id+'/getdetails'
-//     ).then(function successCallback(data){
-//         console.log(data);
-//         $scope.organization = data.organization;
-//         console.log($scope.organization);
-//     },function errorCallback(err){
-//         console.log(err);
-//         $scope.dataerr = err;
-//     });
-//     //get user data
-//     modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/get/'+id
-//     ).then(function successCallback(data){
-        
-//         $scope.user = data.user;
-//         console.log($scope.user);
-//     },function errorCallback(err){
-//         console.log(err);
-//         $scope.dataerr = err;
-//     });
+ var id = $rootScope.currentUser.id;
+    //To DO get organization id dynamic
+    console.log(id);
+    
+    //get user data
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/'+id+'/getdetails'
+    ).then(function successCallback(data){
+        $scope.org = data.organization;
+        console.log($scope.org);
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;
+    });
+    //get user data
+    modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/get/'+id
+    ).then(function successCallback(data){
+        console.log(data);
+        $scope.user = data.user;
+    },function errorCallback(err){
+        console.log(err);
+        $scope.dataerr = err;
+    });
 
-//     $scope.updateUser = function(isvaild) {
-//         console.log("hello");
-//         if (isvaild) {
-//         var processData = false,
-//             transformRequest = angular.identity,
-//             headers = {'Content-Type': undefined},
+    $scope.updateUser = function(isvaild) {
+        // console.log("hello");
+        if (isvaild) {
+            var processData = false,
+                transformRequest = angular.identity,
+                headers = {'Content-Type': undefined},
+            
+            formdata= new FormData();
+            
+            formdata.append("name",$scope.org.name);
+            formdata.append("email",$scope.user.email);
+            formdata.append("description",$scope.org.description);
+            formdata.append("country",$scope.user.country);
+            formdata.append("region",$scope.user.region);
+            formdata.append("city",$scope.user.city);
+            formdata.append("full_address",$scope.org.full_address);
+            formdata.append("openning_hours",$scope.org.openning_hours);
+             
         
-//         formdata= new FormData();
-        
-//         formdata.append("firstName",$scope.organization.name);
-//         formdata.append("description",$scope.organization.description);
-//         formdata.append("full_address",$scope.user.full_address);
-//         formdata.append("license_number",$scope.user.license_number);
-//         formdata.append("license_scan",$scope.user.license_scan);
-//         formdata.append("opening_hours",$scope.user.opening_hours);
-//         if($scope.logo){
-//             formdata.append("logo",$scope.logo);
-//         }
-//         for (var pair of formdata.entries()) {
-//             console.log(pair[0]+ ', ' + pair[1]); 
-//         }
-//         modelFactory.getData('post',
-//         'http://localhost/GP/laravelproject/api/user/update',formdata,processData, transformRequest, headers
-//        ).then(function(data) {
-//         $state.go('organizationprofile');
-//         },
-//         function(err) {
+            if($scope.logo){
+                formdata.append("logo",$scope.logo);
+            }
+            for (var pair of formdata.entries()) {
+                console.log(pair[0]+ ', ' + pair[1]); 
+            }
+            modelFactory.getData('post',
+            'http://localhost/GP/laravelproject/api/user/update',formdata,processData, transformRequest, headers
+           ).then(function(data) {
+            console.log(data);
+            $state.go('orgprofile',{id:$rootScope.currentUser.id});
+            },
+            function(err) {
 
-//             if (err.orgErrors) {
-//               $scope.orgerror = err.orgErrors;
-//              }
-//             if (err.userErrors) {
-//               $scope.userAsOrgErros = err.userErrors;
-//               console.log($scope.userAsOrgErros);
-//             }
-//         }); 
-//     }
-// };
-//     $scope.setProfilePic=function(file){
-//         console.log(file[0]);
-//         $scope.logo=file[0];
-//         console.log( $scope.logo);
-//     }
-// })
+                if (err.orgErrors) {
+                  $scope.orgerror = err.orgErrors;
+                 }
+                if (err.userErrors) {
+                  $scope.userAsOrgErros = err.userErrors;
+                  console.log($scope.userAsOrgErros);
+                }
+            }); 
+    }
+};
+    $scope.setLogo=function(file)
+        { console.log(file[0]);
+          $scope.logo=file[0];
+
+        }
+
+         
+})

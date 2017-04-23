@@ -192,17 +192,17 @@ $stateProvider
     controller: 'SearchCtrl'
   }
 )
-// .state('editorgprofile', {
-//       url: '/editMyProfile',
-//       templateUrl: "templates/editorgprofile.html",
-//       controller: 'editOrganizationProfile',
-//       data: {
-//           permissions: {
-//             except: ['anonymous'],
-//             redirectTo: 'auth'
-//           }
-//         }
+.state('editorgprofile', {
+      url: '/editorgprofile',
+      templateUrl: "templates/editorgprofile.html",
+      controller: 'editOrganizationProfile',
+      data: {
+          permissions: {
+            except: ['anonymous'],
+            redirectTo: 'auth'
+          }
+        }
      
-//      }
-// )
+     }
+)
 });
