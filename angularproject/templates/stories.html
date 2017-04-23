@@ -1,3 +1,5 @@
+ <p style="padding:40px"><p>
+
 <!--=========== BEGIN COURSE BANNER SECTION ================-->
   <div class="container">
     <div class="row">
@@ -22,6 +24,7 @@
                 </div>
                 <p class="blog_summary">{{story.content}}</p>
                 <a class="blog_readmore" href="./{{story.id}}/storydetails">Read More</a>
+                <a href="./{{story.id}}/story/edit" ng-show="currentUser.isVolunteer && story.volunteer.id==currentUser.role_id" class="t col-sm-offset-7"><button class="wpcf7-submit"> تعديل <i class="fa fa-pencil-square-o"></i></span></button></a>
               </div>
             </div>
             <!-- End single blog archive -->

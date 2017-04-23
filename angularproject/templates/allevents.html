@@ -10,7 +10,7 @@
                             <img alt="img" src="../laravelproject/{{event.logo}}">
                           </a>
                         </div>
-                        <div class=" col-lg-6" >
+                        <div class=" col-lg-8" >
                             <h2 class="blog_title"><a href="./{{event.id}}/eventdetails">{{event.title}}</a></h2>
                             <div star-Rating class="myRating" ng-model='event.avg_rate'></div><br>
                             <br>
@@ -20,6 +20,9 @@
                             </div>
                             <p class="blog_summary"> {{event.description}} </p>
                             <a class="blog_readmore" href="./{{event.id}}/eventdetails">التفاصيل</a>
+                            
+                            <a class="col-sm-offset-6" href="./{{event.id}}/eventdetails/edit" ng-show="currentUser.isVolunteer==false && event.organization_id==currentUser.role_id" ><button class="wpcf7-submit editButton"> تعديل <i class="fa fa-pencil-square-o"></i></button></a>
+                            
                         </div>
                     </div>
                 </div>
