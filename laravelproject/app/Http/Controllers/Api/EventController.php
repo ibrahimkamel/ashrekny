@@ -310,12 +310,16 @@ class EventController extends Controller
      */
     public function getReviews($id)
     {
+        $event=Event::find($id);
         $reviews = Event::find($id)->reviews;
         $reviewsvolunteers=[];
         foreach ($reviews as $review) {
             $reviewsvolunteers[$review->id]=Review::with('volunteer')->find($review->id);
         }
         $reviewsCount = $reviews->count('id');
+        $reviews_avgRate=$reviews->avg('rate');
+        $event->avg_rate=$reviews_avgRate;
+        $event->save();
         return response()->json(compact('reviewsvolunteers','reviewsCount'),200);
     }
         /**
