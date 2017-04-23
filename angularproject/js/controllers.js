@@ -408,7 +408,7 @@ angular.module('myApp')
           formdata.append("gender",$scope.user.gender);
           if($scope.profilePic)
          {   formdata.append("profilepic",$scope.profilePic);}
-   
+   console.log($scope.user.category);
     if($scope.user.category)
       {
         formdata.append("categories",$scope.user.category);
@@ -423,7 +423,7 @@ angular.module('myApp')
             'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
            ).then(function(data) {
              
-             $state.go('profile');
+             $state.go('auth');
          
             },
             function(err) {
@@ -470,7 +470,7 @@ angular.module('myApp')
              {   formdata.append("logo",$scope.logo);}
                 if($scope.license)
              {   formdata.append("licenseScan",$scope.license);}
-
+console.log($scope.org.category)
              if($scope.org.category)
       {
         formdata.append("categories",$scope.org.category);
@@ -489,7 +489,7 @@ angular.module('myApp')
             'http://localhost/GP/laravelproject/api/user/add',formdata,processData, transformRequest, headers
            ).then(function(data) {
             
-          $state.go('profile');
+          $state.go('auth');
 
             },
             function(err) {    
@@ -507,7 +507,7 @@ angular.module('myApp')
 
             }
             
-            ); }};/////
+            ); }};
 
 
         $scope.setProfilePic=function(file)

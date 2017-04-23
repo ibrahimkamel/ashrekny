@@ -107,9 +107,11 @@ class UserController extends Controller
         $newVolunteer->save();
            
         $volunteerCategories=$request->categories;
-    
-    $volunteerCategoriesArray = explode(',', $volunteerCategories);
+     
 
+    $volunteerCategoriesArray = explode(',', $volunteerCategories);
+ 
+    
      foreach ($volunteerCategoriesArray as $Category)
   
    { $categoryID = Category::select('id')->where('name', '=',$Category)->get();
@@ -150,7 +152,7 @@ class UserController extends Controller
           if($request->file('licenseScan')){
             $newOrg->license_scan=$request->file('licenseScan')->store('images/orgnizationLicenses');
           }
-          
+           
 $newOrg->save();
  $orgnizationCategories=$request->categories;
     

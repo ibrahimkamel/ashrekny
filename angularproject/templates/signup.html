@@ -86,6 +86,25 @@
 					  <span class="validation" >{{err}}</span>
 					</div>
 				</div>
+				<div> <label  >الاهتمامات</label> </div>
+				<br>
+				<div class="form-group">
+					
+             <select class="selectpicker" multiple ng-model="org.category">
+              <option   ng-true-value ="'مرأة'">مرأة</option>
+              <option   ng-true-value="'تعليم'">تعليم</option>
+              <option  ng-true-value="'صحة'">صحة</option>
+              <option ng-true-value="'طفولة'">طفولة</option>
+              <option ng-true-value="'بيئة'">بيئة</option>  
+            </select>
+			<br>
+				</div>
+
+
+
+
+
+
 				<div class="form-group">
 				   <label for="exampleInputCity">رقم الترخيص</label>
 					<input type="text" class="wp-form-control wpcf7-text" 
@@ -174,6 +193,23 @@
 			  			<span class="validation">{{err}}</span>
 			 		</div>
 				</div>
+
+				<div> <label  >الاهتمامات</label> </div>
+				<br>
+				<div class="form-group">
+					
+             <select class="selectpicker" multiple ng-model="user.category">
+              <option   ng-true-value ="'مرأة'">مرأة</option>
+              <option   ng-true-value="'تعليم'">تعليم</option>
+              <option  ng-true-value="'صحة'">صحة</option>
+              <option ng-true-value="'طفولة'">طفولة</option>
+              <option ng-true-value="'بيئة'">بيئة</option>  
+            </select>
+			<br>
+				</div>
+
+
+
 			 	<legend>النوع</legend>
 			    <div class="form-check">
 			        <input type="radio" class="form-check-input" name="gender" 
@@ -188,6 +224,7 @@
 			  			<span class="validation">{{err}}</span>
 			 		</div>
 			 	</div>	
+				 <br>
 			 	<div class="form-group">
 			  		<label >الصورة الشخصية</label>
 			 		<input type="file" name="profilePic" onchange="angular.element(this).scope().setProfilePic(this.files)">

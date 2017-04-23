@@ -398,7 +398,7 @@ class EventController extends Controller
         
     }
     public function getRecommendedVolunteers ($id)
-    {   
+    {  // dd( Event::find($id));
         $eventCategories=Event::find($id)->categories;
 
      $recvolunteers= collect();
@@ -435,6 +435,10 @@ class EventController extends Controller
           $userEmail=Volunteer::find($invitedVolunteer)->user->email;
           
            EmailUtility::send($userEmail,$subject, $content);
+           $invitedVolunteer= new Invitedvolunteer;
+          // $invitedVolunteer->event_id=$eventID;
+          // $invitedVolunteer->volunteer_id=$invitedVolunteer;
+
           }
       
       
