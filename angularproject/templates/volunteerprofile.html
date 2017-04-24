@@ -90,6 +90,8 @@
                               <a href="./{{story.id}}/storydetails">{{story.title}}</a>
                             </h3>
                             <span>{{story.content}}</span>
+                            <a href="./{{story.id}}/story/edit" ng-show="currentUser.isVolunteer && story.volunteer.id==currentUser.role_id"
+                             class="col-sm-offset-7"><button class="wpcf7-edit"> تعديل <i class="fa fa-pencil-square-o"></i></span></button></a>
                         </div>
                       </div>
                     </li>

@@ -30,6 +30,6 @@ class Event extends Model
     	return $this->belongsTo('App\Organization');
     }
     public function invitedvolunteers(){
-        return $this->hasMany('App\Invitedvolunteer', 'id', 'event_id');
+        return $this->hasMany('App\Invitedvolunteer', 'event_id');
     }
 }

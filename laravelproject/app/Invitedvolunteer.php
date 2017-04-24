@@ -11,9 +11,9 @@ class Invitedvolunteer extends Model
 	protected $hidden = ['volunteer_id','event_id'];
 
     public function invitedvolunteers(){
-    	return $this->belongsTo('App\Volunteer', 'volunteer_id');
+    	return $this->hasMany('App\Volunteer', 'volunteer_id');
     }
     public function invitedevents(){
-    	return $this->belongsTo('App\Event', 'event_id');
+    	return $this->hasMany('App\Event', 'event_id');
     }
 }

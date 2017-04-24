@@ -56,6 +56,7 @@
                       </p>                      
                     </div> 
                   </div>
+                  <a class="pull-left" href="./{{eventDetails.id}}/getrecommendedvolunteers" ng-show="currentUser.isVolunteer==false && eventDetails.organization_id==currentUser.role_id" ><button class="wpcf7-submit"> اقتراحات <i class="fa fa-lightbulb-o"></i></button></a>
                     <a class="pull-left" href="./{{eventDetails.id}}/eventdetails/edit" ng-show="currentUser.isVolunteer==false && eventDetails.organization_id==currentUser.role_id" ><button class="wpcf7-edit"> تعديل <i class="fa fa-pencil-square-o"></i></button></a>             
                 </div>
                 <!--table-->
