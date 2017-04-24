@@ -184,6 +184,13 @@ $stateProvider
    
     templateUrl: "templates/recommendedVolunteers.html",
     controller: 'recommendVolunteer',
+     data: {
+        permissions: {
+          only: ['organization'],
+          redirectTo: 'home'
+        }
+      }
+    
   }
 )
 .state('search', {
