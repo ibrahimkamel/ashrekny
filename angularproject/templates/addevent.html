@@ -13,13 +13,13 @@
 <form name="eventForm" novalidate ng-submit="add(eventForm.$valid)" class="well eventForms"  method="POST"  id="addEventForm" enctype="multipart/form-data">
 <fieldset>
 <!-- Form Name -->
-<legend>إنشر فرصة</legend>
+<legend>أضف مبادرة</legend>
 
 <!-- Text input-->
 
 <div class="form-group col-md-12">
 <div class="col-md-1"></div>
-  <label class="col-md-2 control-label">العنوان</label>
+  <label class="col-md-2 control-label">اسم المبادرة</label>
   <div class="col-md-7">
   <input required ng-model="newEvent.title"  name="title" placeholder="العنوان" class="wp-form-control wpcf7-text"  type="text">
  </div>
