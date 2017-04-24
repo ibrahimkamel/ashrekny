@@ -661,7 +661,9 @@ console.log($scope.org.category)
             formdata.append("secondName",$scope.volunteer.last_name);
             formdata.append("gender",$scope.volunteer.gender);
             formdata.append("email",$scope.user.email);
-            formdata.append("password",$scope.user.password);
+             if($scope.user.password){
+                formdata.append("password",$scope.user.password);
+            }
             formdata.append("region",$scope.user.region);
             formdata.append("city",$scope.user.city);
             formdata.append("phone",$scope.volunteer.phone);
@@ -1106,6 +1108,9 @@ var invitedvol= $scope.invitedVolunteers=[];
             formdata.append("city",$scope.user.city);
             formdata.append("full_address",$scope.org.full_address);
             formdata.append("openning_hours",$scope.org.openning_hours);
+            if($scope.user.password){
+                formdata.append("password",$scope.user.password);
+            }
              
         
             if($scope.logo){

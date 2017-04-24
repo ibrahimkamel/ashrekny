@@ -51,7 +51,7 @@
                                   </div>
                                   <div class="col-sm-8" >
                                         <p>{{organization.created_at}}
-                                        <a href="./editorgprofile" class="btn btn-warning"><span class="fa fa-pencil fa-lg"></span></a>
+                                        <a ng-show="currentUser.isVolunteer==false && organization.id==currentUser.role_id" href="./editorgprofile" class="btn btn-warning"><span class="fa fa-pencil fa-lg"></span></a>
                                         </p>
                                   </div>
                               </div>
