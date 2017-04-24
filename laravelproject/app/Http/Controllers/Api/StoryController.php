@@ -101,7 +101,7 @@ class StoryController extends Controller
      */
     public function getMostRecent()
     {
-        $stories = Story::orderBy('id', 'desc')->take(3)->get();
+        $stories = Story::orderBy('id', 'desc')->take(3)->with('volunteer')->get();
         return response()->json($stories,200);
     }
 

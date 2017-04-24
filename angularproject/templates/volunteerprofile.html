@@ -5,7 +5,7 @@
           <h2>صفحتي</h2>
           <div class="panel panel-info">
             <div class="panel-heading">
-              <a href="./editMyProfile" class="btn btn-primary pull-left"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+              <a ng-show="currentUser.isVolunteer && volunteer.id==currentUser.role_id" href="./editMyProfile" class="btn btn-primary pull-left"><i class="fa fa-pencil-square-o fa-lg"></i></a>
               <h3 class="panel-title">
                 {{volunteer.first_name}} {{volunteer.last_name}}
               </h3>
@@ -19,6 +19,13 @@
                 <div class=" col-md-10 col-lg-10"> 
                     <table class="table volunter-tble">
                       <tbody>
+                      <!-- <div star-Rating class="myRating" ng-model='volunteer.avg_rate'> -->
+                      <tr>
+                          <td class="block-title">التقييم</td>
+                          <td class="block-desc">
+                          <div star-Rating class="myRating" ng-model='volunteer.avg_rate'>
+                          </td>
+                        </tr>
                         <tr>
                           <td class="block-title">الوظيفه</td>
                           <td class="block-desc">
