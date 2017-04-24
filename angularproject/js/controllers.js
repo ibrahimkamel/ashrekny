@@ -1025,18 +1025,18 @@ var invitedvol= $scope.invitedVolunteers=[];
     var searchdata={data:$stateParams.keyword};
     $scope.first=true;
     $scope.filterscategories=[];
-    modelFactory.getData('get','http://localhost/GP/laravelproject/api/select/selected')
-        .then(function successCallback(data){
-                // console.log(data);
-                $scope.categories = data.categories;
-                // angular.forEach($scope.categories, function(category, key){
-                //     $scope.filterscategories.push(category.name);
-                // });
-                // console.log('al ca');
-                // console.log($scope.categories);
-                 },function errorCallback(err){
-                        console.log(err);
-              });
+    // modelFactory.getData('get','http://localhost/GP/laravelproject/api/select/selected')
+    //     .then(function successCallback(data){
+    //             // console.log(data);
+    //             $scope.categories = data.categories;
+    //             // angular.forEach($scope.categories, function(category, key){
+    //             //     $scope.filterscategories.push(category.name);
+    //             // });
+    //             // console.log('al ca');
+    //             // console.log($scope.categories);
+    //              },function errorCallback(err){
+    //                     console.log(err);
+    //           });
     
     $scope.exist = function(item){
         return $scope.filterscategories.indexOf(item) > -1;
@@ -1066,6 +1066,29 @@ var invitedvol= $scope.invitedVolunteers=[];
                         // console.log('events_results');
                         // console.log($scope.events_results);
                         $scope.organizations_results = data.organizations;
+                        $scope.categories=[];
+                        angular.forEach($scope.organizations_results, function(organization, key){
+                            angular.forEach(organization.categories, function(category, key){
+                                if ($scope.categories.length==0) 
+                                {
+                                        $scope.categories.push(category);
+                                }
+                                else 
+                                {
+                                    var checko=true;
+                                    angular.forEach($scope.categories, function(filterscategory, key){
+
+                                        if(filterscategory.name==category.name)
+                                            {
+                                                return checko=false;
+                                            }
+                                    });
+                                    if(checko)
+                                    $scope.categories.push(category);
+                                }
+                                
+                             });
+                        });
                         // console.log('organizations_results');
                         // console.log($scope.organizations_results);
                         // $scope.stories_results = data.stories;
