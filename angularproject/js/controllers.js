@@ -1019,7 +1019,7 @@ console.log($scope.org.category)
 
 $scope.invite=function()
 {
-console.log("helllo");
+ 
 var invitedvol= $scope.invitedVolunteers=[];
  angular.forEach($scope.recommendedVolnteers, function(volunteer){
     if (volunteer.selected){$scope.invitedVolunteers.push(volunteer.id);}
@@ -1033,8 +1033,9 @@ var invitedvol= $scope.invitedVolunteers=[];
          'http://localhost/GP/laravelproject/api/event/inviteVolunteers',data
        
         ).then(function successCallback(data){
-                  
+                       
                          console.log(data);
+                         $state.reload();
                   },function errorCallback(err){
                          console.log(err);
                      });
@@ -1117,7 +1118,7 @@ var invitedvol= $scope.invitedVolunteers=[];
             'http://localhost/GP/laravelproject/api/user/update',formdata,processData, transformRequest, headers
            ).then(function(data) {
             console.log(data);
-            $state.go('orgprofile',{id:$rootScope.currentUser.id});
+            $state.go('orgprofile',{id:$rootScope.currentUser.role_id});
             },
             function(err) {
 

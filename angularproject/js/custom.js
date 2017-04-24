@@ -241,6 +241,9 @@ jQuery(function($){
 	    return false;
 	  });
 
+
+	//search bar in navbar  
+
 	$('.search-icon a').on("click", function(){
 		$('body').addClass('show-search').children('.search-box-outer').slideDown();
 		return false;
@@ -250,4 +253,5 @@ jQuery(function($){
 		$('.search-box-outer').removeClass('show-search').slideUp();
 		return false;
 	});
+
 });

@@ -7,7 +7,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>WpF Degree : Home</title>
+     <title>Home</title>
 
     <!-- Mobile Specific Metas
     ================================================== -->
@@ -89,16 +89,28 @@
             </button>
             <!-- LOGO -->
             <!-- TEXT BASED LOGO -->
-            <a class="navbar-brand" ui-sref="home"><span> إشركني</span></a>              
+            <a class="navbar-brand" ui-sref="home"><span> أشركني</span></a>              
             <!-- IMG BASED LOGO  -->
              <!-- <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="logo"></a>  -->            
                    
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul id="top-menu" class="nav navbar-nav navbar-left main-nav">
-              <li><a href="home">الرئيسيه</a></li>
+              <li><a href="home">الرئيسية</a></li>
               <li><a href="organizations">الجمعيات</a></li>
-              <li><a href="events">إيفينتات</a></li>
+             <!--  <li>
+              	<a class="dropdown-toggle" href="" type="button" data-toggle="dropdown">إيفينتات
+              		<span class="caret"></span>
+              	</a>
+              	<ul class="dropdown-menu">
+              		<li><a href="events">إفينتات</a></li>
+              		<li><a href="#">إيفينتات السايقه</a></li>
+              		<li><a href="#">إيفينتات الحاليه</a></li>
+              		<li><a href="#">إيفينتات القادمه</a></li>
+              	</ul>
+			       </li> -->
+
+              <li><a href="events">مبادرات</a></li>
               <li><a href="stories">القصص</a></li>
               <li ng-show="currentUser.isVolunteer ==false">
                 <a href="./orgprofile/{{currentUser.role_id}}">صفحتي</a>
@@ -107,7 +119,7 @@
                 <a href="./volunteerprofile/{{currentUser.role_id}}">صفحتي</a>
               </li>
               <li><a href="aboutus">من نحن</a></li>                
-              <li><a href="contactus">أتصل بنا</a></li>
+              <li><a href="contactus">اتصل بنا</a></li>
               <li class="search-icon">
                 <a href="#!">
                   <i class="fa fa-search"></i>
@@ -139,11 +151,11 @@
             </ul>      
             <ul class="nav navbar-nav pull-left" 
             ng-show="currentUser != null&&currentUser.isVolunteer">
-              <li><a href="addstory"><i class="fa fa-plus fa-fw pull-left"></i>احكى قصه</a></li>
+              <li><a href="addstory"><i class="fa fa-plus fa-fw pull-left"></i>احكِ قصة</a></li>
             </ul> 
             <ul class="nav navbar-nav pull-left" 
             ng-show="currentUser != null&&!currentUser.isVolunteer">
-              <li><a href="addevent"><i class="fa fa-plus fa-fw pull-left"></i>اضف ايفنت</a></li>
+              <li><a href="addevent"><i class="fa fa-plus fa-fw pull-left"></i>أضف مبادرة</a></li>
             </ul> 
           </div><!--/.nav-collapse -->
         </div>     
@@ -176,7 +188,7 @@
             <div class="col-ld-3  col-md-3 col-sm-3">
               <div class="single_footer_widget">
                 <h3>من نحن</h3>
-                <p>إشركني هي منظمه تعمل علي تجميع المنظمات الخيريه الغير معروفه و تساعد المتطوعين في التواصل مع الجمعيات و تقديم المساعده</p>
+                <p>تمثل أشركني حلقة وصل بين الجمعيات الأهلية، والأفراد الراغبين في التطوع، عن طريق تعريف الأفراد بهذه الجمعيات وأنشطتها المختلفة، وتتيح لهم المشاركة في المبادرات المختلفة التي تعلن عنها.</p>
               </div>
             </div>
             <div class="col-ld-3 col-md-3 col-sm-3 eventsFooter">
@@ -193,14 +205,14 @@
               <div class="single_footer_widget">
                 <h3>كل الصفحات</h3>
                 <ul class="footer_widget_nav">
-                  <li><a href="#">الرئيسيه</a></li>
+                  <li><a href="#">الرئيسية</a></li>
                   <li><a href="#">الجمعيات</a></li>
-                  <li><a href="#">إيفينتات</a></li>
+                  <li><a href="#">مبادرات</a></li>
                   <li><a href="#">القصص</a></li>
-                  <li><a href="#">القصص</a></li>
+                  <!-- <li><a href="#">القصص</a></li> -->
                   <li><a href="#">صفحتي</a></li>
                   <li><a href="#">من نحن</a></li>
-                  <li><a href="#">أتصل بنا</a></li>
+                  <li><a href="#">تواصل معنا</a></li>
                 </ul>
               </div>
             </div>

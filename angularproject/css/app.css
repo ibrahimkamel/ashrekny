@@ -204,3 +204,37 @@ body, h1,h2,h3,h4,h5,h6 {
 .wpcf7-submit .editButton{
 	margin: 0 50px;
 }
+
+.selectpicker{
+	margin-bottom: 10px;
+    width: 100%;
+}
+
+.signupTab > li {
+    float:none;
+    display:inline-block;
+    zoom:1;
+    position:relative;
+    right:10px;
+    border-radius:10px 10px 0 0;
+}
+
+.signupTab{
+    text-align:center;
+}
+.lb-signup{
+	color: #78ADC9;
+}
+
+.dropdown-menu li{
+	background-color:#438189;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a{
+	color:#ffffff;
+}
+
+.dropdown-menu li:hover{
+	background-color:#ffffff;
+	color:#FF9933;
+}

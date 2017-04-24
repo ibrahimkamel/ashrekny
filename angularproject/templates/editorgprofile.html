@@ -7,7 +7,7 @@
  			ng-submit="submitted=true;updateUser(addOrgForm.$valid)"  enctype="multipart/form-data">
 
 				<div class="form-group">
-					<label  >اسم المنظمة</label>
+					<label>اسم المنظمة</label>
 					<input type="text" class="wp-form-control wpcf7-text" id="exampleInputName1" placeholder="اسم المنظمة" name="orgName" ng-model="org.name" required maxlength="50">
  					
  					<p class="validation" ng-if="addOrgForm.orgName.$error.required&&submitted">من فضلك ادخل اسم المنظمة</p>
