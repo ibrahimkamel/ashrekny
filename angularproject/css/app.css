@@ -183,7 +183,7 @@ body, h1,h2,h3,h4,h5,h6 {
 }
 .show-search .search-box-outer{
 	top:0;
-	position: absolute!important;
+	position: fixed!important;
 	z-index: 99999;
     width: 100%;
 }
