@@ -408,24 +408,54 @@ class EventController extends Controller
         
     }
     public function getRecommendedVolunteers ($id)
-    {  // dd( Event::find($id));
-        $eventCategories=Event::find($id)->categories;
-
+    {  
+        $event=Event::find($id);
+        $eventCategories=$event->categories;
+        $sentMailVolunteers=$event->invitedvolunteers()->get();
+ 
      $recvolunteers= collect();
 
         foreach($eventCategories as $category)
         {
              
-             $volunteers = $category->volunteers->toArray();
+             $volunteers = $category->volunteers()->orderBy('avg_rate','dec')->get();
              foreach($volunteers as $volunteer)
         {     
-           $recvolunteers->push($volunteer);}
+           $recvolunteers->push($volunteer);
+           
+           }
+
               }
-              $recommendedVolunteers = $recvolunteers->unique();
+
+             
+             $recommendedVolunteers = $recvolunteers->unique('id');
+          
+
+
+             foreach ( $recommendedVolunteers as $rec){
+                 foreach($sentMailVolunteers as $sentVolunteer)
+                 {  
+             
+                     
+                      if($sentVolunteer['volunteer_id']==$rec->toArray()['id'])
+                     {  array_add($rec, 'invited', 'true');
+                     break;
+
+                     
+                     }
+                 }
+                
+                    
+           
+     
+ }
+   return response()->json($recommendedVolunteers,200);
+   }
+
               
-        return response()->json($recommendedVolunteers,200);
         
-    }
+        
+    
 
 
    public function addInvitedVolunteers(Request $req)
@@ -445,9 +475,14 @@ class EventController extends Controller
           $userEmail=Volunteer::find($invitedVolunteer)->user->email;
           
            EmailUtility::send($userEmail,$subject, $content);
-           $invitedVolunteer= new Invitedvolunteer;
-          // $invitedVolunteer->event_id=$eventID;
-          // $invitedVolunteer->volunteer_id=$invitedVolunteer;
+           $newinvitedVolunteer= new Invitedvolunteer;
+          $newinvitedVolunteer->event_id=$eventID;
+
+        
+           $newinvitedVolunteer->volunteer_id=$invitedVolunteer;
+        
+           $newinvitedVolunteer->save();
+
 
           }
       
