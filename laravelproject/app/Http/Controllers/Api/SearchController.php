@@ -19,8 +19,8 @@ class SearchController extends Controller
     {
     	$results=[];
     	$searchText = $request->get('data');
-    	$organizations=organization::where('name', 'LIKE', '%' . $searchText . '%')->get();
-    	$events=Event::where('title', 'LIKE', '%' . $searchText . '%')->get();
+    	$organizations=organization::with('categories')->where('name', 'LIKE', '%' . $searchText . '%')->get();
+    	$events=Event::with('categories')->where('title', 'LIKE', '%' . $searchText . '%')->get();
     	$stories=Story::where('title', 'LIKE', '%' . $searchText . '%')->get();
     	// array_push($results,compact('organizations','events','stories'));
         

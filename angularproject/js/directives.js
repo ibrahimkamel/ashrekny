@@ -18,9 +18,3 @@ angular.module('myApp').directive("starRating",function(){
   }
   }
 })
-.directive("mySelect",function(){
-  return{
-    templateUrl: 'templates/select.html',
-    controller: 'selectCtrl'
-  }
-})
