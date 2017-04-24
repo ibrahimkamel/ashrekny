@@ -24,7 +24,7 @@
                     <h2 class="blog_title"><a href="./{{storyDetails.id}}/story/edit"> {{storyDetails.title}}</a></h2>
                     <div class="blog_commentbox">
                       <p><i class="fa fa-clock-o"></i>Time: {{storyDetails.created_at}}</p>
-                      <p><i class=""></i>الكاتب : {{storyDetails.volunteer.first_name}} {{storyDetails.volunteer.last_name}}</p>  <!-- Don`t Forget  -->                    
+                      <p><a href="./volunteerprofile/{{storyDetails.volunteer.id}}"><i class=""></i>الكاتب : {{storyDetails.volunteer.first_name}} {{storyDetails.volunteer.last_name}}</a></p>  <!-- Don`t Forget  -->                    
                     </div>
                     
                     <blockquote>
@@ -112,7 +112,7 @@
                     <div class="media">
                       <div class="media-left">
                         <a href="./{{most.id}}/storydetails" class="news_img">
-                          <img alt="img" src="img/news.jpg" class="media-object">
+                          <img alt="User Pic" src="../laravelproject/{{most.volunteer.profile_picture}}" class="img-circle img-responsive"> 
                         </a>
                       </div>
                       <div class="media-body">
