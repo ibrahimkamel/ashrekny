@@ -223,8 +223,8 @@ $newOrg->save();
            'email' => 'unique:users,email,'.$id,    
             'password'=>'max:50',
             'region'=>'required|max:50',
-            'city'=>'required|max:50',
-            'country'=>'required|max:50'
+            'city'=>'required|max:50'
+            // 'country'=>'required|max:50'
         ];
         $volunteerRules = [
                 'firstName'=>'required|max:50|',
@@ -245,8 +245,8 @@ $newOrg->save();
             'email.unique'=>'البريد الالكتروني موجود من قبل',
             'email.max'=>'يجب ألا يزيد البريد الالكتروني عن 50 حرف',
             'password.max'=>'يجب ألا يزيد الرقم السري عن 50 حرف',
-            'country.required'=>'من فضل ادخل اسم البلد',
-            'country.max'=>'يجب ألا يزيد اسم البلد عن 50 حرف',  
+            // 'country.required'=>'من فضل ادخل اسم البلد',
+            // 'country.max'=>'يجب ألا يزيد اسم البلد عن 50 حرف',  
             'region.required'=>'من فضل ادخل اسم المنطقة',
             'region.max'=>'يجب ألا يزيد اسم المنطقة عن 50 حرف',
             'city.required'=>'من فضلك ادخل اسم المدينة',
@@ -286,7 +286,7 @@ $newOrg->save();
         {
           $targetUser->password=bcrypt($request->password);
         }
-        $targetUser->country=$request->country;
+        // $targetUser->country=$request->country;
         $targetUser->region=$request->region;
         $targetUser->city=$request->city;
         $volunteerValidator = Validator::make(Input::all(), $volunteerRules, $volMesssages);

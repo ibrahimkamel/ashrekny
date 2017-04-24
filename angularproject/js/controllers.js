@@ -675,7 +675,7 @@ console.log($scope.org.category)
             modelFactory.getData('post',
             'http://localhost/GP/laravelproject/api/user/update',formdata,processData, transformRequest, headers
             ).then(function(data) {
-                $state.go('volunteerprofile');
+                $state.go('volunteerprofile',{id:$rootScope.currentUser.role_id});
             },
             function(err) {
 
