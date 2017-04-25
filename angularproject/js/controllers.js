@@ -1025,19 +1025,6 @@ var invitedvol= $scope.invitedVolunteers=[];
     var searchdata={data:$stateParams.keyword};
     $scope.first=true;
     $scope.filterscategories=[];
-    // modelFactory.getData('get','http://localhost/GP/laravelproject/api/select/selected')
-    //     .then(function successCallback(data){
-    //             // console.log(data);
-    //             $scope.categories = data.categories;
-    //             // angular.forEach($scope.categories, function(category, key){
-    //             //     $scope.filterscategories.push(category.name);
-    //             // });
-    //             // console.log('al ca');
-    //             // console.log($scope.categories);
-    //              },function errorCallback(err){
-    //                     console.log(err);
-    //           });
-    
     $scope.exist = function(item){
         return $scope.filterscategories.indexOf(item) > -1;
       }
@@ -1056,13 +1043,12 @@ var invitedvol= $scope.invitedVolunteers=[];
         {
             $scope.first=true;
         }
-        // console.log($scope.filterscategories);
       };
     var data = JSON.stringify(searchdata);
         modelFactory.getData('post',
         'http://localhost/GP/laravelproject/api/search',data
         ).then(function successCallback(data){
-                        // $scope.events_results = data.events;
+                        $scope.events_results = data.events;
                         // console.log('events_results');
                         // console.log($scope.events_results);
                         $scope.organizations_results = data.organizations;
@@ -1089,17 +1075,40 @@ var invitedvol= $scope.invitedVolunteers=[];
                                 
                              });
                         });
+                        angular.forEach($scope.events_results, function(event, key){
+                            angular.forEach(event.categories, function(category, key){
+                                if ($scope.categories.length==0) 
+                                {
+                                        $scope.categories.push(category);
+                                }
+                                else 
+                                {
+                                    var checko=true;
+                                    angular.forEach($scope.categories, function(filterscategory, key){
+
+                                        if(filterscategory.name==category.name)
+                                            {
+                                                return checko=false;
+                                            }
+                                    });
+                                    if(checko)
+                                    $scope.categories.push(category);
+                                }
+                                
+                             });
+                        });
+
                         // console.log('organizations_results');
                         // console.log($scope.organizations_results);
-                        // $scope.stories_results = data.stories;
-                        // console.log('stories_results');
-                        // console.log($scope.stories_results);
+                        $scope.stories_results = data.stories;
+                        console.log('stories_results');
+                        console.log($scope.stories_results);
                       },function errorCallback(err){
                         console.log(err);
                     });
-        $scope.filter = function (categories) {
+        $scope.filterCategory = function (categories) {
             // return true;
-            // console.log(categories);
+            // console.log("kam");
             var check=false;
             angular.forEach(categories, function(category, key){
                 angular.forEach($scope.filterscategories, function(filterscategory, key){
