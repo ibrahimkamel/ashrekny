@@ -101,9 +101,33 @@
               		<li><a href="#">إيفينتات القادمه</a></li>
               	</ul>
 			       </li> -->
-
-              <li><a href="events">مبادرات</a></li>
-              <li><a href="stories">القصص</a></li>
+              <li ng-hide="currentUser.isVolunteer ==true||currentUser.isVolunteer ==false"><a href="events">مبادرات</a></li>
+              <li ng-show="currentUser.isVolunteer ==false|| currentUser.isVolunteer ==true"><a href="" class="dropdown-toggle" data-toggle="dropdown">مبادرات
+                  <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li ng-show="currentUser.isVolunteer ==false">
+                      <a href="./myevents">مبادراتي</a>
+                    </li>
+                    <li ng-show="currentUser.isVolunteer ==true">
+                      <a href="./myevents">مبادراتي</a>
+                    </li>
+                    <li><a href="events">كل المبادرات</a></li>
+                  </ul>
+              </li>
+              <li ng-hide="currentUser.isVolunteer ==true||currentUser.isVolunteer ==false">
+                <a href="stories">القصص</a>
+              </li>
+              <li ng-show="currentUser.isVolunteer ==false|| currentUser.isVolunteer ==true"><a href="" class="dropdown-toggle" data-toggle="dropdown">القصص
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                     <li ng-show="currentUser.isVolunteer ==true">
+                      <a href="./mystories">قصصي</a>
+                     </li>
+                     <li><a href="stories">كل القصص</a></li> 
+                  </ul>   
+              </li>
               <li ng-show="currentUser.isVolunteer ==false">
                 <a href="./orgprofile/{{currentUser.role_id}}">صفحتي</a>
               </li>

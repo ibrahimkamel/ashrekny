@@ -1192,7 +1192,7 @@ var invitedvol= $scope.invitedVolunteers=[];
 })
 .controller('IndexCtrl',function($scope,$rootScope,modelFactory,$state){
     // console.log($scope.keyword);
-    $rootScope.filterDetailsLimit = 100;
+    $rootScope.filterDetailsLimit = 40;
     
     $scope.search=function()
     {
