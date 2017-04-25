@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function getAll()
     {
-        $events = Event::all();
+        $events = Event::with('categories')->get();
         return response()->json($events,200);
     }
     /**
