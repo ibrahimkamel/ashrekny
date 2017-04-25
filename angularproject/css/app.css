@@ -440,10 +440,11 @@ body, h1,h2,h3,h4,h5,h6 {
 }
 
 .card.hovercard .cardheader {
-    background-color:#87bdc4;
+    background-color:#2eb8b8;
     background-size: cover;
     height: 135px;
     padding: 15px;
+    border-radius:10px 10px 0 0;
 }
 
 .card.hovercard .avatar {
@@ -491,5 +492,19 @@ body, h1,h2,h3,h4,h5,h6 {
 .btn-twitter,.btn-googleplus ,.btn-facebook{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
 
 .card.hovercard.cardHead{
-	background-color:#fff2e6;
+	background-color:#ffebcc;
+    border-radius:0 0 10px 10px;
+    transition:1s;
+}
+
+.card.hovercard.cardHead:hover{
+    box-shadow: 1px 1px 5px #888888;
+    transition:1s;
+}
+.aboutusDescription{
+    width:80%;
+}
+
+.cardHeadTitle{
+    color:#ffffff;
 }
