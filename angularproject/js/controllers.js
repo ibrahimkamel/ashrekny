@@ -862,21 +862,23 @@ console.log($scope.org.category)
         console.log(err);
         $scope.dataerr = err;    
     });
+    if($scope.currentUser){
 
-    // var id = $scope.currentUser.id;
-    // //get user data
-    // modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/'+id+'/getdetails'
-    // ).then(function successCallback(data){
-    //     if(data.volunteer){
-    //         $rootScope.name = data.volunteer.first_name;
-    //     } else{
-    //         $scope.name = data.organization.name;
-    //     }
-    //     console.log(data.volunteer);
-    // },function errorCallback(err){
-    //     console.log(err);
-    //     $scope.dataerr = err;
-    // });
+        var id = $scope.currentUser.id;
+        //get user data
+        modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/'+id+'/getdetails'
+        ).then(function successCallback(data){
+            if(data.volunteer){
+                $rootScope.name = data.volunteer.first_name;
+            } else{
+                $scope.name = data.organization.name;
+            }
+            console.log(data.volunteer);
+        },function errorCallback(err){
+            console.log(err);
+            $scope.dataerr = err;
+        });
+    }
 })
 .controller('selectCtrl', function($scope,modelFactory) {
     modelFactory.getData('get','http://localhost/GP/laravelproject/api/select/selected')
