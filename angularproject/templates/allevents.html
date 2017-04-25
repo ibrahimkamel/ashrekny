@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-9">
-                <div ng-repeat="event in events | filter:searchText" ng-show="filterCategory(event.categories)||first">                
+                <div ng-repeat="event in events" ng-show="filterCategory(event.categories)||first">                
                     <!-- start single blog archive -->
                     <div class="row">
                         <div class="single_blog_archive wow fadeInUp ">
@@ -32,9 +32,12 @@
                     <!-- End single blog archive -->                
                 </div> 
                 <!-- start previous & next button -->
-            <div class="row single_blog_prevnext">
-                <a href="#" class="prev_post wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"><i class="fa fa-angle-left"></i>Previous</a>
-                <a href="#" class="next_post wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">Next<i class="fa fa-angle-right"></i></a>
+            <div class="row">
+                          <!-- start previous & next button -->
+                        <div class="col-lg-9 single_blog_prevnext">
+                            <button ng-click="previous()" class="prev_post wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft;"><i class="fa fa-angle-left"></i>Previous</button>
+                            <button ng-click="next()" class="next_post wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">Next<i class="fa fa-angle-right"></i></button>
+                        </div>
             </div>
             </div>   
             <div class="col-sm-3">
