@@ -14,7 +14,7 @@ class OrganizationController extends Controller
      */
     public function getAll()
     {
-        $organization = Organization::all();
+        $organization = Organization::with('categories')->get();
         return response()->json(compact('organization'),200);
     }
 
