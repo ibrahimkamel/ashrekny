@@ -538,6 +538,7 @@ console.log($scope.org.category)
         }
 })
 .controller('storiesCtrl',function($scope,modelFactory){
+        $scope.storiesContent = 100;
         modelFactory.getData('get',
         'http://localhost/GP/laravelproject/api/story/getall'
         ).then(function successCallback(data){
@@ -861,6 +862,21 @@ console.log($scope.org.category)
         console.log(err);
         $scope.dataerr = err;    
     });
+
+    // var id = $scope.currentUser.id;
+    // //get user data
+    // modelFactory.getData('get','http://localhost/GP/laravelproject/api/user/'+id+'/getdetails'
+    // ).then(function successCallback(data){
+    //     if(data.volunteer){
+    //         $rootScope.name = data.volunteer.first_name;
+    //     } else{
+    //         $scope.name = data.organization.name;
+    //     }
+    //     console.log(data.volunteer);
+    // },function errorCallback(err){
+    //     console.log(err);
+    //     $scope.dataerr = err;
+    // });
 })
 .controller('selectCtrl', function($scope,modelFactory) {
     modelFactory.getData('get','http://localhost/GP/laravelproject/api/select/selected')
@@ -1174,8 +1190,10 @@ var invitedvol= $scope.invitedVolunteers=[];
 
          
 })
-.controller('IndexCtrl',function($scope,modelFactory,$state){
+.controller('IndexCtrl',function($scope,$rootScope,modelFactory,$state){
     // console.log($scope.keyword);
+    $rootScope.filterDetailsLimit = 100;
+    
     $scope.search=function()
     {
         if($scope.keyword!=""&&$scope.keyword!=undefined)

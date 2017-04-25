@@ -926,9 +926,11 @@ div[data-dimension] {
   width: 100%;
 }
 .single_footer_widget > h3 {
-  color: #fff;
+  color: #ff9933;
   text-transform: uppercase;
   margin-bottom: 25px;
+  font-weight:bold;
+  text-shadow: 1px 1px 0 #262626;
 }
 .single_footer_widget>p{
   color: #fff;
@@ -937,6 +939,7 @@ div[data-dimension] {
   font-size: 15px;
   font-weight: bold;
   margin-bottom: 3px;
+  color:#ffffff;
 }
 .footer_social li a {
   color: #fff;

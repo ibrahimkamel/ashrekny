@@ -60,9 +60,7 @@
 
   <!-- facebook sharing -->
   <div id="fb-root"></div>
-  <script src="js/facebook-share.js"></script>
-
-
+  
   <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"></a>
     <!-- END SCROLL TOP BUTTON -->
@@ -141,7 +139,13 @@
             
             <ul class="nav navbar-nav pull-left" 
             ng-show="currentUser != null">
-              <li><a href="#" ng-click="logout()"><i class="fa fa-user fa-fw pull-left"></i>خروج</a></li>
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw pull-left"></i><span><span class="caret"></span> {{name | lowercase }}
+                </span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="" ng-click="logout()">خروج</a></li>
+                </ul>
+              </li>
             </ul>      
             <ul class="nav navbar-nav pull-left" 
             ng-show="currentUser != null&&currentUser.isVolunteer">
@@ -181,7 +185,7 @@
           <div class="row">
             <div class="col-lg-5  col-md-5 col-sm-5">
               <div class="single_footer_widget">
-                <h3>من نحن</h3>
+                <h3><a href="aboutus">من نحن</a></h3>
                 <p>تمثل أشركني حلقة وصل بين الجمعيات الأهلية، والأفراد الراغبين في التطوع، عن طريق تعريف الأفراد بهذه الجمعيات وأنشطتها المختلفة، وتتيح لهم المشاركة في المبادرات المختلفة التي تعلن عنها.</p>
               </div>
             </div>
@@ -199,20 +203,20 @@
               <div class="single_footer_widget">
                 <h3>كل الصفحات</h3>
                 <ul class="footer_widget_nav">
-                  <li><a href="#">الرئيسية</a></li>
-                  <li><a href="#">الجمعيات</a></li>
-                  <li><a href="#">مبادرات</a></li>
-                  <li><a href="#">القصص</a></li>
+                  <li><a href="home">الرئيسية</a></li>
+                  <li><a href="organizations">الجمعيات</a></li>
+                  <li><a href="events">مبادرات</a></li>
+                  <li><a href="stories">القصص</a></li>
                   <!-- <li><a href="#">القصص</a></li> -->
                   <!-- <li><a href="#">صفحتي</a></li> -->
-                  <li><a href="#">من نحن</a></li>
-                  <li><a href="#">تواصل معنا</a></li>
+                  <li><a href="aboutus">من نحن</a></li>
+                  <li><a href="contactus">تواصل معنا</a></li>
                 </ul>
               </div>
             </div>
             <div class="col-ld-3  col-md-3 col-sm-3">
               <div class="single_footer_widget">
-                <h3>Social Links</h3>
+                <h3>تواصل الإجتماعي</h3>
                 <ul class="footer_social">
                   <li><a data-toggle="tooltip" data-placement="top" title="Facebook" class="soc_tooltip" href="#"><i class="fa fa-facebook"></i></a></li>
                   <li><a data-toggle="tooltip" data-placement="top" title="Twitter" class="soc_tooltip"  href="#"><i class="fa fa-twitter"></i></a></li>
@@ -254,6 +258,9 @@
  
   <!-- Custom js-->
   <script src="js/custom.js"></script>
+
+  <!-- facabook share js -->
+  <script src="js/facebook-share.js"></script>
 
   <!-- angular libraries -->
   <script src="app/bower_components/angular/angular.js"></script>
