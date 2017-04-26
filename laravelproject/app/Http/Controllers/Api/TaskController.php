@@ -45,7 +45,14 @@ class TaskController extends Controller
         $eventurl='<a href="http://localhost/GP/angularproject/'.$eventID.'/eventdetails">الرابط</a>';
         $content="لقد إشتركت فى ايفنت : ".$eventName." المنظم تحت إشراف : ".$organizationName."و الذى سيبدأ فى : ".$eventStartdate." نحن فى انتظارك!"." : رابط الايفنت للمتابعة ".$eventurl;
         EmailUtility::send($mail,$subject,$content);
-         return response()->json(["required_volunteers" => $task->required_volunteers,
+        $volname=Volunteer::find( $volunteerID)->first_name;
+        $emailorg=$task->event->organization->user->email;
+        $subjectorg="اشتراك فى ايفنت";
+        $eventurlorg='<a href="http://localhost/GP/angularproject/'.$eventID.'/eventdetails">الرابط</a>';
+        $contentorg="لقد إشترك".$volname." فى ايفنت : ".$eventName." المنظم تحت إشرافكم : رابط الايفنت للمتابعة ".$eventurl;
+        EmailUtility::send($emailorg,$subjectorg,$contentorg);
+
+        return response()->json(["required_volunteers" => $task->required_volunteers,
                                  "going_volunteers" => $task->going_volunteers],200);
     }
 
