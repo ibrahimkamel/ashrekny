@@ -23,9 +23,23 @@
                   <p><i class="fa fa-clock-o"></i>Time: {{story.created_at}}</p>
                   <p><a href="./volunteerprofile/{{story.volunteer.id}}"><i class=""></i>الكاتب : {{story.volunteer.first_name}} {{story.volunteer.last_name}}</a></p>                      
                 </div>
-                <p class="blog_summary">{{story.content}}</p>
+                <p class="blog_summary">{{story.content | limitTo: filterDetailsLimit}}
+                	<a href="./{{story.id}}/storydetails">...</a>
+                </p>
                 <a class="blog_readmore" href="./{{story.id}}/storydetails">المزيد</a>
-                <a href="./{{story.id}}/story/edit" ng-show="currentUser.isVolunteer && story.volunteer.id==currentUser.role_id" class="col-sm-offset-7"><button class="wpcf7-edit"> تعديل <i class="fa fa-pencil-square-o"></i></span></button></a>
+                <div class="row">
+	                <div class="fb-share-button col-sm-3 col-sm-push-3">
+		                <a href="./{{story.id}}/story/edit" ng-show="currentUser.isVolunteer && story.volunteer.id==currentUser.role_id" class="col-sm-offset-7">
+		                	<button class="wpcf7-edit"> تعديل <i class="fa fa-pencil-square-o"></i></button>
+		                </a>
+	                </div>
+	                <div class="col-sm-3 col-sm-push-4">
+		                <div class="fb-share-button" data-href="https://localhost/GP/angularproject/{{story.id}}/storydetails" data-layout="button_count" data-size="large" data-mobile-iframe="false">
+		                	<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fgoogle.com%2F&amp;src=sdkpreparse">شير 
+		                	</a>
+		                </div>
+	                </div>
+                </div>
               </div>
             </div>
             <!-- End single blog archive -->
