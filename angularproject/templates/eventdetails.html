@@ -75,16 +75,17 @@
                             <td>{{task.name}}</td>
                             <td>{{task.required_volunteers}}</td>
                             <td>{{task.going_volunteers}}</td>
-                            <td> <a class="btn btn-info " href="#" ng-show="currentUser.volunteer.id" ng-click="participate(task)" > اشترك
+                            <td> <a class="btn btn-info " href="#" ng-show="currentUser.isVolunteer" ng-click="participate(task)" > اشترك
                                      <span class="glyphicon glyphicon-plus-sign"></span> 
                                  </a>
                             </td>
-                            <td> <a class="btn btn-info " href="#" 
-                            ng-show="currentUser.volunteer.id" 
+                            <td> <a class="btn btn-info" href="#" 
+                            ng-show="currentUser.isVolunteer" 
                              ng-click="cancelparticipate(task)"> الغاء الاشتراك
                                    <span class="glyphicon glyphicon-plus-sign"></span> 
                                  </a>
                             </td>
+                            <td> <p ng-show="is_participated">أنت مشترك بالفعل!</p> </td>
                         </tr>
                       </tbody>
                   </table>

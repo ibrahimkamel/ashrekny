@@ -29,9 +29,20 @@ class TaskController extends Controller
     public function participate(Request $request)
     {
         // dd($request->all());
+        $is_participated=false;
         $task =  Task::find($request->get('task_id'));
+        $vol_intask=$task->volunteers;
         $volunteerID = $request->get('volunteer_id');
+        foreach ($vol_intask as $vol) {
+
+            if($vol->id == $volunteerID)
+            {
+                $is_participated=true;
+            }
+        }
         //dd($volunteerID );
+        if(!$is_participated)
+        {
         $task->volunteers()->attach($volunteerID);
         $task->required_volunteers = ($task->required_volunteers);
         $task->going_volunteers = ($task->going_volunteers)+1;
@@ -53,7 +64,9 @@ class TaskController extends Controller
         EmailUtility::send($emailorg,$subjectorg,$contentorg);
 
         return response()->json(["required_volunteers" => $task->required_volunteers,
-                                 "going_volunteers" => $task->going_volunteers],200);
+                                 "going_volunteers" => $task->going_volunteers,
+                                 "participation"=>$is_participated],200);
+        }
     }
 
     /**

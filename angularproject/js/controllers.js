@@ -136,7 +136,7 @@ angular.module('myApp')
 })
 .controller('EventDetailsCtrl',function($scope,$rootScope,modelFactory,$stateParams){
         var id = $stateParams.id;
-        $scope.participated=true;
+        // $scope.participated=true;
         //ajax to let volunteer participate in an event's task
         $scope.participate=function(task){
             var volunteerid = $rootScope.currentUser.volunteer.id;
@@ -148,11 +148,12 @@ angular.module('myApp')
             ).then(function successCallback(data){
                 task.required_volunteers= data.required_volunteers;
                 task.going_volunteers = data.going_volunteers;
+                $scope.is_participated=data.is_participated;
                 },function errorCallback(err){
                     console.log(err);
                  });
 
-            $scope.participated=false;
+
 
         }; 
         //ajax to let volunteer cancel his participation in an event's task
@@ -165,11 +166,12 @@ angular.module('myApp')
             ).then(function successCallback(data){
                 task.required_volunteers= data.required_volunteers;
                 task.going_volunteers = data.going_volunteers;
+                // $scope.is_participated=data.is_participated;
                 },function errorCallback(err){
                     console.log(err);
                  });
 
-            $scope.participated=true;
+           
         };
 
         //ajax to post review on an event
