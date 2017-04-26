@@ -39,6 +39,7 @@
                 <!-- start single blog -->
                 <h2 class="blog_title text-center">{{eventDetails.title}}</h2>
                 <div star-Rating class="myRating text-center" ng-model='eventDetails.avg_rate'></div>
+                <a class="pull-left" href="./getvolunteers/{{eventDetails.id}}" ng-show="currentUser.isVolunteer==false && eventDetails.organization_id==currentUser.role_id" ><button class="wpcf7-edit"> تقييم المشاركين <i class="fa fa-pencil-square-o"></i></button></a>
                 <hr>
                 <div class="col-lg-6 col-6 col-sm-6">
                   <div class="single_blog">                    
