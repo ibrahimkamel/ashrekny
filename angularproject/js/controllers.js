@@ -1199,7 +1199,7 @@ var invitedvol= $scope.invitedVolunteers=[];
 
 })
 .controller('SearchCtrl',function($scope,modelFactory,$stateParams,$rootScope){
-    var searchdata={data:$stateParams.keyword};
+     var searchdata={data:$stateParams.keyword};
     $scope.first=true;
     $scope.filterscategories=[];
     $scope.exist = function(item){
@@ -1221,17 +1221,14 @@ var invitedvol= $scope.invitedVolunteers=[];
             $scope.first=true;
         }
       };
+    var data = JSON.stringify(searchdata);
     modelFactory.getData('get',
-            'http://localhost/GP/laravelproject/api/select/selected'
-            ).then(function successCallback(data){ 
-                //console.log("data");
-                $scope.categories=data.categories;
-
-                //console.log($scope.categories);
-            },function errorCallback(err){
-                            console.log(err);
-        });
-        var data = JSON.stringify(searchdata);
+        'http://localhost/GP/laravelproject/api/select/selected'
+        ).then(function successCallback(data){ 
+            $scope.categories=data.categories;
+        },function errorCallback(err){
+            console.log(err);
+    });
         modelFactory.getData('post',
         'http://localhost/GP/laravelproject/api/search',data
         ).then(function successCallback(data){
@@ -1239,7 +1236,11 @@ var invitedvol= $scope.invitedVolunteers=[];
                         // console.log('events_results');
                         // console.log($scope.events_results);
                         $scope.organizations_results = data.organizations;
+                        // console.log('organizations_results');
+                        // console.log($scope.organizations_results);
                         $scope.stories_results = data.stories;
+                        // console.log('stories_results');
+                        // console.log($scope.stories_results);
                       },function errorCallback(err){
                         console.log(err);
                     });
@@ -1262,6 +1263,7 @@ var invitedvol= $scope.invitedVolunteers=[];
             });
             return check;
         };
+        
 })
 .controller('editOrganizationProfile', function($scope, modelFactory,$state,$rootScope) {
 

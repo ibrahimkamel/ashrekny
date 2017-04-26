@@ -2,6 +2,7 @@
 <br>
 	<div class="row">
 		<div class="col-sm-8">	
+
 		    <!-- events in search results -->
 			<div ng-repeat="event in events_results" ng-show="filterCategory(event.categories)||first">                
 				<!-- start single blog archive -->
@@ -37,7 +38,8 @@
 				<!-- End single blog archive -->                
 			</div>
 			<!-- organizations in search results -->
-			<div ng-repeat="organization in organizations_results" ng-show="filterCategory(organization.categories)||first">  
+			<div ng-repeat="organization in organizations_results" ng-show="filterCategory(organization.categories)||first">
+			  
 				<div class="row"> 
 		            <div class="single_blog_archive wow fadeInUp ">
 		                <div class="row">
@@ -85,7 +87,7 @@
 		    </div>
 			<!-- stories in search results -->
 			<div ng-repeat="story in stories_results" ng-show="filterCategory(story.categories)||first">
-		        <!-- start single blog archive -->
+			  		        <!-- start single blog archive -->
 		        <div class="col-lg-12 col-12 col-sm-12">
 		          <div class="single_blog_archive wow fadeInUp">
 		            <h2 class="blog_title"><a href="events-single.html">{{story.title}}</a></h2>
@@ -99,7 +101,9 @@
 		        </div>
 		        <!-- End single blog archive -->
 		    </div>
+		     <!-- start previous & next button -->
 		</div>
+
 		<div class="col-sm-4 ">
 			<div class="row">
 				<div class="col-xs-9">
